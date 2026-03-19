@@ -7,10 +7,11 @@
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
       background: linear-gradient(180deg, #f5f7fb 0%, #eef2f7 100%);
       text-align: center;
       color: #1f2937;
+      min-height: 100vh;
     }
 
     .page {
@@ -28,7 +29,7 @@
     .brain-container {
       width: 850px;
       height: 550px;
-      margin: 40px auto;
+      margin: 60px auto;
       position: relative;
     }
 
@@ -41,28 +42,57 @@
       font-weight: 800;
       color: #111827;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: inset 0 0 30px rgba(255,255,255,0.3), 0 10px 20px rgba(0,0,0,0.1);
       text-align: center;
+    }
+
+    /* 툴팁 설정 */
+    .lobe::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      width: 220px;
+      padding: 12px;
+      background: rgba(31, 41, 55, 0.95);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 400;
+      border-radius: 8px;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.2s ease;
+      z-index: 100;
+      pointer-events: none;
+      line-height: 1.5;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+
+    .lobe:hover::after {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
     }
 
     .lobe span {
       display: block;
       margin-top: 5px;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 600;
       opacity: 0.8;
     }
 
     .lobe:hover {
-      transform: scale(1.05) translateY(-5px);
-      z-index: 30 !important;
+      transform: scale(1.03) translateY(-5px);
       filter: brightness(1.05);
+      z-index: 50 !important;
     }
 
-    /* 전두엽: 사진 비율에 맞춰 크게 확장 */
+    /* 각 영역별 위치 및 모양 (해부학적 비율 반영) */
     .frontal {
-      width: 400px;
+      width: 390px;
       height: 350px;
       left: 20px;
       top: 50px;
@@ -71,7 +101,6 @@
       z-index: 10;
     }
 
-    /* 두정엽 */
     .parietal {
       width: 320px;
       height: 250px;
@@ -82,7 +111,6 @@
       z-index: 5;
     }
 
-    /* 측두엽 */
     .temporal {
       width: 350px;
       height: 200px;
@@ -90,10 +118,9 @@
       top: 260px;
       background: linear-gradient(145deg, #b9d1ee, #96b7e2);
       border-radius: 30% 70% 60% 40% / 40% 40% 70% 60%;
-      z-index: 15; /* 전두엽/두정엽 경계 위로 */
+      z-index: 15;
     }
 
-    /* 후두엽 */
     .occipital {
       width: 200px;
       height: 180px;
@@ -104,21 +131,19 @@
       z-index: 2;
     }
 
-    /* 소뇌: 후하단 배치 강화 */
     .cerebellum {
       width: 190px;
       height: 120px;
       left: 550px;
-      top: 360px; /* 위치를 더 잘 보이게 조정 */
+      top: 370px;
       background: linear-gradient(145deg, #d1d5db, #9ca3af);
       border-radius: 60% 40% 50% 50% / 50% 50% 60% 40%;
       transform: rotate(-10deg);
-      z-index: 1; /* 후두엽/측두엽 뒤쪽 바닥 */
-      font-size: 0.9rem;
+      z-index: 1;
     }
 
     .legend {
-      margin-top: 20px;
+      margin-top: 40px;
       color: #9ca3af;
       font-size: 0.9rem;
     }
@@ -128,38 +153,48 @@
   <div class="page">
     <div class="hero">
       <h1>🧠 Brain-Structured Research Archive</h1>
-      <p>뇌의 해부학적 구조를 따르는 연구 아카이브</p>
+      <p>마우스를 올려 각 영역의 기능을 확인하세요</p>
     </div>
 
     <div class="brain-container">
-      <div class="lobe frontal" onclick="location.href='frontal.html'">
+      <div class="lobe frontal" 
+           data-tooltip="의사결정, 계획 수립, 감정 조절 및 실행 기능 담당. 전전두피질(PFC)과 보충운동구역(SMA) 포함."
+           onclick="location.href='frontal.html'">
         Frontal Lobe
         <span>전두엽</span>
       </div>
 
-      <div class="lobe parietal" onclick="location.href='parietal.html'">
+      <div class="lobe parietal" 
+           data-tooltip="감각 정보의 통합, 공간 지각 및 수리적 사고 담당. 일차 체감각 피질(S1) 위치."
+           onclick="location.href='parietal.html'">
         Parietal Lobe
         <span>두정엽</span>
       </div>
 
-      <div class="lobe temporal" onclick="location.href='temporal.html'">
+      <div class="lobe temporal" 
+           data-tooltip="언어 이해(Wernicke's area), 청각 처리 및 장기 기억 형성 담당."
+           onclick="location.href='temporal.html'">
         Temporal Lobe
         <span>측두엽</span>
       </div>
 
-      <div class="lobe occipital" onclick="location.href='occipital.html'">
+      <div class="lobe occipital" 
+           data-tooltip="시각 정보의 수용 및 해석 담당. 일차 시각 피질(V1)과 시각 연합 영역 위치."
+           onclick="location.href='occipital.html'">
         Occipital Lobe
         <span>후두엽</span>
       </div>
 
-      <div class="lobe cerebellum" onclick="location.href='cerebellum.html'">
+      <div class="lobe cerebellum" 
+           data-tooltip="정교한 운동 조절, 평형 감각 유지 및 운동 학습 담당."
+           onclick="location.href='cerebellum.html'">
         Cerebellum
         <span>소뇌</span>
       </div>
     </div>
 
     <div class="legend">
-      * 각 영역은 실제 뇌의 기능적 비중에 맞춰 배치되었습니다.
+      * 각 영역을 클릭하면 해당 주제의 세부 연구 데이터베이스로 이동합니다.
     </div>
   </div>
 </body>
