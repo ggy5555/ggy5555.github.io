@@ -1,144 +1,211 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>Brain Research Archive</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain-Structured Research Archive</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #f5f7fb 0%, #eef2f7 100%);
+      color: #1f2937;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+
+    .hero {
       text-align: center;
+      margin-bottom: 28px;
     }
 
-    h1 {
-      margin-top: 40px;
-      font-size: 32px;
+    .hero h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
-    p {
-      color: gray;
-      margin-bottom: 30px;
+    .hero p {
+      margin: 12px 0 0;
+      color: #4b5563;
+      font-size: 1rem;
     }
 
     .brain-container {
       position: relative;
       width: 600px;
-      margin: 0 auto;
+      max-width: 92vw;
+      margin: 32px auto 0;
     }
 
     .brain-img {
       width: 100%;
       display: block;
+      border-radius: 18px;
+      box-shadow: 0 14px 32px rgba(31, 41, 55, 0.14);
     }
 
-    /* 클릭 영역 */
     .lobe {
       position: absolute;
-      border-radius: 50%;
-      border: 2px solid red; /* 위치 확인용 */
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.2s ease;
+      border-radius: 50%;
+      border: 2px solid rgba(239, 68, 68, 0.9);   /* 위치 확인용 */
+      background: rgba(239, 68, 68, 0.08);        /* 위치 확인용 */
     }
 
     .lobe:hover {
-      background: rgba(99,102,241,0.3);
+      background: rgba(99, 102, 241, 0.28);
+      border-color: rgba(99, 102, 241, 0.95);
+      transform: scale(1.03);
     }
 
-    /* 위치 (이건 네 이미지 기준으로 맞춰둠) */
-
-    .frontal {
-      top: 28%;
-      left: 5%;
-      width: 25%;
-      height: 30%;
-    }
-
-    .parietal {
-      top: 5%;
-      left: 30%;
-      width: 40%;
-      height: 25%;
-    }
-
-    .temporal {
-      top: 45%;
-      left: 30%;
-      width: 35%;
-      height: 20%;
-    }
-
-    .occipital {
-      top: 25%;
-      left: 75%;
-      width: 18%;
-      height: 25%;
-    }
-
-    /* 설명 박스 */
     .tooltip {
       position: absolute;
-      background: white;
-      padding: 10px;
-      border-radius: 10px;
+      min-width: 180px;
+      max-width: 240px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #111827;
+      padding: 12px 14px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      font-size: 0.92rem;
+      line-height: 1.5;
       display: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      font-size: 14px;
       pointer-events: none;
+      z-index: 10;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .legend {
+      text-align: center;
+      margin-top: 18px;
+      color: #6b7280;
+      font-size: 0.94rem;
+    }
+
+    /* 전두엽 */
+    .frontal {
+      top: 27%;
+      left: 6%;
+      width: 29%;
+      height: 31%;
+    }
+
+    /* 두정엽 */
+    .parietal {
+      top: 6%;
+      left: 28%;
+      width: 41%;
+      height: 27%;
+    }
+
+    /* 측두엽 */
+    .temporal {
+      top: 41%;
+      left: 29%;
+      width: 34%;
+      height: 22%;
+    }
+
+    /* 후두엽 */
+    .occipital {
+      top: 24%;
+      left: 71%;
+      width: 20%;
+      height: 24%;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero p {
+        font-size: 0.94rem;
+      }
+
+      .tooltip {
+        min-width: 140px;
+        max-width: 180px;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
-
 <body>
+  <div class="page">
+    <div class="hero">
+      <h1>🧠 Brain-Structured Research Archive</h1>
+      <p>뇌 기능을 기준으로 정리한 연구 아카이브</p>
+    </div>
 
-  <h1>🧠 Brain-Structured Research Archive</h1>
-  <p>뇌 기능을 기준으로 연구를 탐색하세요</p>
+    <div class="brain-container">
+      <img src="brain_image.jpg" alt="brain diagram" class="brain-img" />
 
-  <div class="brain-container">
+      <a
+        href="frontal.html"
+        class="lobe frontal"
+        onmousemove="showTooltip(event, '전두엽<br><b>Frontal Lobe</b><br>Prefrontal Cortex<br>의사결정 · 계획 · 사고')"
+        onmouseout="hideTooltip()"
+      ></a>
 
-    <!-- 🔥 핵심: 이 줄 -->
-    <img src="brain.jpg" class="brain-img">
+      <a
+        href="parietal.html"
+        class="lobe parietal"
+        onmousemove="showTooltip(event, '두정엽<br><b>Parietal Lobe</b><br>Spatial Processing<br>공간 인식 · 감각 통합')"
+        onmouseout="hideTooltip()"
+      ></a>
 
-    <!-- 전두엽 -->
-    <a href="frontal.html" class="lobe frontal"
-       onmousemove="showTip(event, '전두엽<br>Frontal Lobe<br>의사결정 · 사고')"
-       onmouseout="hideTip()"></a>
+      <a
+        href="temporal.html"
+        class="lobe temporal"
+        onmousemove="showTooltip(event, '측두엽<br><b>Temporal Lobe</b><br>Auditory Cortex / Wernicke Area<br>음성 · 언어 처리')"
+        onmouseout="hideTooltip()"
+      ></a>
 
-    <!-- 두정엽 -->
-    <a href="parietal.html" class="lobe parietal"
-       onmousemove="showTip(event, '두정엽<br>Parietal Lobe<br>공간 인식')"
-       onmouseout="hideTip()"></a>
+      <a
+        href="occipital.html"
+        class="lobe occipital"
+        onmousemove="showTooltip(event, '후두엽<br><b>Occipital Lobe</b><br>Visual Cortex (V1, V2)<br>시각 정보 처리')"
+        onmouseout="hideTooltip()"
+      ></a>
 
-    <!-- 측두엽 -->
-    <a href="temporal.html" class="lobe temporal"
-       onmousemove="showTip(event, '측두엽<br>Temporal Lobe<br>음성 처리')"
-       onmouseout="hideTip()"></a>
+      <div id="tooltip" class="tooltip"></div>
+    </div>
 
-    <!-- 후두엽 -->
-    <a href="occipital.html" class="lobe occipital"
-       onmousemove="showTip(event, '후두엽<br>Occipital Lobe<br>시각 처리')"
-       onmouseout="hideTip()"></a>
-
-    <div id="tooltip" class="tooltip"></div>
-
+    <div class="legend">
+      각 영역에 마우스를 올리면 기능 설명이 나타나고, 클릭하면 해당 페이지로 이동합니다.
+    </div>
   </div>
 
   <script>
-    function showTip(e, text) {
-      const tip = document.getElementById("tooltip");
-      tip.innerHTML = text;
-      tip.style.display = "block";
+    function showTooltip(e, text) {
+      const tooltip = document.getElementById("tooltip");
+      tooltip.innerHTML = text;
+      tooltip.style.display = "block";
 
       const rect = e.currentTarget.parentElement.getBoundingClientRect();
-      tip.style.left = (e.clientX - rect.left + 10) + "px";
-      tip.style.top = (e.clientY - rect.top + 10) + "px";
+      const x = e.clientX - rect.left + 14;
+      const y = e.clientY - rect.top + 14;
+
+      tooltip.style.left = x + "px";
+      tooltip.style.top = y + "px";
     }
 
-    function hideTip() {
+    function hideTooltip() {
       document.getElementById("tooltip").style.display = "none";
     }
   </script>
-
 </body>
 </html>
