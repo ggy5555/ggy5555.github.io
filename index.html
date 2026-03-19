@@ -1,108 +1,123 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Brain Research Archive</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain Research Archive</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f8fc;
+      color: #222;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-<style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f8fafc;
-  text-align: center;
-  padding: 40px;
-}
+    h1 {
+      margin-bottom: 10px;
+    }
 
-h1 {
-  margin-bottom: 10px;
-}
+    .subtitle {
+      color: #555;
+      margin-bottom: 40px;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 200px);
-  gap: 30px;
-  justify-content: center;
-  margin-top: 40px;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(220px, 280px));
+      gap: 24px;
+      justify-content: center;
+    }
 
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  text-decoration: none;
-  color: black;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  transition: 0.3s;
-  position: relative;
-}
+    .card {
+      display: block;
+      background: white;
+      border-radius: 18px;
+      padding: 28px 20px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, background 0.2s ease;
+      min-height: 150px;
+    }
 
-.card:hover {
-  transform: translateY(-5px);
-  background: #eef2ff;
-}
+    .card:hover {
+      transform: translateY(-5px);
+      background: #eef2ff;
+    }
 
-.title {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
+    .title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
 
-.desc {
-  opacity: 0;
-  font-size: 0.9rem;
-  margin-top: 10px;
-  transition: 0.3s;
-}
+    .default-text,
+    .hover-text {
+      transition: opacity 0.2s ease;
+    }
 
-.card:hover .desc {
-  opacity: 1;
-}
-</style>
+    .hover-text {
+      display: none;
+      line-height: 1.6;
+      color: #444;
+      font-size: 0.95rem;
+    }
 
+    .card:hover .default-text {
+      display: none;
+    }
+
+    .card:hover .hover-text {
+      display: block;
+    }
+  </style>
 </head>
-
 <body>
+  <h1>🧠 Brain-Structured Research Archive</h1>
+  <p class="subtitle">뇌 기능을 기준으로 정리한 연구 아카이브</p>
 
-<h1>🧠 Brain Research Archive</h1>
-<p>Hover over each lobe to explore functions</p>
+  <div class="grid">
+    <a class="card" href="temporal.html">
+      <div class="title">Temporal Lobe</div>
+      <div class="default-text">측두엽</div>
+      <div class="hover-text">
+        측두엽<br>
+        Auditory Cortex / Wernicke Area<br>
+        음성 및 언어 처리
+      </div>
+    </a>
 
-<div class="grid">
+    <a class="card" href="parietal.html">
+      <div class="title">Parietal Lobe</div>
+      <div class="default-text">두정엽</div>
+      <div class="hover-text">
+        두정엽<br>
+        Spatial Processing / Multisensory Integration<br>
+        공간 인식 및 감각 통합
+      </div>
+    </a>
 
-<a class="card" href="temporal.html">
-  <div class="title">Temporal Lobe</div>
-  <div class="desc">
-    측두엽<br>
-    Auditory Cortex / Wernicke Area<br>
-    음성 및 언어 처리
+    <a class="card" href="occipital.html">
+      <div class="title">Occipital Lobe</div>
+      <div class="default-text">후두엽</div>
+      <div class="hover-text">
+        후두엽<br>
+        Visual Cortex (V1, V2)<br>
+        시각 정보 처리
+      </div>
+    </a>
+
+    <a class="card" href="frontal.html">
+      <div class="title">Frontal Lobe</div>
+      <div class="default-text">전두엽</div>
+      <div class="hover-text">
+        전두엽<br>
+        Prefrontal Cortex<br>
+        의사결정 및 사고
+      </div>
+    </a>
   </div>
-</a>
-
-<a class="card" href="parietal.html">
-  <div class="title">Parietal Lobe</div>
-  <div class="desc">
-    두정엽<br>
-    Spatial Processing / Multisensory Integration<br>
-    공간 인식 및 감각 통합
-  </div>
-</a>
-
-<a class="card" href="occipital.html">
-  <div class="title">Occipital Lobe</div>
-  <div class="desc">
-    후두엽<br>
-    Visual Cortex (V1, V2)<br>
-    시각 정보 처리
-  </div>
-</a>
-
-<a class="card" href="frontal.html">
-  <div class="title">Frontal Lobe</div>
-  <div class="desc">
-    전두엽<br>
-    Prefrontal Cortex<br>
-    의사결정 및 사고
-  </div>
-</a>
-
-</div>
-
 </body>
 </html>
