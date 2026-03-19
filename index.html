@@ -1,139 +1,307 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Brain Research Archive</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain-Structured Research Archive</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f8fafc;
-  text-align: center;
-}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #f5f7fb 0%, #eef2f7 100%);
+      color: #1f2937;
+    }
 
-h1 {
-  margin-top: 40px;
-}
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
 
-.subtitle {
-  color: #555;
-  margin-bottom: 30px;
-}
+    .hero {
+      text-align: center;
+      margin-bottom: 34px;
+    }
 
-.brain-container {
-  position: relative;
-  width: 500px;
-  margin: 0 auto;
-}
+    .hero h1 {
+      margin: 0;
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
 
-.brain-img {
-  width: 100%;
-}
+    .hero p {
+      margin: 12px 0 0;
+      color: #4b5563;
+      font-size: 1.02rem;
+    }
 
-/* 공통 영역 */
-.lobe {
-  position: absolute;
-  cursor: pointer;
-  transition: 0.2s;
-}
+    .brain-board {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 620px;
+    }
 
-/* hover 효과 */
-.lobe:hover {
-  background: rgba(99,102,241,0.3);
-  border-radius: 50%;
-}
+    .brain {
+      position: relative;
+      width: 760px;
+      height: 500px;
+    }
 
-/* 각 위치 (대충 위치 잡은 거) */
-.frontal {
-  top: 120px;
-  left: 60px;
-  width: 120px;
-  height: 120px;
-}
+    .lobe {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #111827;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+      box-shadow: 0 16px 34px rgba(31, 41, 55, 0.10);
+      overflow: hidden;
+      isolation: isolate;
+    }
 
-.parietal {
-  top: 80px;
-  left: 200px;
-  width: 130px;
-  height: 130px;
-}
+    .lobe::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), transparent 36%),
+        radial-gradient(circle at 70% 65%, rgba(255,255,255,0.25), transparent 28%);
+      z-index: 0;
+    }
 
-.temporal {
-  top: 220px;
-  left: 200px;
-  width: 130px;
-  height: 100px;
-}
+    .lobe:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 22px 42px rgba(31, 41, 55, 0.16);
+      filter: saturate(1.05);
+    }
 
-.occipital {
-  top: 130px;
-  left: 350px;
-  width: 100px;
-  height: 100px;
-}
+    .label {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 16px;
+      width: 100%;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
 
-/* 설명 박스 */
-.tooltip {
-  position: absolute;
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  display: none;
-  pointer-events: none;
-}
+    .label .en {
+      display: block;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
 
-</style>
+    .label .kr {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      opacity: 0.92;
+    }
+
+    .info {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 22px;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #172554;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .lobe:hover .label {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .lobe:hover .info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 전두엽 */
+    .frontal {
+      left: 70px;
+      top: 118px;
+      width: 220px;
+      height: 220px;
+      background: linear-gradient(135deg, #f9a8d4, #fbcfe8);
+      clip-path: polygon(
+        26% 6%, 50% 2%, 73% 8%, 88% 20%, 96% 36%, 95% 55%,
+        90% 70%, 81% 83%, 68% 93%, 48% 98%, 28% 94%, 13% 82%,
+        5% 66%, 4% 48%, 8% 31%, 15% 18%
+      );
+    }
+
+    /* 두정엽 */
+    .parietal {
+      left: 245px;
+      top: 40px;
+      width: 250px;
+      height: 240px;
+      background: linear-gradient(135deg, #a5b4fc, #c7d2fe);
+      clip-path: polygon(
+        20% 10%, 38% 2%, 59% 2%, 78% 8%, 91% 20%, 97% 38%,
+        95% 55%, 88% 72%, 78% 86%, 62% 95%, 42% 97%, 24% 91%,
+        11% 79%, 4% 62%, 3% 42%, 8% 24%
+      );
+    }
+
+    /* 측두엽 */
+    .temporal {
+      left: 260px;
+      top: 230px;
+      width: 250px;
+      height: 175px;
+      background: linear-gradient(135deg, #93c5fd, #bfdbfe);
+      clip-path: polygon(
+        18% 10%, 36% 4%, 59% 5%, 80% 14%, 93% 30%, 97% 48%,
+        95% 64%, 87% 79%, 73% 89%, 54% 95%, 34% 94%, 18% 86%,
+        7% 73%, 3% 56%, 5% 38%, 10% 22%
+      );
+    }
+
+    /* 후두엽 */
+    .occipital {
+      right: 80px;
+      top: 122px;
+      width: 185px;
+      height: 195px;
+      background: linear-gradient(135deg, #fcd34d, #fde68a);
+      clip-path: polygon(
+        28% 7%, 52% 3%, 74% 11%, 89% 26%, 96% 45%, 95% 63%,
+        87% 79%, 71% 92%, 48% 98%, 28% 93%, 14% 81%, 6% 64%,
+        4% 46%, 8% 28%, 16% 15%
+      );
+    }
+
+    .legend {
+      margin-top: 22px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .brain {
+        width: 92vw;
+        height: 68vw;
+        max-height: 560px;
+      }
+
+      .label .en {
+        font-size: 1.15rem;
+      }
+
+      .label .kr {
+        font-size: 0.86rem;
+      }
+
+      .info {
+        font-size: 0.78rem;
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .brain-board {
+        min-height: 460px;
+      }
+
+      .label .en {
+        font-size: 0.92rem;
+      }
+
+      .label .kr {
+        font-size: 0.74rem;
+      }
+
+      .info {
+        font-size: 0.68rem;
+        line-height: 1.35;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page">
+    <div class="hero">
+      <h1>🧠 Brain-Structured Research Archive</h1>
+      <p>뇌 기능을 기준으로 정리한 연구 아카이브</p>
+    </div>
 
-<h1>🧠 Brain-Structured Research Archive</h1>
-<p class="subtitle">뇌 기능을 기준으로 연구를 탐색하세요</p>
+    <div class="brain-board">
+      <div class="brain">
+        <a class="lobe frontal" href="frontal.html">
+          <div class="label">
+            <span class="en">Frontal Lobe</span>
+            <span class="kr">전두엽</span>
+          </div>
+          <div class="info">
+            Prefrontal Cortex<br>
+            의사결정 · 계획 · 사고
+          </div>
+        </a>
 
-<div class="brain-container">
+        <a class="lobe parietal" href="parietal.html">
+          <div class="label">
+            <span class="en">Parietal Lobe</span>
+            <span class="kr">두정엽</span>
+          </div>
+          <div class="info">
+            Spatial Processing<br>
+            Multisensory Integration<br>
+            공간 인식 · 감각 통합
+          </div>
+        </a>
 
-  <!-- 뇌 이미지 (링크 이미지 사용) -->
-  <img class="brain-img"
-  src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Lobes_of_the_brain_NL.svg">
+        <a class="lobe temporal" href="temporal.html">
+          <div class="label">
+            <span class="en">Temporal Lobe</span>
+            <span class="kr">측두엽</span>
+          </div>
+          <div class="info">
+            Auditory Cortex<br>
+            Wernicke Area<br>
+            음성 · 언어 처리
+          </div>
+        </a>
 
-  <!-- 클릭 영역 -->
-  <a href="frontal.html" class="lobe frontal"
-     onmousemove="showTooltip(event, '전두엽<br>Prefrontal Cortex<br>의사결정')"
-     onmouseout="hideTooltip()"></a>
+        <a class="lobe occipital" href="occipital.html">
+          <div class="label">
+            <span class="en">Occipital Lobe</span>
+            <span class="kr">후두엽</span>
+          </div>
+          <div class="info">
+            Visual Cortex (V1, V2)<br>
+            시각 정보 처리
+          </div>
+        </a>
+      </div>
+    </div>
 
-  <a href="parietal.html" class="lobe parietal"
-     onmousemove="showTooltip(event, '두정엽<br>Multisensory Integration<br>공간 인식')"
-     onmouseout="hideTooltip()"></a>
-
-  <a href="temporal.html" class="lobe temporal"
-     onmousemove="showTooltip(event, '측두엽<br>Auditory Cortex<br>음성 처리')"
-     onmouseout="hideTooltip()"></a>
-
-  <a href="occipital.html" class="lobe occipital"
-     onmousemove="showTooltip(event, '후두엽<br>Visual Cortex (V1, V2)<br>시각 처리')"
-     onmouseout="hideTooltip()"></a>
-
-  <!-- 툴팁 -->
-  <div id="tooltip" class="tooltip"></div>
-
-</div>
-
-<script>
-function showTooltip(e, text) {
-  const tooltip = document.getElementById("tooltip");
-  tooltip.innerHTML = text;
-  tooltip.style.display = "block";
-  tooltip.style.left = e.pageX + 10 + "px";
-  tooltip.style.top = e.pageY + 10 + "px";
-}
-
-function hideTooltip() {
-  document.getElementById("tooltip").style.display = "none";
-}
-</script>
-
+    <div class="legend">
+      각 영역에 마우스를 올리면 기능 설명이 나타나고, 클릭하면 탐구 및 논문 페이지로 이동합니다.
+    </div>
+  </div>
 </body>
 </html>
