@@ -2,38 +2,26 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brain Research Archive</title>
 
 <style>
 body {
-  margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
-  color: #222;
-}
-
-header {
+  background: #f8fafc;
   text-align: center;
-  padding: 60px 20px 20px;
+  padding: 40px;
 }
 
 h1 {
-  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-.subtitle {
-  color: #555;
-  margin-top: 10px;
-}
-
-.container {
-  max-width: 900px;
-  margin: 40px auto;
+.grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  padding: 20px;
+  grid-template-columns: repeat(2, 200px);
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .card {
@@ -41,28 +29,31 @@ h1 {
   padding: 30px;
   border-radius: 20px;
   text-decoration: none;
-  color: inherit;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: 0.2s;
+  color: black;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  position: relative;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
+  background: #eef2ff;
 }
 
-.card h2 {
-  margin: 0 0 10px;
+.title {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
-.card p {
-  color: #666;
-  font-size: 0.95rem;
+.desc {
+  opacity: 0;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  transition: 0.3s;
 }
 
-footer {
-  text-align: center;
-  margin: 50px 0;
-  color: #888;
+.card:hover .desc {
+  opacity: 1;
 }
 </style>
 
@@ -70,40 +61,48 @@ footer {
 
 <body>
 
-<header>
-  <h1>🧠 Brain-Structured Research Archive</h1>
-  <p class="subtitle">
-    Mapping my scientific curiosity onto the structure of the human brain
-  </p>
-</header>
+<h1>🧠 Brain Research Archive</h1>
+<p>Hover over each lobe to explore functions</p>
 
-<div class="container">
+<div class="grid">
 
-  <a class="card" href="frontal.html">
-    <h2>Frontal Lobe</h2>
-    <p>Decision making, cognition, research design</p>
-  </a>
+<a class="card" href="temporal.html">
+  <div class="title">Temporal Lobe</div>
+  <div class="desc">
+    측두엽<br>
+    Auditory Cortex / Wernicke Area<br>
+    음성 및 언어 처리
+  </div>
+</a>
 
-  <a class="card" href="temporal.html">
-    <h2>Temporal Lobe</h2>
-    <p>Sound, language, voice perception</p>
-  </a>
+<a class="card" href="parietal.html">
+  <div class="title">Parietal Lobe</div>
+  <div class="desc">
+    두정엽<br>
+    Spatial Processing / Multisensory Integration<br>
+    공간 인식 및 감각 통합
+  </div>
+</a>
 
-  <a class="card" href="parietal.html">
-    <h2>Parietal Lobe</h2>
-    <p>Spatial processing, sensory integration</p>
-  </a>
+<a class="card" href="occipital.html">
+  <div class="title">Occipital Lobe</div>
+  <div class="desc">
+    후두엽<br>
+    Visual Cortex (V1, V2)<br>
+    시각 정보 처리
+  </div>
+</a>
 
-  <a class="card" href="occipital.html">
-    <h2>Occipital Lobe</h2>
-    <p>Vision, AR perception, visual processing</p>
-  </a>
+<a class="card" href="frontal.html">
+  <div class="title">Frontal Lobe</div>
+  <div class="desc">
+    전두엽<br>
+    Prefrontal Cortex<br>
+    의사결정 및 사고
+  </div>
+</a>
 
 </div>
-
-<footer>
-  © 2026 My Science Archive
-</footer>
 
 </body>
 </html>
