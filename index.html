@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brain-Structured Research Archive</title>
+
   <style>
     body {
       margin: 0;
@@ -42,38 +43,12 @@
       font-weight: 800;
       color: #111827;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: inset 0 0 30px rgba(255,255,255,0.3), 0 10px 20px rgba(0,0,0,0.1);
       text-align: center;
-    }
 
-    /* 툴팁 설정 */
-    .lobe::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: 110%;
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      width: 220px;
-      padding: 12px;
-      background: rgba(31, 41, 55, 0.95);
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 400;
-      border-radius: 8px;
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.2s ease;
-      z-index: 100;
-      pointer-events: none;
-      line-height: 1.5;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-    }
-
-    .lobe:hover::after {
-      visibility: visible;
-      opacity: 1;
-      transform: translateX(-50%) scale(1);
+      /* 모양 유지 */
+      box-shadow:
+        inset 0 0 30px rgba(255,255,255,0.3),
+        0 10px 20px rgba(0,0,0,0.1);
     }
 
     .lobe span {
@@ -84,13 +59,56 @@
       opacity: 0.8;
     }
 
-    .lobe:hover {
-      transform: scale(1.03) translateY(-5px);
-      filter: brightness(1.05);
-      z-index: 50 !important;
+    /* 🔥 툴팁 (핵심) */
+    .lobe::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 112%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      padding: 14px 16px;
+      background: rgba(17, 24, 39, 0.96);
+      color: #f9fafb;
+      font-size: 0.84rem;
+      font-weight: 500;
+      border-radius: 12px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 100;
+      pointer-events: none;
+      line-height: 1.6;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+      white-space: normal;
+      text-align: left;
     }
 
-    /* 각 영역별 위치 및 모양 (해부학적 비율 반영) */
+    /* 말풍선 꼬리 */
+    .lobe::before {
+      content: "";
+      position: absolute;
+      bottom: 104%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 8px;
+      border-style: solid;
+      border-color: rgba(17, 24, 39, 0.96) transparent transparent transparent;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 99;
+      pointer-events: none;
+    }
+
+    .lobe:hover::after,
+    .lobe:hover::before {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* ===== 영역 ===== */
+
     .frontal {
       width: 390px;
       height: 350px;
@@ -147,55 +165,61 @@
       color: #9ca3af;
       font-size: 0.9rem;
     }
+
   </style>
 </head>
+
 <body>
   <div class="page">
+
     <div class="hero">
       <h1>🧠 Brain-Structured Research Archive</h1>
       <p>마우스를 올려 각 영역의 기능을 확인하세요</p>
     </div>
 
     <div class="brain-container">
-      <div class="lobe frontal" 
-           data-tooltip="의사결정, 계획 수립, 감정 조절 및 실행 기능 담당. 전전두피질(PFC)과 보충운동구역(SMA) 포함."
+
+      <div class="lobe frontal"
+           data-tooltip="전두엽: 의사결정, 계획, 감정 조절을 담당합니다. 전전두피질(PFC) 포함."
            onclick="location.href='frontal.html'">
         Frontal Lobe
         <span>전두엽</span>
       </div>
 
-      <div class="lobe parietal" 
-           data-tooltip="감각 정보의 통합, 공간 지각 및 수리적 사고 담당. 일차 체감각 피질(S1) 위치."
+      <div class="lobe parietal"
+           data-tooltip="두정엽: 감각 정보 통합, 공간 지각, 수리적 사고 담당."
            onclick="location.href='parietal.html'">
         Parietal Lobe
         <span>두정엽</span>
       </div>
 
-      <div class="lobe temporal" 
-           data-tooltip="언어 이해(Wernicke's area), 청각 처리 및 장기 기억 형성 담당."
+      <div class="lobe temporal"
+           data-tooltip="측두엽: 청각 처리, 언어 이해, 장기 기억 형성 담당."
            onclick="location.href='temporal.html'">
         Temporal Lobe
         <span>측두엽</span>
       </div>
 
-      <div class="lobe occipital" 
-           data-tooltip="시각 정보의 수용 및 해석 담당. 일차 시각 피질(V1)과 시각 연합 영역 위치."
+      <div class="lobe occipital"
+           data-tooltip="후두엽: 시각 정보 처리 및 해석 담당. (V1 포함)"
            onclick="location.href='occipital.html'">
         Occipital Lobe
         <span>후두엽</span>
       </div>
 
-      <div class="lobe cerebellum" 
-           data-tooltip="정교한 운동 조절, 평형 감각 유지 및 운동 학습 담당."
+      <div class="lobe cerebellum"
+           data-tooltip="소뇌: 운동 조절, 균형 유지, 운동 학습 담당."
            onclick="location.href='cerebellum.html'">
         Cerebellum
         <span>소뇌</span>
       </div>
+
     </div>
 
     <div class="legend">
-      * 각 영역을 클릭하면 해당 주제의 세부 연구 데이터베이스로 이동합니다.
+      * 각 영역을 클릭하면 해당 연구 페이지로 이동합니다.
     </div>
+
   </div>
 </body>
 </html>
