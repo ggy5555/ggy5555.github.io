@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>Brain Research Archive</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain-Structured Research Archive</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #f5f7fb 0%, #eef2f7 100%);
+      color: #1f2937;
       text-align: center;
     }
 
-    h1 {
-      margin-top: 50px;
-      font-size: 32px;
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
     }
 
-    p {
-      color: #6b7280;
+    .hero h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 800;
     }
+
+    .hero p {
+      margin: 12px 0 0;
+      color: #4b5563;
+    }
+
+    /* 🔥 brain 대신 버튼 영역 */
 
     .brain {
       width: 600px;
@@ -41,6 +57,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.25s;
+      color: #111827;
     }
 
     .lobe span {
@@ -53,7 +70,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
 
-    /* 색상 */
+    /* 색깔 */
 
     .frontal {
       background: #f9a8d4;
@@ -70,37 +87,53 @@
     .occipital {
       background: #fde68a;
     }
+
+    .legend {
+      margin-top: 20px;
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 
 <body>
+  <div class="page">
 
-  <h1>🧠 Brain Research Archive</h1>
-  <p>뇌 기능을 기준으로 연구를 탐색하세요</p>
-
-  <div class="brain">
-
-    <div class="lobe frontal" onclick="location.href='frontal.html'">
-      Frontal Lobe
-      <span>전두엽</span>
+    <div class="hero">
+      <h1>🧠 Brain-Structured Research Archive</h1>
+      <p>뇌 기능을 기준으로 연구를 탐색하세요</p>
     </div>
 
-    <div class="lobe parietal" onclick="location.href='parietal.html'">
-      Parietal Lobe
-      <span>두정엽</span>
+    <!-- 🔥 이미지 대신 버튼 -->
+
+    <div class="brain">
+
+      <div class="lobe frontal" onclick="location.href='frontal.html'">
+        Frontal Lobe
+        <span>전두엽</span>
+      </div>
+
+      <div class="lobe parietal" onclick="location.href='parietal.html'">
+        Parietal Lobe
+        <span>두정엽</span>
+      </div>
+
+      <div class="lobe temporal" onclick="location.href='temporal.html'">
+        Temporal Lobe
+        <span>측두엽</span>
+      </div>
+
+      <div class="lobe occipital" onclick="location.href='occipital.html'">
+        Occipital Lobe
+        <span>후두엽</span>
+      </div>
+
     </div>
 
-    <div class="lobe temporal" onclick="location.href='temporal.html'">
-      Temporal Lobe
-      <span>측두엽</span>
-    </div>
-
-    <div class="lobe occipital" onclick="location.href='occipital.html'">
-      Occipital Lobe
-      <span>후두엽</span>
+    <div class="legend">
+      각 영역을 클릭하면 해당 연구 페이지로 이동합니다.
     </div>
 
   </div>
-
 </body>
 </html>
