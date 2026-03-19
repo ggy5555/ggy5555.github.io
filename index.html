@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Brain-Structured Research Archive</title>
+
   <style>
     body {
       margin: 0;
@@ -22,140 +23,105 @@
       margin: 0;
       font-size: 2.4rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
     }
 
     .hero p {
-      margin: 12px 0 0;
-      color: #4b5563;
-      font-size: 1rem;
+      margin-top: 10px;
+      color: #6b7280;
     }
 
     .brain {
-      width: 660px;
+      width: 650px;
       height: 420px;
-      margin: 70px auto 0;
+      margin: 80px auto 0;
       position: relative;
     }
 
     .lobe {
       position: absolute;
-      width: 190px;
-      height: 150px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       font-weight: 800;
-      font-size: 1rem;
-      color: #111827;
       cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      border-radius: 58% 42% 52% 48% / 46% 58% 42% 54%;
-      box-shadow: inset 0 0 30px rgba(255,255,255,0.28);
+      transition: 0.25s;
+
+      /* 🔥 핵심: 더 뇌같은 형태 */
+      border-radius: 63% 37% 54% 46% / 45% 65% 35% 55%;
+
+      box-shadow: 
+        inset 0 0 30px rgba(255,255,255,0.35),
+        0 10px 25px rgba(0,0,0,0.12);
     }
 
     .lobe span {
-      display: block;
-      margin-top: 10px;
       font-size: 14px;
       font-weight: 600;
+      margin-top: 8px;
     }
 
     .lobe:hover {
-      transform: scale(1.07);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.12), inset 0 0 30px rgba(255,255,255,0.35);
+      transform: scale(1.08);
+      filter: brightness(1.05);
     }
+
+    /* 🔥 더 겹치게 배치 */
 
     .frontal {
       background: #f9a8d4;
-      left: 95px;
-      top: 118px;
+      width: 210px;
+      height: 170px;
+      left: 90px;
+      top: 140px;
+      z-index: 2;
     }
 
     .parietal {
-      background: #a5b4fc;
-      left: 280px;
-      top: 30px;
-      width: 205px;
-      height: 170px;
+      background: #93c5fd;
+      width: 230px;
+      height: 180px;
+      left: 230px;
+      top: 60px;
+      z-index: 3;
     }
 
     .temporal {
-      background: #93c5fd;
-      left: 295px;
-      top: 210px;
-      width: 205px;
-      height: 140px;
+      background: #86efac;
+      width: 230px;
+      height: 150px;
+      left: 240px;
+      top: 230px;
+      z-index: 2;
     }
 
     .occipital {
       background: #fde68a;
-      left: 545px;
-      top: 125px;
-      width: 170px;
-      height: 145px;
+      width: 190px;
+      height: 160px;
+      left: 430px;
+      top: 150px;
+      z-index: 1;
     }
 
     .legend {
-      margin-top: 10px;
+      margin-top: 20px;
       color: #6b7280;
       font-size: 0.95rem;
     }
-
-    @media (max-width: 760px) {
-      .brain {
-        width: 92vw;
-        height: 62vw;
-        max-height: 420px;
-      }
-
-      .lobe {
-        font-size: 0.9rem;
-      }
-
-      .lobe span {
-        font-size: 12px;
-      }
-
-      .frontal {
-        left: 8%;
-        top: 28%;
-        width: 28%;
-        height: 34%;
-      }
-
-      .parietal {
-        left: 34%;
-        top: 7%;
-        width: 31%;
-        height: 38%;
-      }
-
-      .temporal {
-        left: 36%;
-        top: 50%;
-        width: 31%;
-        height: 28%;
-      }
-
-      .occipital {
-        left: 72%;
-        top: 30%;
-        width: 24%;
-        height: 30%;
-      }
-    }
   </style>
 </head>
+
 <body>
   <div class="page">
+
     <div class="hero">
       <h1>🧠 Brain-Structured Research Archive</h1>
       <p>뇌 기능을 기준으로 정리한 연구 아카이브</p>
     </div>
 
     <div class="brain">
+
       <div class="lobe frontal" onclick="location.href='frontal.html'">
         Frontal Lobe
         <span>전두엽</span>
@@ -175,11 +141,13 @@
         Occipital Lobe
         <span>후두엽</span>
       </div>
+
     </div>
 
     <div class="legend">
       각 영역을 클릭하면 해당 연구 페이지로 이동합니다.
     </div>
+
   </div>
 </body>
 </html>
