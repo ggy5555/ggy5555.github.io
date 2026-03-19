@@ -1,123 +1,139 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brain Research Archive</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f8fc;
-      color: #222;
-      text-align: center;
-      padding: 40px 20px;
-    }
+<meta charset="UTF-8">
+<title>Brain Research Archive</title>
 
-    h1 {
-      margin-bottom: 10px;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8fafc;
+  text-align: center;
+}
 
-    .subtitle {
-      color: #555;
-      margin-bottom: 40px;
-    }
+h1 {
+  margin-top: 40px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(220px, 280px));
-      gap: 24px;
-      justify-content: center;
-    }
+.subtitle {
+  color: #555;
+  margin-bottom: 30px;
+}
 
-    .card {
-      display: block;
-      background: white;
-      border-radius: 18px;
-      padding: 28px 20px;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease, background 0.2s ease;
-      min-height: 150px;
-    }
+.brain-container {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      background: #eef2ff;
-    }
+.brain-img {
+  width: 100%;
+}
 
-    .title {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-bottom: 14px;
-    }
+/* 공통 영역 */
+.lobe {
+  position: absolute;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-    .default-text,
-    .hover-text {
-      transition: opacity 0.2s ease;
-    }
+/* hover 효과 */
+.lobe:hover {
+  background: rgba(99,102,241,0.3);
+  border-radius: 50%;
+}
 
-    .hover-text {
-      display: none;
-      line-height: 1.6;
-      color: #444;
-      font-size: 0.95rem;
-    }
+/* 각 위치 (대충 위치 잡은 거) */
+.frontal {
+  top: 120px;
+  left: 60px;
+  width: 120px;
+  height: 120px;
+}
 
-    .card:hover .default-text {
-      display: none;
-    }
+.parietal {
+  top: 80px;
+  left: 200px;
+  width: 130px;
+  height: 130px;
+}
 
-    .card:hover .hover-text {
-      display: block;
-    }
-  </style>
+.temporal {
+  top: 220px;
+  left: 200px;
+  width: 130px;
+  height: 100px;
+}
+
+.occipital {
+  top: 130px;
+  left: 350px;
+  width: 100px;
+  height: 100px;
+}
+
+/* 설명 박스 */
+.tooltip {
+  position: absolute;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: none;
+  pointer-events: none;
+}
+
+</style>
 </head>
+
 <body>
-  <h1>🧠 Brain-Structured Research Archive</h1>
-  <p class="subtitle">뇌 기능을 기준으로 정리한 연구 아카이브</p>
 
-  <div class="grid">
-    <a class="card" href="temporal.html">
-      <div class="title">Temporal Lobe</div>
-      <div class="default-text">측두엽</div>
-      <div class="hover-text">
-        측두엽<br>
-        Auditory Cortex / Wernicke Area<br>
-        음성 및 언어 처리
-      </div>
-    </a>
+<h1>🧠 Brain-Structured Research Archive</h1>
+<p class="subtitle">뇌 기능을 기준으로 연구를 탐색하세요</p>
 
-    <a class="card" href="parietal.html">
-      <div class="title">Parietal Lobe</div>
-      <div class="default-text">두정엽</div>
-      <div class="hover-text">
-        두정엽<br>
-        Spatial Processing / Multisensory Integration<br>
-        공간 인식 및 감각 통합
-      </div>
-    </a>
+<div class="brain-container">
 
-    <a class="card" href="occipital.html">
-      <div class="title">Occipital Lobe</div>
-      <div class="default-text">후두엽</div>
-      <div class="hover-text">
-        후두엽<br>
-        Visual Cortex (V1, V2)<br>
-        시각 정보 처리
-      </div>
-    </a>
+  <!-- 뇌 이미지 (링크 이미지 사용) -->
+  <img class="brain-img"
+  src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Lobes_of_the_brain_NL.svg">
 
-    <a class="card" href="frontal.html">
-      <div class="title">Frontal Lobe</div>
-      <div class="default-text">전두엽</div>
-      <div class="hover-text">
-        전두엽<br>
-        Prefrontal Cortex<br>
-        의사결정 및 사고
-      </div>
-    </a>
-  </div>
+  <!-- 클릭 영역 -->
+  <a href="frontal.html" class="lobe frontal"
+     onmousemove="showTooltip(event, '전두엽<br>Prefrontal Cortex<br>의사결정')"
+     onmouseout="hideTooltip()"></a>
+
+  <a href="parietal.html" class="lobe parietal"
+     onmousemove="showTooltip(event, '두정엽<br>Multisensory Integration<br>공간 인식')"
+     onmouseout="hideTooltip()"></a>
+
+  <a href="temporal.html" class="lobe temporal"
+     onmousemove="showTooltip(event, '측두엽<br>Auditory Cortex<br>음성 처리')"
+     onmouseout="hideTooltip()"></a>
+
+  <a href="occipital.html" class="lobe occipital"
+     onmousemove="showTooltip(event, '후두엽<br>Visual Cortex (V1, V2)<br>시각 처리')"
+     onmouseout="hideTooltip()"></a>
+
+  <!-- 툴팁 -->
+  <div id="tooltip" class="tooltip"></div>
+
+</div>
+
+<script>
+function showTooltip(e, text) {
+  const tooltip = document.getElementById("tooltip");
+  tooltip.innerHTML = text;
+  tooltip.style.display = "block";
+  tooltip.style.left = e.pageX + 10 + "px";
+  tooltip.style.top = e.pageY + 10 + "px";
+}
+
+function hideTooltip() {
+  document.getElementById("tooltip").style.display = "none";
+}
+</script>
+
 </body>
 </html>
