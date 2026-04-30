@@ -37,7 +37,7 @@
     }
 
     .hero {
-      min-height: 75vh;
+      min-height: 78vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -46,48 +46,47 @@
     }
 
     .hero-box {
-      max-width: 900px;
+      max-width: 1050px;
     }
 
     .hero h1 {
-      font-size: 52px;
+      font-size: 56px;
       line-height: 1.2;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
+      letter-spacing: -1px;
     }
 
     .hero p {
       font-size: 18px;
       color: #4b5563;
-      line-height: 1.7;
-      margin-bottom: 40px;
+      line-height: 1.8;
+      margin-bottom: 46px;
     }
 
     .main-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-bottom: 34px;
     }
 
     .card-button {
-      width: 230px;
-      padding: 28px 22px;
+      padding: 30px 22px;
       background: white;
-      border-radius: 22px;
+      border-radius: 24px;
       text-decoration: none;
       color: #111827;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
       transition: 0.25s;
     }
 
     .card-button:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      transform: translateY(-7px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.13);
     }
 
     .card-button h2 {
-      margin: 0 0 10px;
+      margin: 0 0 12px;
       font-size: 22px;
     }
 
@@ -95,12 +94,12 @@
       margin: 0;
       font-size: 14px;
       color: #6b7280;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .structure-link {
       display: inline-block;
-      margin-top: 14px;
+      margin-top: 16px;
       font-size: 15px;
       color: #4b5563;
       text-decoration: none;
@@ -127,7 +126,7 @@
     .section p {
       font-size: 16px;
       color: #4b5563;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     footer {
@@ -135,6 +134,27 @@
       padding: 40px;
       font-size: 14px;
       color: #6b7280;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 22px 28px;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .main-buttons {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -145,9 +165,10 @@
     <div class="logo">Brain Archive</div>
 
     <nav>
-      <a href="functions.html">기능 탐구</a>
+      <a href="neuron.html">Neural Unit</a>
+      <a href="coding.html">Coding</a>
+      <a href="network.html">Network</a>
       <a href="cases.html">사례</a>
-      <a href="research.html">심화 연구</a>
       <a href="brainmap.html">뇌 구조</a>
     </nav>
   </header>
@@ -159,30 +180,35 @@
 
         <h1>
           뇌는 위치가 아니라<br>
-          기능으로 이해된다
+          정보 처리 시스템이다
         </h1>
 
         <p>
-          이 사이트는 뇌과학 올림피아드 수준의 개념을<br>
-          기능, 사례, 구조, 심화 연구로 재구성한<br>
+          이 사이트는 뇌과학 올림피아드 개념을<br>
+          뉴런, 정보 표현, 네트워크, 실제 기능으로 재구성한<br>
           뇌과학 아카이브입니다.
         </p>
 
         <div class="main-buttons">
 
-          <a class="card-button" href="functions.html">
-            <h2>🧠 기능별 탐구</h2>
-            <p>시각, 운동, 언어, 감정 등 핵심 기능 중심 학습</p>
+          <a class="card-button" href="neuron.html">
+            <h2>🧠 Neural Unit</h2>
+            <p>뉴런 구조, EPSP/IPSP, 막전위, 활동전위 등 신경계의 기본 단위</p>
+          </a>
+
+          <a class="card-button" href="coding.html">
+            <h2>📡 Information Coding</h2>
+            <p>rate coding, temporal coding, sparse coding 등 정보 표현 방식</p>
+          </a>
+
+          <a class="card-button" href="network.html">
+            <h2>🧮 Neural Network</h2>
+            <p>인공신경망, 학습 방식, cost function 등 계산 구조</p>
           </a>
 
           <a class="card-button" href="cases.html">
             <h2>🧪 사례로 이해</h2>
             <p>피니어스 게이지, 착시, split brain 등 실제 사례</p>
-          </a>
-
-          <a class="card-button" href="research.html">
-            <h2>🔬 심화 연구</h2>
-            <p>EEG, 뇌파, AR 인터페이스 탐구</p>
           </a>
 
         </div>
@@ -195,12 +221,14 @@
     </section>
 
     <section class="section">
-      <h2>왜 기능 중심인가?</h2>
+      <h2>왜 정보 처리 시스템인가?</h2>
       <p>
-        뇌를 전두엽, 측두엽과 같은 위치로 나누는 것은 직관적이지만,<br>
-        실제 뇌의 작동은 여러 영역이 동시에 상호작용하며 이루어진다.<br><br>
-        따라서 이 아카이브는 기능을 중심으로 개념을 정리하고,<br>
-        구조는 보조적인 탐색 도구로 활용한다.
+        뇌를 전두엽, 두정엽, 측두엽, 후두엽처럼 위치로 나누는 방식은 직관적이지만,<br>
+        뇌과학의 핵심 개념을 모두 설명하기에는 한계가 있다.<br><br>
+        뉴런은 신호를 만들고, 시냅스는 정보를 조절하며,<br>
+        여러 신경망은 감각, 운동, 기억, 판단 같은 기능을 만들어낸다.<br>
+        따라서 이 아카이브는 뇌를 단순한 부위 목록이 아니라<br>
+        하나의 정보 처리 시스템으로 이해하는 것을 목표로 한다.
       </p>
     </section>
 
