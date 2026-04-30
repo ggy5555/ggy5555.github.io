@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brain Archive</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+      background: linear-gradient(180deg, #f5f7fb, #e9eef6);
+      color: #1f2937;
+    }
+
+    header {
+      padding: 24px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #111827;
+    }
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .hero-box {
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .main-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .card-button {
+      width: 230px;
+      padding: 28px 22px;
+      background: white;
+      border-radius: 22px;
+      text-decoration: none;
+      color: #111827;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      transition: 0.25s;
+    }
+
+    .card-button:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    }
+
+    .card-button h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .card-button p {
+      margin: 0;
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .structure-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 15px;
+      color: #4b5563;
+      text-decoration: none;
+      border-bottom: 1px solid #9ca3af;
+    }
+
+    .structure-link:hover {
+      color: #111827;
+      border-color: #111827;
+    }
+
+    .section {
+      padding: 80px 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .section p {
+      font-size: 16px;
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Brain Archive</div>
+
+    <nav>
+      <a href="functions.html">기능 탐구</a>
+      <a href="cases.html">사례</a>
+      <a href="research.html">심화 연구</a>
+      <a href="brainmap.html">뇌 구조</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-box">
+
+        <h1>
+          뇌는 위치가 아니라<br>
+          기능으로 이해된다
+        </h1>
+
+        <p>
+          이 사이트는 뇌과학 올림피아드 수준의 개념을<br>
+          기능, 사례, 구조, 심화 연구로 재구성한<br>
+          뇌과학 아카이브입니다.
+        </p>
+
+        <div class="main-buttons">
+
+          <a class="card-button" href="functions.html">
+            <h2>🧠 기능별 탐구</h2>
+            <p>시각, 운동, 언어, 감정 등 핵심 기능 중심 학습</p>
+          </a>
+
+          <a class="card-button" href="cases.html">
+            <h2>🧪 사례로 이해</h2>
+            <p>피니어스 게이지, 착시, split brain 등 실제 사례</p>
+          </a>
+
+          <a class="card-button" href="research.html">
+            <h2>🔬 심화 연구</h2>
+            <p>EEG, 뇌파, AR 인터페이스 탐구</p>
+          </a>
+
+        </div>
+
+        <a class="structure-link" href="brainmap.html">
+          뇌를 구조로 보기 →
+        </a>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>왜 기능 중심인가?</h2>
+      <p>
+        뇌를 전두엽, 측두엽과 같은 위치로 나누는 것은 직관적이지만,<br>
+        실제 뇌의 작동은 여러 영역이 동시에 상호작용하며 이루어진다.<br><br>
+        따라서 이 아카이브는 기능을 중심으로 개념을 정리하고,<br>
+        구조는 보조적인 탐색 도구로 활용한다.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    Brain-Structured Research Archive
+  </footer>
+
+</body>
+</html>
