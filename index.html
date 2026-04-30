@@ -30,13 +30,12 @@
     .hero p {
       color: #6b7280;
       margin-top: 14px;
-      font-size: 1rem;
     }
 
     .brain-container {
       width: 850px;
       height: 550px;
-      margin: 60px auto 30px;
+      margin: 60px auto;
       position: relative;
     }
 
@@ -49,53 +48,62 @@
       font-weight: 800;
       color: #111827;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: 0.3s;
       box-shadow: inset 0 0 30px rgba(255,255,255,0.3), 0 10px 20px rgba(0,0,0,0.1);
       text-align: center;
     }
 
-    .lobe::after {
-      content: attr(data-tooltip);
+    .lobe span {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .lobe:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== 툴팁 ===== */
+    .tooltip {
       position: absolute;
       bottom: 110%;
       left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      width: 230px;
-      padding: 12px;
-      background: rgba(31, 41, 55, 0.95);
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 400;
-      border-radius: 8px;
+      transform: translateX(-50%) scale(0.95);
+      width: 320px;
+      padding: 18px 22px;
+      background: rgba(31, 41, 55, 0.96);
+      color: white;
+      border-radius: 14px;
       visibility: hidden;
       opacity: 0;
-      transition: all 0.2s ease;
+      transition: 0.2s;
       z-index: 100;
       pointer-events: none;
-      line-height: 1.5;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+      text-align: left;
+      line-height: 1.65;
+      box-shadow: 0 14px 25px rgba(0,0,0,0.22);
     }
 
-    .lobe:hover::after {
+    .tooltip strong {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .tooltip span {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .lobe:hover .tooltip {
       visibility: visible;
       opacity: 1;
       transform: translateX(-50%) scale(1);
     }
 
-    .lobe span {
-      display: block;
-      margin-top: 5px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      opacity: 0.8;
-    }
-
-    .lobe:hover {
-      transform: scale(1.03) translateY(-5px);
-      filter: brightness(1.05);
-      z-index: 50 !important;
-    }
-
+    /* ===== 뇌 영역 ===== */
     .frontal {
       width: 390px;
       height: 350px;
@@ -103,7 +111,6 @@
       top: 50px;
       background: linear-gradient(145deg, #efb2d2, #dc94be);
       border-radius: 50% 50% 40% 60% / 65% 45% 45% 55%;
-      z-index: 10;
     }
 
     .parietal {
@@ -113,7 +120,6 @@
       top: 30px;
       background: linear-gradient(145deg, #b6bdf5, #94a0e8);
       border-radius: 40% 60% 40% 60% / 40% 70% 30% 60%;
-      z-index: 5;
     }
 
     .temporal {
@@ -123,7 +129,6 @@
       top: 260px;
       background: linear-gradient(145deg, #b9d1ee, #96b7e2);
       border-radius: 30% 70% 60% 40% / 40% 40% 70% 60%;
-      z-index: 15;
     }
 
     .occipital {
@@ -133,7 +138,6 @@
       top: 200px;
       background: linear-gradient(145deg, #f3db73, #e9ca4d);
       border-radius: 30% 70% 70% 30% / 50% 50% 70% 50%;
-      z-index: 2;
     }
 
     .cerebellum {
@@ -144,79 +148,36 @@
       background: linear-gradient(145deg, #d1d5db, #9ca3af);
       border-radius: 60% 40% 50% 50% / 50% 50% 60% 40%;
       transform: rotate(-10deg);
-      z-index: 1;
     }
 
-    .legend {
-      margin-top: 20px;
-      color: #9ca3af;
-      font-size: 0.9rem;
-    }
-
+    /* ===== 시스템 카드 ===== */
     .system-section {
-      margin-top: 90px;
-      padding-top: 50px;
-      border-top: 1px solid #d1d5db;
-    }
-
-    .system-section h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .system-section > p {
-      color: #6b7280;
-      margin-bottom: 36px;
-      line-height: 1.6;
+      margin-top: 80px;
     }
 
     .system-cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .system-card {
       background: white;
-      padding: 28px 22px;
-      border-radius: 22px;
+      padding: 25px;
+      border-radius: 18px;
       text-decoration: none;
       color: #111827;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
       transition: 0.25s;
     }
 
     .system-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-    }
-
-    .system-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.15rem;
+      transform: translateY(-5px);
     }
 
     .system-card p {
-      margin: 0;
       font-size: 0.9rem;
       color: #6b7280;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 900px) {
-      .brain-container {
-        transform: scale(0.75);
-        transform-origin: top center;
-        margin-bottom: -80px;
-      }
-
-      .system-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
     }
   </style>
 </head>
@@ -226,79 +187,97 @@
 
     <div class="hero">
       <h1>🧠 Brain-Structured Research Archive</h1>
-      <p>마우스를 올려 각 영역의 기능을 확인하고, 아래에서 뇌를 정보 처리 시스템으로 탐구하세요</p>
+      <p>마우스를 올려 각 영역의 기능을 확인하세요</p>
     </div>
 
     <div class="brain-container">
-      <div class="lobe frontal"
-           data-tooltip="의사결정, 계획 수립, 감정 조절 및 실행 기능 담당. 전전두피질(PFC)과 보충운동구역(SMA) 포함."
-           onclick="location.href='frontal.html'">
+
+      <!-- 전두엽 -->
+      <div class="lobe frontal" onclick="location.href='frontal.html'">
         Frontal Lobe
         <span>전두엽</span>
+
+        <div class="tooltip">
+          <strong>전두엽 · Frontal Lobe</strong>
+          <span>의사결정, 계획 수립, 감정 조절 및 실행 기능 담당.</span>
+          <span>전전두피질(PFC)과 보충운동구역(SMA) 포함.</span>
+        </div>
       </div>
 
-      <div class="lobe parietal"
-           data-tooltip="감각 정보의 통합, 공간 지각 및 수리적 사고 담당. 일차 체감각 피질(S1) 위치."
-           onclick="location.href='parietal.html'">
+      <!-- 두정엽 -->
+      <div class="lobe parietal" onclick="location.href='parietal.html'">
         Parietal Lobe
         <span>두정엽</span>
+
+        <div class="tooltip">
+          <strong>두정엽 · Parietal Lobe</strong>
+          <span>감각 정보 통합 및 공간 지각 담당.</span>
+          <span>일차 체감각 피질(S1) 포함.</span>
+        </div>
       </div>
 
-      <div class="lobe temporal"
-           data-tooltip="언어 이해, 청각 처리 및 장기 기억 형성 담당. 해마와 베르니케 영역 관련."
-           onclick="location.href='temporal.html'">
+      <!-- 측두엽 -->
+      <div class="lobe temporal" onclick="location.href='temporal.html'">
         Temporal Lobe
         <span>측두엽</span>
+
+        <div class="tooltip">
+          <strong>측두엽 · Temporal Lobe</strong>
+          <span>청각 처리 및 언어 이해 담당.</span>
+          <span>해마와 베르니케 영역 관련.</span>
+        </div>
       </div>
 
-      <div class="lobe occipital"
-           data-tooltip="시각 정보의 수용 및 해석 담당. 일차 시각 피질(V1)과 시각 연합 영역 위치."
-           onclick="location.href='occipital.html'">
+      <!-- 후두엽 -->
+      <div class="lobe occipital" onclick="location.href='occipital.html'">
         Occipital Lobe
         <span>후두엽</span>
+
+        <div class="tooltip">
+          <strong>후두엽 · Occipital Lobe</strong>
+          <span>시각 정보 수용 및 해석 담당.</span>
+          <span>일차 시각 피질(V1) 포함.</span>
+        </div>
       </div>
 
-      <div class="lobe cerebellum"
-           data-tooltip="정교한 운동 조절, 평형 감각 유지 및 운동 학습 담당."
-           onclick="location.href='cerebellum.html'">
+      <!-- 소뇌 -->
+      <div class="lobe cerebellum" onclick="location.href='cerebellum.html'">
         Cerebellum
         <span>소뇌</span>
+
+        <div class="tooltip">
+          <strong>소뇌 · Cerebellum</strong>
+          <span>운동 조절 및 균형 유지 담당.</span>
+          <span>운동 학습 및 오차 보정 수행.</span>
+        </div>
       </div>
+
     </div>
 
-    <div class="legend">
-      * 각 영역을 클릭하면 해당 뇌 구조 페이지로 이동합니다.
-    </div>
-
+    <!-- 시스템 카드 -->
     <div class="system-section">
       <h2>Brain as Information Processing System</h2>
-      <p>
-        엽별 구조만으로 설명하기 어려운 뉴런, 시냅스, 정보 부호화, 신경망 개념을<br>
-        뇌과학 올림피아드 학습 흐름에 맞게 따로 정리합니다.
-      </p>
 
       <div class="system-cards">
-
         <a href="neuron.html" class="system-card">
-          <h3>🧠 Neural Unit</h3>
-          <p>뉴런 구조, EPSP/IPSP, 막전위, 활동전위</p>
+          <h3>Neural Unit</h3>
+          <p>뉴런 구조, EPSP/IPSP</p>
         </a>
 
         <a href="coding.html" class="system-card">
-          <h3>📡 Information Coding</h3>
-          <p>rate coding, temporal coding, sparse coding</p>
+          <h3>Information Coding</h3>
+          <p>rate coding, temporal coding</p>
         </a>
 
         <a href="network.html" class="system-card">
-          <h3>🧮 Neural Network</h3>
-          <p>ANN, 학습 방식, cost function, 정보 처리 모델</p>
+          <h3>Neural Network</h3>
+          <p>ANN, 학습 구조</p>
         </a>
 
         <a href="cases.html" class="system-card">
-          <h3>🧪 Case Studies</h3>
-          <p>피니어스 게이지, 착시, split brain 등 실제 사례</p>
+          <h3>Case Studies</h3>
+          <p>실제 뇌 사례 분석</p>
         </a>
-
       </div>
     </div>
 
