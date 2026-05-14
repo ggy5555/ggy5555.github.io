@@ -9,77 +9,97 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
-      background: linear-gradient(180deg, #f5f7fb 0%, #eef2f7 100%);
+      background: linear-gradient(180deg, #f8fafc 0%, #eef3f9 100%);
       text-align: center;
-      color: #1f2937;
+      color: #111827;
       min-height: 100vh;
     }
 
     .top-nav {
       width: 100%;
       height: 72px;
-      background: rgba(255,255,255,0.78);
-      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
       position: sticky;
       top: 0;
       z-index: 999;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 40px;
+      padding: 0 34px;
       box-sizing: border-box;
-      border-bottom: 1px solid rgba(209,213,219,0.75);
-      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.8);
+      box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
     }
 
     .nav-logo {
-      font-size: 1.15rem;
-      font-weight: 800;
+      font-size: 1.25rem;
+      font-weight: 900;
       color: #111827;
       white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
-      gap: 26px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      align-items: center;
+      gap: 34px;
     }
 
     .nav-links a {
+      position: relative;
       text-decoration: none;
-      color: #4b5563;
-      font-weight: 650;
+      color: #111827;
       font-size: 0.95rem;
+      font-weight: 700;
+      padding: 27px 0 24px;
       transition: 0.2s;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
-      color: #111827;
+      color: #4f46e5;
+    }
+
+    .nav-links a.active {
+      color: #4f46e5;
+    }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: #4f46e5;
+      border-radius: 999px 999px 0 0;
     }
 
     .page {
-      max-width: 1100px;
+      max-width: 1250px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 88px 20px 40px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: 2.5rem;
-      font-weight: 800;
+      font-size: 3.25rem;
+      font-weight: 900;
+      letter-spacing: -1.6px;
+      color: #111827;
     }
 
     .hero p {
       color: #6b7280;
-      margin-top: 14px;
-      font-size: 1rem;
+      margin-top: 18px;
+      font-size: 1.18rem;
+      font-weight: 500;
     }
 
     .brain-container {
-      width: 850px;
-      height: 550px;
-      margin: 60px auto 30px;
+      width: 1050px;
+      height: 760px;
+      margin: 70px auto 0;
       position: relative;
     }
 
@@ -89,134 +109,221 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-weight: 800;
+      font-weight: 900;
       color: #111827;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: inset 0 0 30px rgba(255,255,255,0.3), 0 10px 20px rgba(0,0,0,0.1);
+      transition: 0.25s ease;
       text-align: center;
+      font-size: 1.45rem;
+      box-shadow:
+        inset 0 0 35px rgba(255,255,255,0.42),
+        inset 0 -18px 30px rgba(0,0,0,0.05),
+        0 14px 28px rgba(15,23,42,0.12);
+    }
+
+    .lobe span {
+      display: block;
+      margin-top: 10px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      opacity: 0.9;
+    }
+
+    .lobe:hover {
+      transform: scale(1.025) translateY(-4px);
+      filter: brightness(1.04);
+      z-index: 80 !important;
     }
 
     .lobe::after {
       content: attr(data-tooltip);
       position: absolute;
-      bottom: 110%;
       left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      width: 230px;
-      padding: 12px;
-      background: rgba(31, 41, 55, 0.95);
+      transform: translateX(-50%);
+      width: 245px;
+      padding: 15px 16px;
+      background: rgba(31, 41, 55, 0.96);
       color: #fff;
-      font-size: 0.85rem;
-      font-weight: 400;
-      border-radius: 8px;
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.2s ease;
-      z-index: 100;
-      pointer-events: none;
-      line-height: 1.5;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-    }
-
-    .lobe:hover::after {
-      visibility: visible;
-      opacity: 1;
-      transform: translateX(-50%) scale(1);
-    }
-
-    .lobe span {
-      display: block;
-      margin-top: 5px;
       font-size: 0.9rem;
       font-weight: 600;
-      opacity: 0.8;
+      border-radius: 7px;
+      visibility: visible;
+      opacity: 1;
+      z-index: 200;
+      pointer-events: none;
+      line-height: 1.65;
+      box-shadow: 0 12px 22px rgba(0,0,0,0.22);
+      white-space: normal;
     }
 
-    .lobe:hover {
-      transform: scale(1.03) translateY(-5px);
-      filter: brightness(1.05);
-      z-index: 50 !important;
+    .lobe::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      z-index: 201;
+      pointer-events: none;
     }
 
     .frontal {
-      width: 390px;
-      height: 350px;
-      left: 20px;
-      top: 50px;
-      background: linear-gradient(145deg, #efb2d2, #dc94be);
-      border-radius: 50% 50% 40% 60% / 65% 45% 45% 55%;
+      width: 470px;
+      height: 410px;
+      left: 15px;
+      top: 120px;
+      background: linear-gradient(145deg, #f5a8c9, #e889b8);
+      border-radius: 55% 45% 42% 58% / 60% 42% 52% 48%;
       z-index: 10;
     }
 
+    .frontal::after {
+      bottom: 101%;
+    }
+
+    .frontal::before {
+      bottom: 96%;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid rgba(31, 41, 55, 0.96);
+    }
+
     .parietal {
-      width: 320px;
-      height: 250px;
-      left: 360px;
-      top: 30px;
-      background: linear-gradient(145deg, #b6bdf5, #94a0e8);
-      border-radius: 40% 60% 40% 60% / 40% 70% 30% 60%;
-      z-index: 5;
+      width: 410px;
+      height: 310px;
+      left: 430px;
+      top: 115px;
+      background: linear-gradient(145deg, #b9adf3, #9e91ea);
+      border-radius: 44% 56% 43% 57% / 45% 63% 37% 55%;
+      z-index: 8;
+    }
+
+    .parietal::after {
+      bottom: 102%;
+    }
+
+    .parietal::before {
+      bottom: 97%;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid rgba(31, 41, 55, 0.96);
     }
 
     .temporal {
-      width: 350px;
-      height: 200px;
-      left: 260px;
-      top: 260px;
-      background: linear-gradient(145deg, #b9d1ee, #96b7e2);
-      border-radius: 30% 70% 60% 40% / 40% 40% 70% 60%;
-      z-index: 15;
+      width: 530px;
+      height: 245px;
+      left: 270px;
+      top: 380px;
+      background: linear-gradient(145deg, #add2f6, #86b6e8);
+      border-radius: 38% 62% 56% 44% / 42% 43% 67% 58%;
+      z-index: 18;
+    }
+
+    .temporal::after {
+      top: 101%;
+    }
+
+    .temporal::before {
+      top: 96%;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 15px solid rgba(31, 41, 55, 0.96);
     }
 
     .occipital {
-      width: 200px;
-      height: 180px;
-      left: 600px;
-      top: 200px;
-      background: linear-gradient(145deg, #f3db73, #e9ca4d);
-      border-radius: 30% 70% 70% 30% / 50% 50% 70% 50%;
-      z-index: 2;
+      width: 260px;
+      height: 255px;
+      left: 760px;
+      top: 290px;
+      background: linear-gradient(145deg, #ffdc76, #f6c84e);
+      border-radius: 38% 62% 62% 38% / 47% 48% 65% 52%;
+      z-index: 5;
+    }
+
+    .occipital::after {
+      left: 88%;
+      bottom: 105%;
+    }
+
+    .occipital::before {
+      left: 88%;
+      bottom: 100%;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid rgba(31, 41, 55, 0.96);
     }
 
     .cerebellum {
-      width: 190px;
-      height: 120px;
-      left: 550px;
-      top: 370px;
-      background: linear-gradient(145deg, #d1d5db, #9ca3af);
-      border-radius: 60% 40% 50% 50% / 50% 50% 60% 40%;
-      transform: rotate(-10deg);
-      z-index: 1;
+      width: 290px;
+      height: 185px;
+      left: 605px;
+      top: 540px;
+      background: linear-gradient(145deg, #d9d9d9, #b9b9b9);
+      border-radius: 58% 42% 55% 45% / 48% 50% 63% 42%;
+      transform: rotate(-8deg);
+      z-index: 4;
+    }
+
+    .cerebellum:hover {
+      transform: rotate(-8deg) scale(1.025) translateY(-4px);
+    }
+
+    .cerebellum::after {
+      top: 105%;
+      width: 210px;
+    }
+
+    .cerebellum::before {
+      top: 98%;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 15px solid rgba(31, 41, 55, 0.96);
     }
 
     .legend {
-      margin-top: 20px;
-      color: #9ca3af;
-      font-size: 0.9rem;
+      display: none;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       .top-nav {
         height: auto;
         padding: 18px 20px;
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
       }
 
       .nav-links {
-        gap: 14px;
+        gap: 16px;
         justify-content: center;
+        flex-wrap: wrap;
       }
 
-      .brain-container {
-        transform: scale(0.75);
-        transform-origin: top center;
-        margin-bottom: -80px;
+      .nav-links a {
+        padding: 8px 0;
+      }
+
+      .nav-links a.active::after {
+        bottom: -3px;
+      }
+
+      .page {
+        padding-top: 55px;
       }
 
       .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .brain-container {
+        transform: scale(0.72);
+        transform-origin: top center;
+        margin-left: 50%;
+        translate: -50% 0;
+        margin-bottom: -210px;
       }
     }
   </style>
@@ -228,7 +335,7 @@
     <div class="nav-logo">🧠 Brain Archive</div>
 
     <div class="nav-links">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="basic.html">기초 신경과학</a>
       <a href="anatomy.html">신경해부학</a>
       <a href="cognition.html">감각·인지</a>
@@ -276,17 +383,14 @@
       </div>
 
       <div class="lobe cerebellum"
-           data-tooltip="정교한 운동 조절, 평형 감각 유지 및 운동 학습 담당."
+           data-tooltip="운동 조정, 균형 유지 및 운동 학습 담당."
            onclick="location.href='cerebellum.html'">
         Cerebellum
         <span>소뇌</span>
       </div>
     </div>
 
-    <div class="legend">
-      * 각 영역을 클릭하면 해당 뇌 구조 페이지로 이동합니다.
-    </div>
-
   </div>
+
 </body>
 </html>
