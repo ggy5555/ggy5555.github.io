@@ -15,10 +15,14 @@
       min-height: 100vh;
     }
 
+    /* =========================
+       TOP NAVIGATION
+    ========================== */
+
     .top-nav {
       width: 100%;
       height: 72px;
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.82);
       backdrop-filter: blur(14px);
       position: sticky;
       top: 0;
@@ -41,22 +45,58 @@
 
     .nav-links {
       display: flex;
-      gap: 26px;
+      gap: 30px;
       flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
     }
 
     .nav-links a {
+      position: relative;
       text-decoration: none;
       color: #4b5563;
       font-weight: 650;
       font-size: 0.95rem;
-      transition: 0.2s;
+      padding: 26px 0;
+      transition: all 0.22s ease;
     }
 
+    /* hover 시 글씨 파랗게 */
     .nav-links a:hover {
-      color: #111827;
+      color: #4f46e5;
     }
+
+    /* 밑줄 기본 상태 */
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 16px;
+      width: 0%;
+      height: 3px;
+      background: #4f46e5;
+      border-radius: 999px;
+      transition: width 0.22s ease;
+    }
+
+    /* hover 시 밑줄 생성 */
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* 현재 페이지 */
+    .nav-links a.active {
+      color: #4f46e5;
+    }
+
+    /* 현재 페이지는 항상 밑줄 */
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* =========================
+       MAIN PAGE
+    ========================== */
 
     .page {
       max-width: 1100px;
@@ -66,15 +106,22 @@
 
     .hero h1 {
       margin: 0;
-      font-size: 2.5rem;
-      font-weight: 800;
+      font-size: 2.7rem;
+      font-weight: 850;
+      letter-spacing: -0.5px;
+      color: #111827;
     }
 
     .hero p {
       color: #6b7280;
-      margin-top: 14px;
-      font-size: 1rem;
+      margin-top: 16px;
+      font-size: 1.05rem;
+      line-height: 1.6;
     }
+
+    /* =========================
+       BRAIN MAP
+    ========================== */
 
     .brain-container {
       width: 850px;
@@ -93,9 +140,29 @@
       color: #111827;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: inset 0 0 30px rgba(255,255,255,0.3), 0 10px 20px rgba(0,0,0,0.1);
+      box-shadow:
+        inset 0 0 30px rgba(255,255,255,0.3),
+        0 10px 20px rgba(0,0,0,0.1);
       text-align: center;
     }
+
+    .lobe span {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0.82;
+    }
+
+    .lobe:hover {
+      transform: scale(1.03) translateY(-5px);
+      filter: brightness(1.05);
+      z-index: 50 !important;
+    }
+
+    /* =========================
+       TOOLTIP
+    ========================== */
 
     .lobe::after {
       content: attr(data-tooltip);
@@ -125,19 +192,9 @@
       transform: translateX(-50%) scale(1);
     }
 
-    .lobe span {
-      display: block;
-      margin-top: 5px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      opacity: 0.8;
-    }
-
-    .lobe:hover {
-      transform: scale(1.03) translateY(-5px);
-      filter: brightness(1.05);
-      z-index: 50 !important;
-    }
+    /* =========================
+       LOBE SHAPES
+    ========================== */
 
     .frontal {
       width: 390px;
@@ -196,7 +253,12 @@
       font-size: 0.9rem;
     }
 
+    /* =========================
+       MOBILE
+    ========================== */
+
     @media (max-width: 900px) {
+
       .top-nav {
         height: auto;
         padding: 18px 20px;
@@ -205,7 +267,7 @@
       }
 
       .nav-links {
-        gap: 14px;
+        gap: 16px;
         justify-content: center;
       }
 
@@ -218,17 +280,29 @@
       .hero h1 {
         font-size: 2rem;
       }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
     }
+
   </style>
 </head>
 
 <body>
 
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
   <nav class="top-nav">
-    <div class="nav-logo">🧠 Brain Archive</div>
+
+    <div class="nav-logo">
+      🧠 Brain Archive
+    </div>
 
     <div class="nav-links">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="basic.html">기초 신경과학</a>
       <a href="anatomy.html">신경해부학</a>
       <a href="cognition.html">감각·인지</a>
@@ -237,50 +311,71 @@
       <a href="research.html">연구 아카이브</a>
       <a href="quiz.html">Quiz</a>
     </div>
+
   </nav>
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
 
   <div class="page">
 
     <div class="hero">
       <h1>🧠 Brain-Structured Research Archive</h1>
-      <p>마우스를 올려 각 영역의 기능을 확인하고, 뇌를 정보 처리 시스템으로 탐구하세요</p>
+
+      <p>
+        마우스를 올려 각 영역의 기능을 확인하고,<br>
+        뇌를 정보 처리 시스템으로 탐구하세요
+      </p>
     </div>
 
     <div class="brain-container">
+
       <div class="lobe frontal"
            data-tooltip="의사결정, 계획 수립, 감정 조절 및 실행 기능 담당. 전전두피질(PFC)과 보충운동구역(SMA) 포함."
            onclick="location.href='frontal.html'">
+
         Frontal Lobe
         <span>전두엽</span>
+
       </div>
 
       <div class="lobe parietal"
            data-tooltip="감각 정보의 통합, 공간 지각 및 수리적 사고 담당. 일차 체감각 피질(S1) 위치."
            onclick="location.href='parietal.html'">
+
         Parietal Lobe
         <span>두정엽</span>
+
       </div>
 
       <div class="lobe temporal"
            data-tooltip="언어 이해, 청각 처리 및 장기 기억 형성 담당. 해마와 베르니케 영역 관련."
            onclick="location.href='temporal.html'">
+
         Temporal Lobe
         <span>측두엽</span>
+
       </div>
 
       <div class="lobe occipital"
            data-tooltip="시각 정보의 수용 및 해석 담당. 일차 시각 피질(V1)과 시각 연합 영역 위치."
            onclick="location.href='occipital.html'">
+
         Occipital Lobe
         <span>후두엽</span>
+
       </div>
 
       <div class="lobe cerebellum"
            data-tooltip="정교한 운동 조절, 평형 감각 유지 및 운동 학습 담당."
            onclick="location.href='cerebellum.html'">
+
         Cerebellum
         <span>소뇌</span>
+
       </div>
+
     </div>
 
     <div class="legend">
@@ -288,5 +383,6 @@
     </div>
 
   </div>
+
 </body>
 </html>
