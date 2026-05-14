@@ -1,388 +1,829 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brain-Structured Research Archive</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEURO ARCHIVE</title>
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
-      background: linear-gradient(180deg, #f5f7fb 0%, #eef2f7 100%);
-      text-align: center;
-      color: #1f2937;
-      min-height: 100vh;
-    }
-
-    /* =========================
-       TOP NAVIGATION
-    ========================== */
-
-    .top-nav {
-      width: 100%;
-      height: 72px;
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(14px);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 40px;
+    * {
       box-sizing: border-box;
-      border-bottom: 1px solid rgba(209,213,219,0.75);
-      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+      margin: 0;
+      padding: 0;
     }
 
-    .nav-logo {
-      font-size: 1.15rem;
-      font-weight: 800;
+    body {
+      font-family: "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
+      background: #f5f7fb;
       color: #111827;
-      white-space: nowrap;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .nav-links a {
-      position: relative;
+    a {
       text-decoration: none;
-      color: #4b5563;
-      font-weight: 650;
-      font-size: 0.95rem;
-      padding: 26px 0;
-      transition: all 0.22s ease;
+      color: inherit;
     }
 
-    /* hover 시 글씨 파랗게 */
-    .nav-links a:hover {
-      color: #4f46e5;
+    .hero {
+      min-height: 620px;
+      background:
+        radial-gradient(circle at 70% 35%, rgba(37, 99, 235, 0.35), transparent 35%),
+        radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.18), transparent 30%),
+        linear-gradient(180deg, #050b18 0%, #08111f 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* 밑줄 기본 상태 */
-    .nav-links a::after {
+    .hero::before {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: 16px;
-      width: 0%;
-      height: 3px;
-      background: #4f46e5;
-      border-radius: 999px;
-      transition: width 0.22s ease;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.25;
     }
 
-    /* hover 시 밑줄 생성 */
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* 현재 페이지 */
-    .nav-links a.active {
-      color: #4f46e5;
-    }
-
-    /* 현재 페이지는 항상 밑줄 */
-    .nav-links a.active::after {
-      width: 100%;
-    }
-
-    /* =========================
-       MAIN PAGE
-    ========================== */
-
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 2.7rem;
-      font-weight: 850;
-      letter-spacing: -0.5px;
-      color: #111827;
-    }
-
-    .hero p {
-      color: #6b7280;
-      margin-top: 16px;
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    /* =========================
-       BRAIN MAP
-    ========================== */
-
-    .brain-container {
-      width: 850px;
-      height: 550px;
-      margin: 60px auto 30px;
+    header {
+      height: 74px;
+      padding: 0 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       position: relative;
+      z-index: 5;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border: 2px solid #3b82f6;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #60a5fa;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 10px;
+      color: #93c5fd;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 34px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: #dbeafe;
+      padding: 26px 0;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #60a5fa;
+      border-bottom-color: #3b82f6;
+    }
+
+    .search {
+      width: 190px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 0.9fr 1.3fr;
+      gap: 40px;
+      align-items: center;
+      padding: 70px 58px 40px;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-size: 52px;
+      line-height: 1.18;
+      letter-spacing: -2px;
+      margin-bottom: 26px;
+    }
+
+    .hero-text h1 span {
+      color: #3b82f6;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 42px;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 15px;
+      font-weight: 700;
+      font-size: 15px;
+      border: 1px solid rgba(255,255,255,0.16);
+      transition: 0.2s;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      color: white;
+      box-shadow: 0 12px 30px rgba(37,99,235,0.35);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.04);
+      color: #e5e7eb;
+    }
+
+    .stats {
+      display: flex;
+      gap: 30px;
+      color: #dbeafe;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      color: white;
+    }
+
+    .stat {
+      border-right: 1px solid rgba(255,255,255,0.15);
+      padding-right: 28px;
+      font-size: 13px;
+    }
+
+    .brain-stage {
+      height: 430px;
+      position: relative;
+    }
+
+    .brain {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 520px;
+      height: 300px;
+      filter: drop-shadow(0 0 38px rgba(59,130,246,0.75));
     }
 
     .lobe {
       position: absolute;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-weight: 800;
-      color: #111827;
+      border: 2px solid rgba(147,197,253,0.95);
+      background: rgba(37,99,235,0.22);
+      box-shadow: inset 0 0 28px rgba(96,165,250,0.5), 0 0 24px rgba(59,130,246,0.45);
+      transition: 0.25s;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow:
-        inset 0 0 30px rgba(255,255,255,0.3),
-        0 10px 20px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .lobe span {
-      display: block;
-      margin-top: 5px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      opacity: 0.82;
     }
 
     .lobe:hover {
-      transform: scale(1.03) translateY(-5px);
-      filter: brightness(1.05);
-      z-index: 50 !important;
+      background: rgba(96,165,250,0.45);
+      transform: scale(1.04);
     }
-
-    /* =========================
-       TOOLTIP
-    ========================== */
-
-    .lobe::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: 110%;
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      width: 230px;
-      padding: 12px;
-      background: rgba(31, 41, 55, 0.95);
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 400;
-      border-radius: 8px;
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.2s ease;
-      z-index: 100;
-      pointer-events: none;
-      line-height: 1.5;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-    }
-
-    .lobe:hover::after {
-      visibility: visible;
-      opacity: 1;
-      transform: translateX(-50%) scale(1);
-    }
-
-    /* =========================
-       LOBE SHAPES
-    ========================== */
 
     .frontal {
-      width: 390px;
-      height: 350px;
-      left: 20px;
-      top: 50px;
-      background: linear-gradient(145deg, #efb2d2, #dc94be);
-      border-radius: 50% 50% 40% 60% / 65% 45% 45% 55%;
-      z-index: 10;
+      width: 210px;
+      height: 210px;
+      left: 25px;
+      top: 45px;
+      border-radius: 65% 35% 45% 60%;
     }
 
     .parietal {
-      width: 320px;
-      height: 250px;
-      left: 360px;
+      width: 230px;
+      height: 190px;
+      left: 190px;
       top: 30px;
-      background: linear-gradient(145deg, #b6bdf5, #94a0e8);
-      border-radius: 40% 60% 40% 60% / 40% 70% 30% 60%;
-      z-index: 5;
+      border-radius: 45% 65% 40% 45%;
     }
 
     .temporal {
-      width: 350px;
-      height: 200px;
-      left: 260px;
-      top: 260px;
-      background: linear-gradient(145deg, #b9d1ee, #96b7e2);
-      border-radius: 30% 70% 60% 40% / 40% 40% 70% 60%;
-      z-index: 15;
+      width: 240px;
+      height: 120px;
+      left: 150px;
+      top: 180px;
+      border-radius: 30% 40% 60% 50%;
+      background: rgba(79,70,229,0.25);
     }
 
     .occipital {
-      width: 200px;
-      height: 180px;
-      left: 600px;
-      top: 200px;
-      background: linear-gradient(145deg, #f3db73, #e9ca4d);
-      border-radius: 30% 70% 70% 30% / 50% 50% 70% 50%;
-      z-index: 2;
+      width: 115px;
+      height: 160px;
+      left: 395px;
+      top: 92px;
+      border-radius: 45% 70% 65% 40%;
+      background: rgba(34,197,94,0.22);
     }
 
     .cerebellum {
-      width: 190px;
-      height: 120px;
-      left: 550px;
-      top: 370px;
-      background: linear-gradient(145deg, #d1d5db, #9ca3af);
-      border-radius: 60% 40% 50% 50% / 50% 50% 60% 40%;
-      transform: rotate(-10deg);
-      z-index: 1;
+      width: 150px;
+      height: 90px;
+      left: 340px;
+      top: 235px;
+      border-radius: 55%;
+      background: rgba(168,85,247,0.24);
     }
 
-    .legend {
-      margin-top: 20px;
-      color: #9ca3af;
-      font-size: 0.9rem;
+    .stem {
+      width: 56px;
+      height: 115px;
+      left: 270px;
+      top: 270px;
+      border-radius: 40px;
+      background: rgba(96,165,250,0.25);
+      border: 2px solid rgba(147,197,253,0.8);
     }
 
-    /* =========================
-       MOBILE
-    ========================== */
+    .label {
+      position: absolute;
+      padding: 13px 18px;
+      border-radius: 12px;
+      background: rgba(15,23,42,0.78);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      font-size: 14px;
+      line-height: 1.55;
+      color: white;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+    }
+
+    .label small {
+      display: block;
+      color: #cbd5e1;
+    }
+
+    .label.one { left: 65px; top: 5px; }
+    .label.two { right: 25px; top: 70px; }
+    .label.three { left: 45px; bottom: 70px; }
+    .label.four { right: 25px; bottom: 95px; }
+    .label.five { right: 95px; bottom: 25px; }
+
+    section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 46px 40px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      margin-bottom: 22px;
+      letter-spacing: -1px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .info-card,
+    .research-card,
+    .path-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(15,23,42,0.06);
+    }
+
+    .info-card {
+      padding: 30px 22px;
+      text-align: center;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 18px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #2563eb;
+      border: 2px solid #3b82f6;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .info-card h3 {
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+
+    .info-card p {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .research-head,
+    .path-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .more {
+      color: #2563eb;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .research-card {
+      overflow: hidden;
+    }
+
+    .thumb {
+      height: 112px;
+      background:
+        radial-gradient(circle at 70% 30%, rgba(59,130,246,0.9), transparent 20%),
+        linear-gradient(135deg, #0f172a, #1e3a8a);
+      position: relative;
+    }
+
+    .tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15,23,42,0.72);
+      color: #bfdbfe;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .research-body {
+      padding: 18px;
+    }
+
+    .research-body h3 {
+      font-size: 17px;
+      margin-bottom: 11px;
+    }
+
+    .research-body p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.65;
+      min-height: 70px;
+    }
+
+    .meta {
+      margin-top: 14px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .learning-path {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .path-card {
+      min-height: 165px;
+      padding: 24px 16px;
+      text-align: center;
+      position: relative;
+    }
+
+    .path-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: 24px;
+    }
+
+    .path-card .icon {
+      width: 52px;
+      height: 52px;
+      font-size: 25px;
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }
+
+    .path-card h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .path-card p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.55;
+    }
+
+    .concept {
+      max-width: none;
+      background: linear-gradient(180deg, #06101f, #020617);
+      color: white;
+      padding: 48px 0;
+    }
+
+    .concept-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 28px;
+    }
+
+    .concept-card {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .concept-img {
+      min-height: 200px;
+      background:
+        radial-gradient(circle, rgba(56,189,248,0.85), transparent 35%),
+        linear-gradient(135deg, #020617, #0f172a);
+      display: grid;
+      place-items: center;
+      font-size: 66px;
+    }
+
+    .concept-info {
+      padding: 30px;
+    }
+
+    .concept-info small {
+      color: #60a5fa;
+      font-weight: 800;
+    }
+
+    .concept-info h3 {
+      font-size: 28px;
+      margin: 8px 0;
+    }
+
+    .concept-info p {
+      color: #cbd5e1;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .chip {
+      background: rgba(255,255,255,0.08);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #dbeafe;
+    }
+
+    .quick-menu {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .quick-menu a {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.09);
+      color: #dbeafe;
+      font-weight: 700;
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      padding: 24px 58px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
 
     @media (max-width: 900px) {
-
-      .top-nav {
-        height: auto;
-        padding: 18px 20px;
-        flex-direction: column;
-        gap: 14px;
+      header {
+        padding: 0 22px;
       }
 
-      .nav-links {
-        gap: 16px;
-        justify-content: center;
+      nav, .search {
+        display: none;
       }
 
-      .brain-container {
-        transform: scale(0.75);
+      .hero-content,
+      .about-grid,
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 40px;
+      }
+
+      .brain-stage {
+        transform: scale(0.8);
         transform-origin: top center;
-        margin-bottom: -80px;
+        height: 360px;
       }
 
-      .hero h1 {
-        font-size: 2rem;
+      .card-row,
+      .research-grid,
+      .learning-path {
+        grid-template-columns: 1fr;
       }
 
-      .hero p {
-        font-size: 0.95rem;
+      .path-card::after {
+        display: none;
+      }
+
+      .concept-card {
+        grid-template-columns: 1fr;
       }
     }
-
   </style>
 </head>
 
 <body>
-
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
-
-  <nav class="top-nav">
-
-    <div class="nav-logo">
-      🧠 Brain Archive
-    </div>
-
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="basic.html">기초 신경과학</a>
-      <a href="anatomy.html">신경해부학</a>
-      <a href="cognition.html">감각·인지</a>
-      <a href="behavior.html">운동·행동</a>
-      <a href="disease.html">뇌질환</a>
-      <a href="research.html">연구 아카이브</a>
-      <a href="quiz.html">Quiz</a>
-    </div>
-
-  </nav>
-
-  <!-- =========================
-       MAIN CONTENT
-  ========================== -->
-
-  <div class="page">
-
-    <div class="hero">
-      <h1>🧠 Brain-Structured Research Archive</h1>
-
-      <p>
-        마우스를 올려 각 영역의 기능을 확인하고,<br>
-        뇌를 정보 처리 시스템으로 탐구하세요
-      </p>
-    </div>
-
-    <div class="brain-container">
-
-      <div class="lobe frontal"
-           data-tooltip="의사결정, 계획 수립, 감정 조절 및 실행 기능 담당. 전전두피질(PFC)과 보충운동구역(SMA) 포함."
-           onclick="location.href='frontal.html'">
-
-        Frontal Lobe
-        <span>전두엽</span>
-
+  <div class="hero">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">☊</div>
+        <div>
+          NEURO ARCHIVE
+          <small>EXPLORE · CONNECT · UNDERSTAND</small>
+        </div>
       </div>
 
-      <div class="lobe parietal"
-           data-tooltip="감각 정보의 통합, 공간 지각 및 수리적 사고 담당. 일차 체감각 피질(S1) 위치."
-           onclick="location.href='parietal.html'">
+      <nav>
+        <a href="#" class="active">Home</a>
+        <a href="#brain">Brain Map</a>
+        <a href="#learn">Learn</a>
+        <a href="#research">Research</a>
+        <a href="#about">About</a>
+      </nav>
 
-        Parietal Lobe
-        <span>두정엽</span>
+      <div class="search">⌕ 검색...</div>
+    </header>
 
+    <main class="hero-content">
+      <div class="hero-text">
+        <h1>
+          뇌를 탐구하고,<br />
+          지식을 <span>연결하다</span>
+        </h1>
+        <p>
+          신경과학의 구조를 이해하고<br />
+          나만의 탐구 여정을 기록하는 공간
+        </p>
+
+        <div class="buttons">
+          <a href="#brain" class="btn primary">뇌맵 탐색하기 →</a>
+          <a href="#research" class="btn secondary">탐구 노트 보기</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><strong>60+</strong>뇌 구조</div>
+          <div class="stat"><strong>120+</strong>연구 노트</div>
+          <div class="stat"><strong>25+</strong>학습 루트</div>
+        </div>
       </div>
 
-      <div class="lobe temporal"
-           data-tooltip="언어 이해, 청각 처리 및 장기 기억 형성 담당. 해마와 베르니케 영역 관련."
-           onclick="location.href='temporal.html'">
+      <div class="brain-stage" id="brain">
+        <div class="brain">
+          <div class="lobe frontal"></div>
+          <div class="lobe parietal"></div>
+          <div class="lobe temporal"></div>
+          <div class="lobe occipital"></div>
+          <div class="lobe cerebellum"></div>
+          <div class="stem"></div>
 
-        Temporal Lobe
-        <span>측두엽</span>
-
+          <div class="label one"><b>Frontal Lobe</b><small>전두엽</small></div>
+          <div class="label two"><b>Parietal Lobe</b><small>두정엽</small></div>
+          <div class="label three"><b>Temporal Lobe</b><small>측두엽</small></div>
+          <div class="label four"><b>Occipital Lobe</b><small>후두엽</small></div>
+          <div class="label five"><b>Cerebellum</b><small>소뇌</small></div>
+        </div>
       </div>
-
-      <div class="lobe occipital"
-           data-tooltip="시각 정보의 수용 및 해석 담당. 일차 시각 피질(V1)과 시각 연합 영역 위치."
-           onclick="location.href='occipital.html'">
-
-        Occipital Lobe
-        <span>후두엽</span>
-
-      </div>
-
-      <div class="lobe cerebellum"
-           data-tooltip="정교한 운동 조절, 평형 감각 유지 및 운동 학습 담당."
-           onclick="location.href='cerebellum.html'">
-
-        Cerebellum
-        <span>소뇌</span>
-
-      </div>
-
-    </div>
-
-    <div class="legend">
-      * 각 영역을 클릭하면 해당 뇌 구조 페이지로 이동합니다.
-    </div>
-
+    </main>
   </div>
 
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title">사이트 소개</h2>
+        <p>
+          이 사이트는 뇌과학을 체계적으로 학습하고, 탐구한 내용을 기록하며,
+          지식을 연결하기 위한 개인 아카이브입니다.
+        </p>
+        <a class="btn secondary" style="color:#2563eb;border-color:#bfdbfe;" href="#">더 알아보기 →</a>
+      </div>
+
+      <div class="card-row">
+        <div class="info-card">
+          <div class="icon">♧</div>
+          <h3>구조적 학습</h3>
+          <p>뇌의 구조와 기능을 체계적으로 정리합니다.</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">⌘</div>
+          <h3>지식 연결</h3>
+          <p>개념 간 관계를 통해 깊이 있는 이해를 추구합니다.</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">▤</div>
+          <h3>탐구 기록</h3>
+          <p>연구 과정과 생각을 기록하고 발전시킵니다.</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">↗</div>
+          <h3>실제 적용</h3>
+          <p>배운 지식을 실제 연구와 프로젝트에 적용합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="research-head">
+      <h2 class="section-title">최근 탐구</h2>
+      <a class="more" href="#">더 보기 →</a>
+    </div>
+
+    <div class="research-grid">
+      <article class="research-card">
+        <div class="thumb"><span class="tag">EEG 분석</span></div>
+        <div class="research-body">
+          <h3>EEG 기반 집중도 변화 분석</h3>
+          <p>Alpha, Beta, Theta 파워 변화를 통해 집중도와 인지 반응을 정리했습니다.</p>
+          <div class="meta">♡ 12　▢ 3</div>
+        </div>
+      </article>
+
+      <article class="research-card">
+        <div class="thumb"><span class="tag">뇌 구조</span></div>
+        <div class="research-body">
+          <h3>전전두엽 실행 기능 정리</h3>
+          <p>전두엽의 하위 영역별 역할과 실행 기능을 연결해 정리했습니다.</p>
+          <div class="meta">♡ 8　▢ 1</div>
+        </div>
+      </article>
+
+      <article class="research-card">
+        <div class="thumb"><span class="tag">프로젝트</span></div>
+        <div class="research-body">
+          <h3>EEG-AR 위치 최적화</h3>
+          <p>인지 반응 기반 AR 객체 위치 조정 알고리즘을 설계했습니다.</p>
+          <div class="meta">♡ 15　▢ 4</div>
+        </div>
+      </article>
+
+      <article class="research-card">
+        <div class="thumb"><span class="tag">인지과학</span></div>
+        <div class="research-body">
+          <h3>작업 기억과 주의 전환</h3>
+          <p>작업 기억 용량과 주의 전환 속도의 관계를 탐구했습니다.</p>
+          <div class="meta">♡ 10　▢ 2</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="learn">
+    <div class="path-head">
+      <h2 class="section-title">추천 학습 루트</h2>
+      <a class="more" href="#">전체 루트 보기 →</a>
+    </div>
+
+    <div class="learning-path">
+      <div class="path-card">
+        <div class="icon">🧠</div>
+        <h3>신경해부학 입문</h3>
+        <p>뇌의 구조와 주요 영역 이해하기</p>
+      </div>
+      <div class="path-card">
+        <div class="icon">✦</div>
+        <h3>뉴런과 신경전달물질</h3>
+        <p>신경 세포의 구조와 신호 전달 과정</p>
+      </div>
+      <div class="path-card">
+        <div class="icon">☻</div>
+        <h3>인지 신경과학</h3>
+        <p>뇌와 인지 기능의 관계 탐구하기</p>
+      </div>
+      <div class="path-card">
+        <div class="icon">〰</div>
+        <h3>EEG/BCI 이해</h3>
+        <p>뇌파의 원리와 응용 기술 학습</p>
+      </div>
+      <div class="path-card">
+        <div class="icon">◎</div>
+        <h3>탐구 및 연구</h3>
+        <p>배운 내용을 바탕으로 연구 진행</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="concept">
+    <div class="concept-inner">
+      <h2 class="section-title">오늘의 개념</h2>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <div class="concept-img">☽</div>
+          <div class="concept-info">
+            <small>TODAY'S CONCEPT</small>
+            <h3>Hippocampus</h3>
+            <p>
+              해마는 기억 형성과 공간 인지에 핵심적인 역할을 하는
+              변연계의 주요 구조입니다.
+            </p>
+            <div class="chips">
+              <span class="chip">기억</span>
+              <span class="chip">공간 인지</span>
+              <span class="chip">변연계</span>
+            </div>
+            <a class="btn secondary" href="#">자세히 보기 →</a>
+          </div>
+        </div>
+
+        <div class="quick-menu">
+          <a href="#brain">뇌맵 탐색하기 <span>→</span></a>
+          <a href="#research">탐구 노트 작성하기 <span>→</span></a>
+          <a href="#learn">학습 루트 시작하기 <span>→</span></a>
+          <a href="#">개념 랜덤 보기 <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div><b>NEURO ARCHIVE</b> · Explore. Connect. Understand.</div>
+    <div>© 2026 Neuro Archive. All rights reserved.</div>
+  </footer>
 </body>
 </html>
