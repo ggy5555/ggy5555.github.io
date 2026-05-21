@@ -136,7 +136,7 @@
     .sub-hero-content p {
       color: #cbd5e1;
       font-size: 16px;
-      max-width: 600px;
+      max-width: 700px;
       line-height: 1.6;
     }
 
@@ -146,8 +146,8 @@
       margin: 0 auto;
       padding: 50px 40px;
       display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 48px;
+      grid-template-columns: 280px 1fr;
+      gap: 44px;
     }
 
     /* 좌측 사이드 바 고정 메뉴 */
@@ -177,7 +177,7 @@
       display: block;
       padding: 12px 16px;
       border-radius: 10px;
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 600;
       color: #475569;
       transition: 0.2s;
@@ -207,7 +207,7 @@
       border-radius: 20px;
       padding: 40px;
       box-shadow: 0 10px 28px rgba(15,23,42,0.04);
-      scroll-margin-top: 40px; /* 이동 시 스크롤 여백 */
+      scroll-margin-top: 40px;
     }
 
     .section-header {
@@ -233,11 +233,56 @@
       margin-bottom: 4px;
     }
 
+    /* 뇌캠프 족보용 정량 데이터 스탯 보드 */
+    .section-stats-board {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-stats-board .s-stat {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .section-stats-board .s-stat strong {
+      display: block;
+      font-size: 18px;
+      color: #1e293b;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .section-body h3 {
+      font-size: 18px;
+      color: #1e293b;
+      margin: 24px 0 12px;
+      border-left: 4px solid #3b82f6;
+      padding-left: 10px;
+    }
+
     .section-body p {
       color: #475569;
-      font-size: 15.5px;
+      font-size: 15px;
       line-height: 1.8;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+    }
+
+    .section-body ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+      color: #475569;
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+
+    .section-body ul li {
+      margin-bottom: 6px;
     }
 
     /* index.html 칩 시스템 이식 */
@@ -263,13 +308,29 @@
       border: 1px solid #bfdbfe;
     }
 
-    /* 강조 박스 효과 (오늘의 개념 카드 스타일 패밀리룩) */
+    /* 기출 문제 박스 (강조 박스 효과 적용) */
+    .exam-badge {
+      display: inline-block;
+      background: #ef4444;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
     .deep-dive-box {
       background: #fafafa;
       border-left: 4px solid #3b82f6;
       padding: 20px;
       border-radius: 0 12px 12px 0;
       margin: 24px 0;
+    }
+
+    .deep-dive-box.exam-box {
+      background: #fff5f5;
+      border-left-color: #ef4444;
     }
 
     .deep-dive-box h4 {
@@ -286,6 +347,40 @@
       color: #64748b;
       margin-bottom: 0;
       line-height: 1.7;
+    }
+
+    /* 분자/수학 공식 박스 테마 스타일링 */
+    .formula-box {
+      background: #0f172a;
+      color: #60a5fa;
+      border-left: 4px solid #3b82f6;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    .formula-box h4 {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .formula-display {
+      color: white;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 18px;
+      text-align: center;
+      margin: 14px 0;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .formula-box p {
+      color: #94a3b8;
+      font-size: 13px;
+      margin-bottom: 0;
     }
 
     footer {
@@ -362,9 +457,9 @@
     </header>
 
     <div class="sub-hero-content">
-      <span class="category-tag">CHAPTER 01</span>
-      <h1>기초 신경과학</h1>
-      <p>뇌와 신경계가 작동하는 가장 핵심적인 세포적 원리, 시냅스 신호 전달 및 뇌의 적응 메커니즘을 탐구하고 기록하는 공간입니다.</p>
+      <span class="category-tag">PART 1 SYSTEM</span>
+      <h1>기초 신경과학 아카이브</h1>
+      <p>뇌캠프 교재 Part 1의 전교재 개념과 정량 데이터, 전공 기출 족보를 체계적으로 바인딩한 통합 학습 노트입니다.</p>
     </div>
   </div>
 
@@ -372,131 +467,282 @@
     <aside class="archive-sidebar">
       <h3 class="sidebar-title">아카이브 목차</h3>
       <ul class="sidebar-menu" id="sidebar-list">
-        <li class="active"><a href="#neurons">1. 뉴런과 교세포</a></li>
-        <li><a href="#communication">2. 신경세포의 소통</a></li>
-        <li><a href="#plasticity">3. 기억 · 가소성 · LTP</a></li>
-        <li><a href="#reward">4. 보상회로와 도파민</a></li>
-        <li><a href="#epigenetics">5. 유전학과 후성유전</a></li>
+        <li class="active"><a href="#sec-system">1. 신경계 기본 & 정량 데이터</a></li>
+        <li><a href="#sec-neurons">2. 뉴런의 구조와 분류</a></li>
+        <li><a href="#sec-potentials">3. 막전위와 전기화학 평형</a></li>
+        <li><a href="#sec-action">4. 활동전위와 도약전도</a></li>
+        <li><a href="#sec-synapse">5. 시냅스 & Spine 구조</a></li>
+        <li><a href="#sec-transmitters">6. 신경전달물질 총망라</a></li>
       </ul>
     </aside>
 
     <main class="archive-content">
       
-      <section class="content-section" id="neurons">
+      <section class="content-section" id="sec-system">
         <div class="section-header">
           <div>
             <span>TOPIC 01</span>
-            <h2>뉴런과 교세포 (Neurons & Glia)</h2>
+            <h2>신경계 구성 요소 및 정량 분석</h2>
           </div>
         </div>
         <div class="section-body">
-          <p>
-            신경계는 정보를 처리하고 전달하는 <strong>뉴런(Neuron)</strong>과 이들의 생존 및 활동을 보조하는 <strong>교세포(Glia)</strong>라는 두 가지 주요 세포 집단으로 구성됩니다. 뉴런은 정보를 받아들이는 가지돌기(Dendrite), 이를 통합하는 세포체(Soma), 그리고 신호를 먼 거리까지 전기적으로 전도하는 축삭(Axon)의 독특한 비대칭적 구조를 가지고 있습니다.
-          </p>
-          <p>
-            과거에는 교세포를순순히 뉴런을 묶어주는 아교풀 역할로만 생각했으나, 현대 신경과학에서는 그 중요성이 다르게 평가됩니다. 별아교세포(Astrocyte)는 혈뇌장벽(BBB)을 형성하고 시냅스 주변의 이온 농도를 정밀 조절하며, 미세아교세포(Microglia)는 뇌 내 면역 담당자로서 불필요하거나 손상된 시냅스를 제거하여 구조를 최적화합니다.
-          </p>
+          <div class="section-stats-board">
+            <div class="s-stat">인간 뉴런 수<strong>약 10¹¹ 개</strong></div>
+            <div class="s-stat">인간 교세포 수<strong>약 10¹² 개</strong></div>
+            <div class="s-stat">Neuron : Glia 비율<strong>1 : 10</strong></div>
+            <div class="s-stat">총 시냅스 용량<strong>10¹⁴ ~ 10¹⁵ 개</strong></div>
+          </div>
+          
+          <h3>1) 신경계의 기본 세포군</h3>
+          <p>인간의 신경계(Nervous System)는 신호를 직접 유도하는 <strong>뉴런(Neuron)</strong>과 이를 서포트하는 <strong>교세포(Glial Cell)</strong>로 나뉩니다. 뉴런 하나당 평균적으로 <strong>10³ ~ 10⁴ 개</strong>의 시냅스를 형성하여 복잡한 신경망을 구현합니다.</p>
+          
+          <div class="deep-dive-box exam-box">
+            <span class="exam-badge">핵심 기출 족보</span>
+            <h4>Q. 가장 많은 시냅스를 형성하는 세포와 그 이유는?</h4>
+            <p><strong>A. 소뇌의 푸르키네 세포(Purkinje Cell)</strong>입니다. 약 <strong>10⁶ 개</strong>에 달하는 압도적인 양의 시냅스를 형성할 수 있으며, 이는 운동 관련 정보 및 신체 평형 감각을 실시간으로 대량 연산·처리해야 하기 때문입니다. (※ 주의: 쥐 같은 동물은 교세포 수가 뉴런보다 적음)</p>
+          </div>
+
+          <h3>2) CNS와 PNS의 분류학적 기전</h3>
+          <ul>
+            <li><strong>중추신경계(CNS):</strong> 뇌(Brain), 척수(Spinal Cord)</li>
+            <li><strong>말초신경계(PNS):</strong> 기능 기준(Somatic / Autonomic), 정보 방향 기준(Afferent / Efferent), 위치 기준(Cranial nerve / Spinal nerve)</li>
+          </ul>
+          <div class="deep-dive-box" style="border-left-color: #eab308; background: #fefce8;">
+            <h4>⚠️ 실전 함정 방지 노트</h4>
+            <p><strong>뇌신경(Cranial Nerve)</strong>은 뇌에 연결되어 있어 중추로 착각하기 쉽지만, 분류 구조상 엄연히 <strong>말초신경계(PNS)</strong>에 속하므로 시험 출제 시 주의해야 합니다.</p>
+          </div>
+          
           <div class="chips">
-            <span class="chip">가지돌기</span>
-            <span class="chip">축삭</span>
-            <span class="chip">별아교세포</span>
-            <span class="chip">미세아교세포</span>
+            <span class="chip star-chip">Purkinje Cell</span>
+            <span class="chip">1:10 비율</span>
+            <span class="chip">Cranial Nerve (PNS)</span>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="communication">
+      <section class="content-section" id="sec-neurons">
         <div class="section-header">
           <div>
             <span>TOPIC 02</span>
-            <h2>신경세포의 소통 (Neuronal Communication)</h2>
+            <h2>뉴런의 구조적 분류와 입력 메커니즘</h2>
           </div>
         </div>
         <div class="section-body">
-          <p>
-            뉴런 내부에서의 신호 전달은 '전기적'으로 일어나며, 뉴런 간의 신호 전달은 주로 '화학적' 시냅스를 통해 일어납니다. 뉴런이 자극을 받아 세포막 전위가 임계값에 도달하면 이온 채널이 급격히 열리며 <strong>활동 전위(Action Potential)</strong>가 발생하여 축삭을 타고 종말단추까지 전동됩니다.
-          </p>
-          <p>
-            시냅스 전 뉴런의 말단에 전기 신호가 도달하면 전압 개폐성 칼슘 채널이 열리고, 세포 내로 유입된 칼슘 이온이 신경전달물질이 담긴 시냅스 소포체를 자극합니다. 결과적으로 시냅스 틈새(Synaptic cleft)로 방출된 화학 물질이 시냅스 후 뉴런의 수용체와 결합하면서 신호의 인계가 완료됩니다.
-          </p>
+          <h3>1) 극성에 따른 뉴런의 형태적 분류</h3>
+          <ul>
+            <li><strong>단극뉴런 (Unipolar):</strong> 하나의 축삭 구조 확장</li>
+            <li><strong>쌍극뉴런 (Bipolar):</strong> 하나의 축삭과 하나의 가지돌기가 대칭으로 뻗어 나감</li>
+            <li><strong>의사단극뉴런 (Pseudo-unipolar):</strong> 감각 뉴런(Sensory Neuron) 계통에서 흔히 관찰됨</li>
+            <li><strong>다극뉴런 (Multipolar):</strong> 여러 개의 가지돌기 형성. 소뇌의 <strong>Purkinje cell</strong>과 대뇌 수직 배역의 <strong>Pyramidal cell(피라미드 세포)</strong>이 다극뉴런의 대표적 예시</li>
+          </ul>
+
+          <h3>2) 구조별 입력 신호 수용 비율</h3>
+          <p>뉴런은 세포체(Soma), 가지돌기(Dendrite), 축삭(Axon), 종말단추(Terminal bouton), 축삭둔덕(Axon hillock)으로 구성됩니다. 만약 전형적인 운동뉴런이 외부로부터 <strong>10,000개</strong>의 시냅스 전 입력을 수용한다면, 그 입력 분포비는 다음과 같습니다.</p>
+          <ul>
+            <li><strong>세포체(Soma):</strong> 약 1,000개 입력 처리 (10%)</li>
+            <li><strong>가지돌기(Dendrite):</strong> 약 9,000개 입력 처리 (90%) ➔ 주요 정보 수용처</li>
+          </ul>
+
           <div class="deep-dive-box">
-            <h4>💡 핵심 원리: All-or-None 법칙</h4>
-            <p>활동 전위는 자극의 세기가 임계값을 넘지 못하면 전혀 발생하지 않고, 임계값을 넘으면 자극의 크기와 상관없이 항상 동일한 크기와 파형으로 발생합니다. 신호의 강도는 크기가 아닌 '빈도(Frequency)'로 코딩됩니다.</p>
+            <h4>💡 EPSP / IPSP 합산과 가중 (Summation)</h4>
+            <p>막전위를 올리는 탈분극 유도 신호(EPSP)와 막전위를 내리는 과분극 유도 신호(IPSP)는 시냅스 전 뉴런의 신경전달물질과 수용체 종류에 의해 결정됩니다. 이 신호들은 시간적 합(Temporal summation, 동일 시냅스 반복 자극)과 공간적 합(Spatial summation, 복수 시냅스 동시 자극)을 통해 계산식 <strong>Σ(E_i + I_i) - μ_i</strong> 결과가 임계값(Threshold)을 넘는 순간 <strong>Axon hillock(축삭둔덕)</strong>에서 최종 활동전위를 폭발시킵니다.</p>
           </div>
+          
           <div class="chips">
-            <span class="chip">활동 전위</span>
-            <span class="chip">시냅스 틈새</span>
-            <span class="chip">신경전달물질</span>
-            <span class="chip">이온 채널</span>
+            <span class="chip">Pyramidal Cell</span>
+            <span class="chip star-chip">Axon Hillock</span>
+            <span class="chip">시공간적 합산</span>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="plasticity">
+      <section class="content-section" id="sec-potentials">
         <div class="section-header">
           <div>
-            <span>★ HIGH VALUE TOPIC</span>
-            <h2>기억 · 가소성 · LTP (Plasticity & LTP)</h2>
+            <span>TOPIC 03</span>
+            <h2>휴지막전위 형성과 전기화학적 평형</h2>
           </div>
         </div>
         <div class="section-body">
-          <p>
-            뇌가 외부 환경에 반응하여 스스로의 배선망을 바꾸는 능력을 <strong>신경가소성(Neuroplasticity)</strong>이라고 합니다. 우리가 새로운 정보를 배우고 기억할 때, 관련된 뉴런들의 시냅스 연결 효율성이 물리적으로 변화합니다. 이 현상을 가장 잘 대변하는 분자적 메커니즘이 바로 <strong>장기강화(Long-Term Potentiation, LTP)</strong>입니다.
-          </p>
-          <p>
-            특정 시냅스에 고빈도 자극이 반복해서 가해지면, 글루타메이트 수용체인 AMPA 수용체의 수가 증가하고 NMDA 수용체를 막고 있던 마그네슘 이온이 빠져나가면서 칼슘 유입이 대량으로 일어납니다. 이로 인해 해당 시냅스의 연결 강도가 장기적으로 강해지며 기저 수준의 자극에도 민감하게 반응하게 되는데, 이것이 기억 저장의 물리적 실체로 인정받고 있습니다.
-          </p>
+          <h3>1) 이온 분포의 비대칭성 유도</h3>
+          <p>휴지기 세포막은 능동수송체인 Na⁺-K⁺ Pump의 작용으로 <strong>Na⁺는 세포 밖에 많고, K⁺는 세포 안에 많은</strong> 극단적 경사를 유지합니다. 세포막에는 항상 열려 있는 항시 개방형 채널인 <strong>K⁺ Leak Channel</strong>이 다량 존재하여 K⁺의 유출을 유도하고, 이것이 초기 휴지막 전위 형성의 결정적 핵심 기전으로 작용합니다.</p>
+
+          <div class="formula-box">
+            <h4>네른스트 방정식 (Nernst Equation)</h4>
+            <p>특정 이온 x에 대한 농도 기울기와 전기적 기울기가 평형을 이룰 때의 전압 공식:</p>
+            <div class="formula-display">E_x = (RT / zF) * ln([X]_o / [X]_i)</div>
+            <p>※ 평형전압은 이온의 내외 농도비에 비례하고, 이온 전하수(z)에 반비례 관계를 가집니다.</p>
+          </div>
+
+          <div class="deep-dive-box exam-box">
+            <span class="exam-badge">실전 기출 계산 족보</span>
+            <ul>
+              <li><strong>K⁺ 단독 투과 조건 평형 전위:</strong> 약 <strong>-95mV</strong></li>
+              <li><strong>Na⁺ 단독 투과 조건 평형 전위:</strong> 약 <strong>+60mV</strong> (※ Na⁺ 농도 차가 정확히 10배일 때의 계산 값은 <strong>+58mV</strong>)</li>
+              <li><strong>GABA 수용체 지속 전압 개방 조건:</strong> Cl⁻ 유입 증가로 인해 평형전위가 과분극 기준인 <strong>-65mV</strong>로 수렴</li>
+            </ul>
+          </div>
+
+          <div class="formula-box">
+            <h4>골드만 방정식 (Goldman Equation)</h4>
+            <p>현실적으로 복합 이온막의 실제 막전위(V_m)를 구하는 확장 공식:</p>
+            <div class="formula-display">V_m = (RT/F) * ln( (P_K[K⁺]_in + P_Na[Na⁺]_in + P_Cl[Cl⁻]_out) / (P_K[K⁺]_out + P_Na[Na⁺]_out + P_Cl[Cl⁻]_in) )</div>
+            <p>※ 결론: 휴지막 전위 상태(Resting state)에서는 <strong>K⁺의 투과도(Permeability, P_K)가 압도적으로 크기 때문에</strong> 실제 휴지막 전위는 K⁺의 평형 전위(-95mV)와 매우 가까운 수준에서 세팅됩니다.</p>
+          </div>
+          
           <div class="chips">
-            <span class="chip star-chip">신경가소성</span>
-            <span class="chip star-chip">LTP (장기강화)</span>
-            <span class="chip">NMDA 수용체</span>
-            <span class="chip">AMPA 수용체</span>
+            <span class="chip star-chip">K⁺ Leak Channel</span>
+            <span class="chip">-95mV vs +60mV</span>
+            <span class="chip">Goldman Equation</span>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="reward">
+      <section class="content-section" id="sec-action">
         <div class="section-header">
           <div>
-            <span>★ HIGH VALUE TOPIC</span>
-            <h2>보상회로와 도파민 (Reward Circuit & Dopamine)</h2>
+            <span>TOPIC 04</span>
+            <h2>활동전위 기전과 도약전도의 물리적 상수</h2>
           </div>
         </div>
         <div class="section-body">
-          <p>
-            동물이 살아남고 유전자를 남기기 위해 필수적인 행동(식사, 성행동, 학습 등)을 반복하도록 이끄는 생존 중추를 <strong>보상회로(Reward Circuit)</strong>라고 합니다. 이 회로의 가장 핵심적인 설계 기전은 중뇌의 복측 피개 영역(VTA)에서 시작해 감정과 행동을 제어하는 변연계의 <strong>측좌핵(Nucleus Accumbens)</strong>으로 뻗어나가는 중뇌변연계 경로입니다.
-          </p>
-          <p>
-            이 경로에서 분비되는 신경전달물질인 <strong>도파민(Dopamine)</strong>은 단순한 쾌락의 호르몬이라기보다 '예측하지 못한 보상'이 주어졌을 때 분비되어 행동을 강화하는 '예측 오류(Reward Prediction Error)' 신호로 작동합니다. 이 회로의 정상적인 작동은 동기부여와 행동 습득에 절대적이지만, 약물 등 인위적 자극에 노출될 시 심각한 중독 회로로 변질될 수 있습니다.
-          </p>
+          <h3>1) 활동전위의 단계별 이온 거동</h3>
+          <ul>
+            <li><strong>탈분극 (Rising Phase):</strong> 전압 개폐성 Na⁺ 채널 개방으로 인한 급격한 외부 Na⁺ Influx (세포내 유입)</li>
+            <li><strong>재분극 (Falling Phase):</strong> Na⁺ 채널 불활성화 및 전압 개폐성 K⁺ 채널 개방에 따른 K⁺ Efflux (세포외 유출)</li>
+            <li><strong>과분극 (Undershoot):</strong> 지연 개방된 K⁺ 채널의 추가적 Efflux 잔존 현상</li>
+          </ul>
+
+          <div class="deep-dive-box exam-box">
+            <span class="exam-badge">기출 오답 함정</span>
+            <h4>Q. Falling phase 유도 과정에서 K⁺ 채널의 불응기가 작용하는가?</h4>
+            <p><strong>A. 틀린 설명입니다.</strong> 전압 개폐성 Na⁺ 채널은 불활성화 게이트에 의한 불응기(Refractory Period)가 명확히 존재하지만, <strong>K⁺ 채널은 불응기가 존재하지 않고</strong> 전압 하강에 따라 점진적으로 닫힙니다.</p>
+          </div>
+
+          <h3>2) 도약전도와 속도 극대화 메커니즘</h3>
+          <p>축삭의 신호 전도 속도를 높이는 방법은 크게 '축삭 직경 증가'와 수초를 감는 '수초화(Myelination)'가 있습니다. 수초화가 진행되면 이온의 유출이 차단되는 효과가 있어 신호가 멀리 전달됩니다.</p>
+          
+          <div class="formula-box">
+            <h4>길이 상수 공식 (Length Constant)</h4>
+            <div class="formula-display">λ = √(R_m / R_i)</div>
+            <p>※ 의미: 수초화는 막 저항(R_m)을 증가시킵니다. 따라서 내부 저항(R_i) 대비 막 저항의 비율인 길이 상수(λ)가 커지므로, 전기 신호가 감쇄되지 않고 먼 거리까지 한 번에 이동하여 <strong>랑비에 결절(Nodes of Ranvier)</strong> 간 도약 전도 속도를 비약적으로 끌어올립니다.</p>
+          </div>
+
+          <ul>
+            <li><strong>결절간 거리 비례:</strong> 랑비에 결절 사이의 거리는 수초의 두께(Myelin thickness)와 정비례 관계를 가집니다.</li>
+            <li><strong>가장 빠른 감각 섬유:</strong> 신체 감각 중 압각(Pressure) 신호가 가장 빠른 전동 속도를 갖는데, 이는 압각을 담당하는 <strong>Aα / Aβ 섬유</strong>가 가장 굵고 수초화가 잘 되어 있기 때문입니다.</li>
+          </ul>
+          
           <div class="chips">
-            <span class="chip star-chip">도파민 시스템</span>
-            <span class="chip star-chip">측좌핵 (NAc)</span>
-            <span class="chip">복측 피개 영역 (VTA)</span>
-            <span class="chip">강화 학습</span>
+            <span class="chip">S4 Segment(전압감지)</span>
+            <span class="chip star-chip">Length Constant (λ)</span>
+            <span class="chip">Aα/Aβ Fiber</span>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="epigenetics">
+      <section class="content-section" id="sec-synapse">
         <div class="section-header">
           <div>
             <span>TOPIC 05</span>
-            <h2>유전학과 후성유전학 (Genetics & Epigenetics)</h2>
+            <h2>시냅스 분류 및 Dendritic Spine 가소성</h2>
           </div>
         </div>
         <div class="section-body">
-          <p>
-            인간의 뇌 구조와 성향은 타고난 DNA 서열에 의해서만 결정되지 않습니다. 최근 신경과학계는 타고난 유전자 지도 위에 환경적 경험이 흔적을 남기는 <strong>후성유전학(Epigenetics)</strong> 메커니즘에 주목하고 있습니다. 후성유전이란 DNA 염기서열 자체는 바뀌지 않으면서, 유전자의 스위치가 켜지거나 꺼지는 발현 패턴의 변화를 의미합니다.
-          </p>
-          <p>
-            만성적인 스트레스, 영양 상태, 유아기의 양육 경험 등은 DNA 메틸화(DNA Methylation)나 히스톤 단백질 변형을 유도하여 뇌 기능과 신경 가소성 관련 유전자 발현을 지속적으로 억제하거나 활성화합니다. 이는 개인이 자라온 환경적 맥락이 생물학적으로 어떻게 뇌에 각인되는지를 명확하게 입증해 줍니다.
-          </p>
+          <h3>1) 전기적 시냅스 vs 화학적 시냅스</h3>
+          <ul>
+            <li><strong>전기적 시냅스 (Electrical Synapse):</strong> 갭 결합(Gap junction) 통로 결합 구조. 양방향 전도성을 지니며 지연 없이 매우 빠르나 변형 확률이 낮아 가소성이 존재하지 않습니다.</li>
+            <li><strong>화학적 시냅스 (Chemical Synapse):</strong> 신경전달물질(NT) 소포 방출 기전. 일방향 전도성만을 가지며 고도의 신경가소성(LTP / LTD) 구현이 가능합니다.</li>
+          </ul>
+
+          <h3>2) Dendritic Spine의 형태 발달과 시냅스 성격 매칭</h3>
+          <p>가지돌기 가시(Dendritic Spine)는 성장 및 성숙도에 따라 네 가지 단계로 진화합니다.</p>
+          <ul>
+            <li><strong>Filopodia (실사상돌기):</strong> 가장 미성숙(Immature)한 상태로, 신호 탐색 역할을 수행</li>
+            <li><strong>Stubby (그루터기형):</strong> 성숙 과정의 중간 단계</li>
+            <li><strong>Thin (가느다란형):</strong> 대뇌 피질에서 가장 일반적이고 평균적인 구조</li>
+            <li><strong>Mushroom (버섯형):</strong> 가장 성숙하고 구조가 크며, <strong>가장 강력한 EPSP 신호 효율</strong>을 발휘하는 안정적 단계</li>
+          </ul>
+
+          <div class="deep-dive-box">
+            <h4>🧠 시냅스 미세 해부구조 분류 (Type I vs Type II)</h4>
+            <ul>
+              <li><strong>흥분성 시냅스 (Excitatory):</strong> 주로 Spine Head 부위에 위치하며 비대칭형 구조(Asymmetric / Type I)를 가집니다.</li>
+              <li><strong>억제성 시냅스 (Inhibitory):</strong> 주로 Dendrite Shaft(줄기) 부위에 다이렉트로 위치하며 대칭형 구조(Symmetric / Type II)를 보입니다.</li>
+            </ul>
+            <p style="margin-top:10px; font-size:13.5px; color:#64748b;">※ 중요 연계: 이 스파인의 형성과 가지치기(Pruning), 유지 균형의 붕괴는 자폐 스펙트럼 장애(ASD), 조현병, 알츠하이머병 등의 발달 및 퇴행성 정신질환의 핵심 병태생리로 지목됩니다.</p>
+          </div>
+          
           <div class="chips">
-            <span class="chip">DNA 메틸화</span>
-            <span class="chip">히스톤 변형</span>
-            <span class="chip">유전자 발현</span>
-            <span class="chip">환경 상호작용</span>
+            <span class="chip star-chip">Mushroom Spine</span>
+            <span class="chip">Type I Asymmetric</span>
+            <span class="chip">Spine Pruning</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="sec-transmitters">
+        <div class="section-header">
+          <div>
+            <span>TOPIC 06</span>
+            <h2>교세포 분화계통 및 신경전달물질 총망라</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <h3>1) Glial Cell (교세포) 계통 기능 세분화</h3>
+          <ul>
+            <li><strong>Astrocyte (성상세포/별아교세포):</strong> 뉴런 고정, 미그레이션 가이드, <strong>BBB(혈뇌장벽) 형성</strong>, NT 찌꺼기 제거. 세포외액(ECF)의 K⁺ 조절 역할 담당 (※ ECF K⁺ 농도가 과다 상승하면 뉴런이 쉽게 탈분극되어 간질성 흥분을 유발하므로 정밀 제어 필수)</li>
+            <li><strong>Oligodendrocyte (희소돌기세포):</strong> <strong>중추신경계(CNS)</strong>의 수초화 담당. 한 세포가 여러 개의 축삭을 동시에 감싸는 복합 구조</li>
+            <li><strong>Schwann Cell (슈반세포):</strong> <strong>말초신경계(PNS)</strong>의 수초화 담당. 단 하나의 세포가 하나의 축삭 일부 구획만 커버</li>
+            <li><strong>Ependymal Cell (뇌실막세포):</strong> 뇌실벽을 이루며 내벽 섬모 운동으로 <strong>CSF(뇌척수액) 흐름 및 생성</strong> 유도. Neural stem cell(신경줄기세포) 기능 보유</li>
+            <li><strong>Microglia (미세아교세포):</strong> <strong>중추신경계(CNS) 내부의 전용 면역세포/대식세포(Macrophage)</strong>. Debris(노폐물) 제거 및 성장인자 분비</li>
+            <li><strong>Satellite Cell (위성세포):</strong> 말초 신경절(PNS Ganglion)의 세포체(Soma) 외곽을 둘러싸고 영양 공급 및 환경 유지</li>
+          </ul>
+
+          <h3>2) 신경전달물질(Neurotransmitter) 기출 분류 족보</h3>
+          
+          <h3>[아미노산 계열 (Amino Acid NT)]</h3>
+          <ul>
+            <li><strong>흥분성 (Excitatory):</strong> <strong>Glutamate(글루타메이트 - 포유류 뇌의 대표 흥분성 NT, NMDA 수용체 연동)</strong>, Aspartate</li>
+            <li><strong>억제성 (Inhibitory):</strong> <strong>GABA(가바 - 포유류 뇌의 대표 억제성 NT, 벤조디아제핀/바비튜레이트 결합 시 채널 활성 급증)</strong>, Glycine</li>
+          </ul>
+
+          <h3>[아세틸콜린 (Acetylcholine, ACh)]</h3>
+          <p>주의력(Attention), 기억(Memory), 수면 조절 및 모든 골격근의 신경근접합부(NMJ), 부교감 신경절 이후 뉴런에서 작용합니다. (※ 기출: ACh는 모노아민 계열이 아님)</p>
+          <ul>
+            <li><strong>Nicotinic Receptor:</strong> 이온채널수용체(Ionotropic) 구조 ➔ 독성 물질인 <strong>Curare(쿠라레)</strong>에 의해 차단</li>
+            <li><strong>Muscarinic Receptor:</strong> G단백질공역수용체(Metabotropic/GPCR) 구조 ➔ <strong>Atropine(아트로핀)</strong>에 의해 차단</li>
+            <li><strong>Sarin Gas (사린 가스):</strong> 분해 효소인 Acetylcholinesterase(AChE)를 비가역적으로 차단하여 시냅스에 ACh를 과다 축적시킴으로써 타깃 뉴런을 지속적 탈분극(마비) 상태로 몰고 가는 치명적 화학 무기</li>
+          </ul>
+
+          <h3>[모노아민 계열 (Monoamines)]</h3>
+          <ul>
+            <li><strong>Dopamine (도파민):</strong> 운동 제어, 보상 회로, 감정 조절 담당. 부족 시 파킨슨병(Parkinson's disease), 과다 혹은 수용체 불균형 시 조현병(Schizophrenia) 유발</li>
+            <li><strong>Norepinephrine (노르에피네프린):</strong> 스트레스 반응, 각성, 대뇌 각성 유도. 수용체 계통 분류: α1(흥분성), α2(억제성 autoreceptor), β1(심장박동 흥분), β2(기관지 확장 효과)</li>
+            <li><strong>Serotonin (세로토닌):</strong> 무드, 수면, 불안 제어. 임상 항우울제 Prozac(프로작)은 이 세로토닌의 시냅스 재흡수를 억제하는 SSRI 기전</li>
+            <li><strong>Histamine / Orexin:</strong> 각성(Wakefulness) 상태 유지. 시상하부에서 분비되는 <strong>Orexin(오렉신) 세포 파괴 및 감소 시 기면증(Narcolepsy)</strong> 유발</li>
+          </ul>
+
+          <h3>[펩타이드 및 기타 특수 전달 물질]</h3>
+          <ul>
+            <li><strong>Peptide NT 계열:</strong> Enkephalin, Endorphin, Substance P(통증 전달 물질로 캡사이신과 강한 연동 기전). </li>
+            <li><strong>합성 위치 기출 차이점:</strong> Amine계 등 저분자 NT는 축삭 말단(Axon terminal)에서 즉각 합성되지만, Peptide계 NT는 <strong>세포체(Soma)의 조면소포체(RER)</strong>에서 대량 합성된 후 미세소관 소포 수송 기전으로 말단까지 이동합니다.</li>
+            <li><strong>일산화질소 (Gas NO):</strong> 별도의 수용체 바인딩 없이 세포막을 직접 Diffuse(확산) 통과하여 타깃 세포의 cGMP를 상승시킴으로써 LTP 형성 및 혈관 확장에 관여합니다.</li>
+          </ul>
+
+          <div class="deep-dive-box">
+            <h4>🍽️ 식욕 제어 펩타이드/호르몬 이분법 노트</h4>
+            <ul>
+              <li><strong>식욕 증가 자극 인자 (Appetite Up):</strong> Ghrelin (그레린), Orexin (오렉신), NPY</li>
+              <li><strong>식욕 억제 포만 인자 (Appetite Down):</strong> Leptin (랩틴), Insulin (인슐린), PYY</li>
+            </ul>
+          </div>
+          
+          <div class="chips">
+            <span class="chip star-chip">Glutamate & GABA</span>
+            <span class="chip">Sarin Gas (AChE 억제)</span>
+            <span class="chip">Orexin (기면증)</span>
+            <span class="chip">Soma RER 합성</span>
           </div>
         </div>
       </section>
@@ -518,7 +764,7 @@
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        // 스크롤 위치 보정치 설정 (40px 여백 및 헤더 감안)
+        // 헤더 두께 및 여백 보정 세팅 (-120px)
         if (pageYOffset >= (sectionTop - 120)) {
           current = section.getAttribute('id');
         }
