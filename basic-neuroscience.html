@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>기초 신경과학 | NEURO ARCHIVE</title>
+  <style>
+    /* index.html의 글로벌 핵심 스타일 시스템 완벽 상속 */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
+      background: #f5f7fb;
+      color: #111827;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* 서브 페이지용 고유 상단 배너 (index.html Hero 감성 유지) */
+    .sub-hero {
+      min-height: 340px;
+      background:
+        radial-gradient(circle at 80% 40%, rgba(37, 99, 235, 0.25), transparent 40%),
+        linear-gradient(180deg, #050b18 0%, #08111f 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sub-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.25;
+    }
+
+    header {
+      height: 74px;
+      padding: 0 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 5;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border: 2px solid #3b82f6;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #60a5fa;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 10px;
+      color: #93c5fd;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 14px;
+      font-size: 12.8px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: #dbeafe;
+      padding: 26px 0;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #60a5fa;
+      border-bottom-color: #3b82f6;
+    }
+
+    .search {
+      width: 150px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* 서브 배너 타이틀 영역 */
+    .sub-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 60px 40px 0;
+    }
+
+    .sub-hero-content .category-tag {
+      color: #60a5fa;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .sub-hero-content h1 {
+      font-size: 38px;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+    }
+
+    .sub-hero-content p {
+      color: #cbd5e1;
+      font-size: 16px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* 아카이브 메인 레이아웃 (Asymmetric Grid 구조 활용) */
+    .archive-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 50px 40px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+    }
+
+    /* 좌측 사이드 바 고정 메뉴 */
+    .archive-sidebar {
+      position: sticky;
+      top: 40px;
+      height: fit-content;
+    }
+
+    .sidebar-title {
+      font-size: 14px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sidebar-menu a {
+      display: block;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #475569;
+      transition: 0.2s;
+    }
+
+    .sidebar-menu a:hover {
+      background: rgba(59, 130, 246, 0.06);
+      color: #2563eb;
+    }
+
+    .sidebar-menu li.active a {
+      background: #3b82f6;
+      color: white;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.2);
+    }
+
+    /* 우측 상세 본문 영역 */
+    .archive-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .content-section {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 28px rgba(15,23,42,0.04);
+      scroll-margin-top: 40px; /* 이동 시 스크롤 여백 */
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+    }
+
+    .section-header h2 span {
+      font-size: 14px;
+      color: #3b82f6;
+      display: block;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .section-body p {
+      color: #475569;
+      font-size: 15.5px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* index.html 칩 시스템 이식 */
+    .chips {
+      display: flex;
+      gap: 8px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .chip.star-chip {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* 강조 박스 효과 (오늘의 개념 카드 스타일 패밀리룩) */
+    .deep-dive-box {
+      background: #fafafa;
+      border-left: 4px solid #3b82f6;
+      padding: 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 24px 0;
+    }
+
+    .deep-dive-box h4 {
+      font-size: 15px;
+      color: #1e293b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .deep-dive-box p {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      padding: 24px 58px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-top: 60px;
+    }
+
+    /* 반응형 스타일 조정 */
+    @media (max-width: 1050px) {
+      .search { display: none; }
+      nav { gap: 10px; font-size: 12px; }
+      header { padding: 0 24px; }
+    }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .archive-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 20px;
+      }
+      .archive-sidebar {
+        position: static;
+      }
+      .sidebar-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        white-space: nowrap;
+      }
+      .content-section {
+        padding: 26px;
+      }
+      .sub-hero-content h1 { font-size: 30px; }
+      footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 24px 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sub-hero">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">☊</div>
+        <div>
+          NEURO ARCHIVE
+          <small>EXPLORE · CONNECT · UNDERSTAND</small>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="brainmap.html">뇌맵</a>
+        <a href="basic-neuroscience.html" class="active">기초 신경과학</a>
+        <a href="neuroanatomy.html">신경해부학</a>
+        <a href="cognition.html">감각·인지</a>
+        <a href="behavior.html">운동·행동</a>
+        <a href="development.html">뇌 발달</a>
+        <a href="disease.html">뇌질환</a>
+        <a href="research.html">연구·기술</a>
+        <a href="quiz.html">Quiz</a>
+      </nav>
+
+      <div class="search">⌕ 검색...</div>
+    </header>
+
+    <div class="sub-hero-content">
+      <span class="category-tag">CHAPTER 01</span>
+      <h1>기초 신경과학</h1>
+      <p>뇌와 신경계가 작동하는 가장 핵심적인 세포적 원리, 시냅스 신호 전달 및 뇌의 적응 메커니즘을 탐구하고 기록하는 공간입니다.</p>
+    </div>
+  </div>
+
+  <div class="archive-container">
+    <aside class="archive-sidebar">
+      <h3 class="sidebar-title">아카이브 목차</h3>
+      <ul class="sidebar-menu" id="sidebar-list">
+        <li class="active"><a href="#neurons">1. 뉴런과 교세포</a></li>
+        <li><a href="#communication">2. 신경세포의 소통</a></li>
+        <li><a href="#plasticity">3. 기억 · 가소성 · LTP</a></li>
+        <li><a href="#reward">4. 보상회로와 도파민</a></li>
+        <li><a href="#epigenetics">5. 유전학과 후성유전</a></li>
+      </ul>
+    </aside>
+
+    <main class="archive-content">
+      
+      <section class="content-section" id="neurons">
+        <div class="section-header">
+          <div>
+            <span>TOPIC 01</span>
+            <h2>뉴런과 교세포 (Neurons & Glia)</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            신경계는 정보를 처리하고 전달하는 <strong>뉴런(Neuron)</strong>과 이들의 생존 및 활동을 보조하는 <strong>교세포(Glia)</strong>라는 두 가지 주요 세포 집단으로 구성됩니다. 뉴런은 정보를 받아들이는 가지돌기(Dendrite), 이를 통합하는 세포체(Soma), 그리고 신호를 먼 거리까지 전기적으로 전도하는 축삭(Axon)의 독특한 비대칭적 구조를 가지고 있습니다.
+          </p>
+          <p>
+            과거에는 교세포를순순히 뉴런을 묶어주는 아교풀 역할로만 생각했으나, 현대 신경과학에서는 그 중요성이 다르게 평가됩니다. 별아교세포(Astrocyte)는 혈뇌장벽(BBB)을 형성하고 시냅스 주변의 이온 농도를 정밀 조절하며, 미세아교세포(Microglia)는 뇌 내 면역 담당자로서 불필요하거나 손상된 시냅스를 제거하여 구조를 최적화합니다.
+          </p>
+          <div class="chips">
+            <span class="chip">가지돌기</span>
+            <span class="chip">축삭</span>
+            <span class="chip">별아교세포</span>
+            <span class="chip">미세아교세포</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="communication">
+        <div class="section-header">
+          <div>
+            <span>TOPIC 02</span>
+            <h2>신경세포의 소통 (Neuronal Communication)</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            뉴런 내부에서의 신호 전달은 '전기적'으로 일어나며, 뉴런 간의 신호 전달은 주로 '화학적' 시냅스를 통해 일어납니다. 뉴런이 자극을 받아 세포막 전위가 임계값에 도달하면 이온 채널이 급격히 열리며 <strong>활동 전위(Action Potential)</strong>가 발생하여 축삭을 타고 종말단추까지 전동됩니다.
+          </p>
+          <p>
+            시냅스 전 뉴런의 말단에 전기 신호가 도달하면 전압 개폐성 칼슘 채널이 열리고, 세포 내로 유입된 칼슘 이온이 신경전달물질이 담긴 시냅스 소포체를 자극합니다. 결과적으로 시냅스 틈새(Synaptic cleft)로 방출된 화학 물질이 시냅스 후 뉴런의 수용체와 결합하면서 신호의 인계가 완료됩니다.
+          </p>
+          <div class="deep-dive-box">
+            <h4>💡 핵심 원리: All-or-None 법칙</h4>
+            <p>활동 전위는 자극의 세기가 임계값을 넘지 못하면 전혀 발생하지 않고, 임계값을 넘으면 자극의 크기와 상관없이 항상 동일한 크기와 파형으로 발생합니다. 신호의 강도는 크기가 아닌 '빈도(Frequency)'로 코딩됩니다.</p>
+          </div>
+          <div class="chips">
+            <span class="chip">활동 전위</span>
+            <span class="chip">시냅스 틈새</span>
+            <span class="chip">신경전달물질</span>
+            <span class="chip">이온 채널</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="plasticity">
+        <div class="section-header">
+          <div>
+            <span>★ HIGH VALUE TOPIC</span>
+            <h2>기억 · 가소성 · LTP (Plasticity & LTP)</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            뇌가 외부 환경에 반응하여 스스로의 배선망을 바꾸는 능력을 <strong>신경가소성(Neuroplasticity)</strong>이라고 합니다. 우리가 새로운 정보를 배우고 기억할 때, 관련된 뉴런들의 시냅스 연결 효율성이 물리적으로 변화합니다. 이 현상을 가장 잘 대변하는 분자적 메커니즘이 바로 <strong>장기강화(Long-Term Potentiation, LTP)</strong>입니다.
+          </p>
+          <p>
+            특정 시냅스에 고빈도 자극이 반복해서 가해지면, 글루타메이트 수용체인 AMPA 수용체의 수가 증가하고 NMDA 수용체를 막고 있던 마그네슘 이온이 빠져나가면서 칼슘 유입이 대량으로 일어납니다. 이로 인해 해당 시냅스의 연결 강도가 장기적으로 강해지며 기저 수준의 자극에도 민감하게 반응하게 되는데, 이것이 기억 저장의 물리적 실체로 인정받고 있습니다.
+          </p>
+          <div class="chips">
+            <span class="chip star-chip">신경가소성</span>
+            <span class="chip star-chip">LTP (장기강화)</span>
+            <span class="chip">NMDA 수용체</span>
+            <span class="chip">AMPA 수용체</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="reward">
+        <div class="section-header">
+          <div>
+            <span>★ HIGH VALUE TOPIC</span>
+            <h2>보상회로와 도파민 (Reward Circuit & Dopamine)</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            동물이 살아남고 유전자를 남기기 위해 필수적인 행동(식사, 성행동, 학습 등)을 반복하도록 이끄는 생존 중추를 <strong>보상회로(Reward Circuit)</strong>라고 합니다. 이 회로의 가장 핵심적인 설계 기전은 중뇌의 복측 피개 영역(VTA)에서 시작해 감정과 행동을 제어하는 변연계의 <strong>측좌핵(Nucleus Accumbens)</strong>으로 뻗어나가는 중뇌변연계 경로입니다.
+          </p>
+          <p>
+            이 경로에서 분비되는 신경전달물질인 <strong>도파민(Dopamine)</strong>은 단순한 쾌락의 호르몬이라기보다 '예측하지 못한 보상'이 주어졌을 때 분비되어 행동을 강화하는 '예측 오류(Reward Prediction Error)' 신호로 작동합니다. 이 회로의 정상적인 작동은 동기부여와 행동 습득에 절대적이지만, 약물 등 인위적 자극에 노출될 시 심각한 중독 회로로 변질될 수 있습니다.
+          </p>
+          <div class="chips">
+            <span class="chip star-chip">도파민 시스템</span>
+            <span class="chip star-chip">측좌핵 (NAc)</span>
+            <span class="chip">복측 피개 영역 (VTA)</span>
+            <span class="chip">강화 학습</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="epigenetics">
+        <div class="section-header">
+          <div>
+            <span>TOPIC 05</span>
+            <h2>유전학과 후성유전학 (Genetics & Epigenetics)</h2>
+          </div>
+        </div>
+        <div class="section-body">
+          <p>
+            인간의 뇌 구조와 성향은 타고난 DNA 서열에 의해서만 결정되지 않습니다. 최근 신경과학계는 타고난 유전자 지도 위에 환경적 경험이 흔적을 남기는 <strong>후성유전학(Epigenetics)</strong> 메커니즘에 주목하고 있습니다. 후성유전이란 DNA 염기서열 자체는 바뀌지 않으면서, 유전자의 스위치가 켜지거나 꺼지는 발현 패턴의 변화를 의미합니다.
+          </p>
+          <p>
+            만성적인 스트레스, 영양 상태, 유아기의 양육 경험 등은 DNA 메틸화(DNA Methylation)나 히스톤 단백질 변형을 유도하여 뇌 기능과 신경 가소성 관련 유전자 발현을 지속적으로 억제하거나 활성화합니다. 이는 개인이 자라온 환경적 맥락이 생물학적으로 어떻게 뇌에 각인되는지를 명확하게 입증해 줍니다.
+          </p>
+          <div class="chips">
+            <span class="chip">DNA 메틸화</span>
+            <span class="chip">히스톤 변형</span>
+            <span class="chip">유전자 발현</span>
+            <span class="chip">환경 상호작용</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>
+    <div><b>NEURO ARCHIVE</b> · Explore. Connect. Understand.</div>
+    <div>© 2026 Neuro Archive. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.content-section');
+    const navLi = document.querySelectorAll('.sidebar-menu li');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        // 스크롤 위치 보정치 설정 (40px 여백 및 헤더 감안)
+        if (pageYOffset >= (sectionTop - 120)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLi.forEach(li => {
+        li.classList.remove('active');
+        if (li.querySelector('a').getAttribute('href').includes(current)) {
+          li.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
