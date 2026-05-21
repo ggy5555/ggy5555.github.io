@@ -77,8 +77,8 @@
 
     nav {
       display: flex;
-      gap: 18px;
-      font-size: 13.5px;
+      gap: 14px;
+      font-size: 12.8px;
       font-weight: 600;
       white-space: nowrap;
     }
@@ -197,16 +197,12 @@
         drop-shadow(0 0 30px rgba(59,130,246,0.5))
         drop-shadow(0 0 80px rgba(37,99,235,0.25));
       user-select: none;
+      transition: 0.25s;
+      cursor: pointer;
     }
 
-    .brain-hint {
-      position: absolute;
-      bottom: 2px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #cbd5e1;
-      font-size: 12px;
-      opacity: 0.85;
+    .brain-image:hover {
+      transform: scale(1.02);
     }
 
     section {
@@ -481,7 +477,7 @@
 
     @media (max-width: 1050px) {
       .search { display: none; }
-      nav { gap: 12px; font-size: 12.5px; }
+      nav { gap: 10px; font-size: 12px; }
       header { padding: 0 24px; }
     }
 
@@ -533,15 +529,16 @@
       </div>
 
       <nav>
-        <a href="#" class="active">Home</a>
-        <a href="#">기초 신경과학</a>
-        <a href="#">신경해부학</a>
-        <a href="#">감각·인지</a>
-        <a href="#">운동·행동</a>
-        <a href="#">뇌 발달</a>
-        <a href="#">뇌질환</a>
-        <a href="#">연구·기술</a>
-        <a href="#">Quiz</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="brainmap.html">뇌맵</a>
+        <a href="basic-neuroscience.html">기초 신경과학</a>
+        <a href="neuroanatomy.html">신경해부학</a>
+        <a href="cognition.html">감각·인지</a>
+        <a href="behavior.html">운동·행동</a>
+        <a href="development.html">뇌 발달</a>
+        <a href="disease.html">뇌질환</a>
+        <a href="research.html">연구·기술</a>
+        <a href="quiz.html">Quiz</a>
       </nav>
 
       <div class="search">⌕ 검색...</div>
@@ -553,13 +550,14 @@
           뇌를 탐구하고,<br />
           지식을 <span>연결하다</span>
         </h1>
+
         <p>
           신경과학의 구조를 이해하고<br />
           나만의 탐구 여정을 기록하는 공간
         </p>
 
         <div class="buttons">
-          <a href="#brain" class="btn primary">뇌맵 탐색하기 →</a>
+          <a href="brainmap.html" class="btn primary">뇌맵 탐색하기 →</a>
           <a href="#research" class="btn secondary">탐구 노트 보기</a>
         </div>
 
@@ -571,7 +569,9 @@
       </div>
 
       <div class="brain-stage" id="brain">
-        <img src="brain.png" alt="뇌맵 인터랙션 이미지" class="brain-image" />
+        <a href="brainmap.html">
+          <img src="brain.png" alt="뇌맵 인터랙션 이미지" class="brain-image" />
+        </a>
       </div>
     </main>
   </div>
@@ -593,16 +593,19 @@
           <h3>구조적 학습</h3>
           <p>뇌의 구조와 기능을 체계적으로 정리합니다.</p>
         </div>
+
         <div class="info-card">
           <div class="icon">⌘</div>
           <h3>지식 연결</h3>
           <p>개념 간 관계를 통해 깊이 있는 이해를 추구합니다.</p>
         </div>
+
         <div class="info-card">
           <div class="icon">▤</div>
           <h3>탐구 기록</h3>
           <p>연구 과정과 생각을 기록하고 발전시킵니다.</p>
         </div>
+
         <div class="info-card">
           <div class="icon">↗</div>
           <h3>실제 적용</h3>
@@ -669,21 +672,25 @@
         <h3>신경해부학 입문</h3>
         <p>뇌의 구조와 주요 영역 이해하기</p>
       </div>
+
       <div class="path-card">
         <div class="icon">✦</div>
         <h3>뉴런과 신경전달물질</h3>
         <p>신경 세포의 구조와 신호 전달 과정</p>
       </div>
+
       <div class="path-card">
         <div class="icon">☻</div>
         <h3>인지 신경과학</h3>
         <p>뇌와 인지 기능의 관계 탐구하기</p>
       </div>
+
       <div class="path-card">
         <div class="icon">〰</div>
         <h3>EEG/BCI 이해</h3>
         <p>뇌파의 원리와 응용 기술 학습</p>
       </div>
+
       <div class="path-card">
         <div class="icon">◎</div>
         <h3>탐구 및 연구</h3>
@@ -699,24 +706,28 @@
       <div class="concept-grid">
         <div class="concept-card">
           <div class="concept-img">☽</div>
+
           <div class="concept-info">
             <small>TODAY'S CONCEPT</small>
             <h3>Hippocampus</h3>
+
             <p>
               해마는 기억 형성과 공간 인지에 핵심적인 역할을 하는
               변연계의 주요 구조입니다.
             </p>
+
             <div class="chips">
               <span class="chip">기억</span>
               <span class="chip">공간 인지</span>
               <span class="chip">변연계</span>
             </div>
+
             <a class="btn secondary" href="#">자세히 보기 →</a>
           </div>
         </div>
 
         <div class="quick-menu">
-          <a href="#brain">뇌맵 탐색하기 <span>→</span></a>
+          <a href="brainmap.html">뇌맵 탐색하기 <span>→</span></a>
           <a href="#research">탐구 노트 작성하기 <span>→</span></a>
           <a href="#learn">학습 루트 시작하기 <span>→</span></a>
           <a href="#">개념 랜덤 보기 <span>→</span></a>
