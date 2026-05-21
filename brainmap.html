@@ -316,9 +316,30 @@
       top: 370px;
       background: linear-gradient(145deg, #e5e7eb, #9ca3af);
       border-radius: 60% 40% 50% 50% / 50% 50% 60% 40%;
-      transform: rotate(-10deg);
+      transform: rotate(10deg);
       z-index: 1;
     }
+
+    .cerebellum::after {
+  transform: translateX(-50%) rotate(-10deg);
+}
+
+.cerebellum::before {
+  transform: translateX(-50%) rotate(-10deg);
+}
+
+.cerebellum:hover::after {
+  transform: translateX(-50%) rotate(-16deg);
+}
+
+.cerebellum:hover::before {
+  transform: translateX(-50%) rotate(-16deg);
+}
+
+.cerebellum:hover {
+  transform: translateY(-10px) scale(1.05) rotate(16deg);
+  z-index: 999 !important;
+}
 
     .cerebellum:hover {
       transform: translateY(-10px) scale(1.05) rotate(-16deg);
