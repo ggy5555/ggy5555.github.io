@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>기초 신경과학 | Brain-Structured Research Archive</title>
+  <title>기초 신경과학 | Brain Archive</title>
 
   <style>
     * {
@@ -12,11 +12,15 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
       background: linear-gradient(180deg, #f5f7fb 0%, #eef2f7 100%);
       color: #06101f;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     a {
@@ -24,12 +28,11 @@
       color: inherit;
     }
 
-    /* ===== Header ===== */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(148, 163, 184, 0.28);
     }
@@ -81,10 +84,7 @@
       transition: color 0.2s ease;
     }
 
-    .menu a:hover {
-      color: #2563eb;
-    }
-
+    .menu a:hover,
     .menu a.active {
       color: #2563eb;
     }
@@ -101,15 +101,14 @@
       background: #2563eb;
     }
 
-    /* ===== Common Layout ===== */
     main {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 58px 24px 90px;
+      padding: 56px 24px 90px;
     }
 
     .section {
-      margin-top: 74px;
+      margin-top: 78px;
     }
 
     .section-label {
@@ -134,38 +133,38 @@
     }
 
     .section-desc {
-      max-width: 760px;
+      max-width: 820px;
       color: #64748b;
       font-size: 16px;
       font-weight: 600;
     }
 
-    /* ===== Hero ===== */
+    /* Hero */
     .hero {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       align-items: center;
       gap: 42px;
-      min-height: 520px;
+      min-height: 500px;
     }
 
-    .hero-text h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.03;
-      letter-spacing: -0.07em;
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.04;
+      letter-spacing: -0.075em;
       color: #0f172a;
       margin-bottom: 24px;
     }
 
-    .hero-text h1 span {
+    .hero h1 span {
       color: #2563eb;
     }
 
-    .hero-text p {
-      max-width: 680px;
+    .hero p {
+      max-width: 700px;
       color: #475569;
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 650;
       margin-bottom: 30px;
     }
 
@@ -183,7 +182,7 @@
       border-radius: 14px;
       font-size: 14px;
       font-weight: 900;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .btn.primary {
@@ -207,15 +206,15 @@
       min-height: 420px;
       border-radius: 32px;
       background:
-        radial-gradient(circle at 25% 25%, rgba(96, 165, 250, 0.75), transparent 28%),
-        radial-gradient(circle at 75% 35%, rgba(129, 140, 248, 0.55), transparent 24%),
-        radial-gradient(circle at 55% 75%, rgba(14, 165, 233, 0.45), transparent 28%),
+        radial-gradient(circle at 24% 25%, rgba(96, 165, 250, 0.78), transparent 28%),
+        radial-gradient(circle at 74% 36%, rgba(129, 140, 248, 0.58), transparent 25%),
+        radial-gradient(circle at 52% 76%, rgba(14, 165, 233, 0.45), transparent 30%),
         linear-gradient(135deg, #0f172a, #1e293b);
       overflow: hidden;
       box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
     }
 
-    .neuron-node {
+    .node {
       position: absolute;
       width: 15px;
       height: 15px;
@@ -230,7 +229,7 @@
     .n4 { left: 36%; top: 62%; }
     .n5 { left: 66%; top: 78%; }
 
-    .synapse-line {
+    .line {
       position: absolute;
       height: 2px;
       background: linear-gradient(90deg, transparent, rgba(191, 219, 254, 0.9), transparent);
@@ -267,57 +266,124 @@
       font-size: 14px;
       color: rgba(255, 255, 255, 0.78);
       font-weight: 600;
+      margin: 0;
     }
 
-    /* ===== Cards ===== */
-    .card-grid {
+    /* Overview Cards */
+    .overview-grid {
       margin-top: 30px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
-    .concept-card {
-      position: relative;
-      padding: 26px;
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.82);
+    .overview-card {
+      padding: 22px;
+      border-radius: 24px;
+      background: white;
       border: 1px solid rgba(148, 163, 184, 0.26);
       box-shadow: 0 16px 38px rgba(15, 23, 42, 0.06);
-      overflow: hidden;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      transition: 0.2s ease;
     }
 
-    .concept-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
-      border-color: rgba(37, 99, 235, 0.35);
+    .overview-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.11);
     }
 
-    .card-num {
-      display: inline-flex;
-      width: 36px;
-      height: 36px;
-      border-radius: 13px;
-      align-items: center;
-      justify-content: center;
-      background: #eff6ff;
-      color: #2563eb;
-      font-weight: 950;
-      margin-bottom: 18px;
-    }
-
-    .concept-card h3 {
-      font-size: 21px;
-      letter-spacing: -0.04em;
-      margin-bottom: 12px;
+    .overview-card strong {
+      display: block;
+      font-size: 19px;
       color: #0f172a;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
     }
 
-    .concept-card p {
+    .overview-card span {
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    /* Content Blocks */
+    .content-block {
+      margin-top: 30px;
+      padding: 34px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.06);
+    }
+
+    .content-block h3 {
+      font-size: 26px;
+      letter-spacing: -0.04em;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .content-block h4 {
+      font-size: 19px;
+      letter-spacing: -0.035em;
+      color: #1e293b;
+      margin-top: 26px;
+      margin-bottom: 10px;
+    }
+
+    .content-block p {
       color: #475569;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .content-block ul {
+      padding-left: 20px;
+      margin-top: 12px;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .content-block li {
+      margin-bottom: 9px;
+    }
+
+    .highlight {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #eff6ff;
+      border-left: 5px solid #2563eb;
+      margin-top: 20px;
+      color: #1e3a8a;
+      font-weight: 750;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .mini-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: #f8fafc;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .mini-card b {
+      display: block;
+      color: #2563eb;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .mini-card span {
+      display: block;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 650;
     }
 
     .keyword-row {
@@ -328,7 +394,7 @@
     }
 
     .keyword {
-      padding: 6px 9px;
+      padding: 6px 10px;
       border-radius: 999px;
       background: #f1f5f9;
       color: #334155;
@@ -336,17 +402,56 @@
       font-weight: 900;
     }
 
-    /* ===== Signal Flow ===== */
-    .flow-wrap {
+    /* Tables */
+    .table-wrap {
+      margin-top: 22px;
+      overflow-x: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 760px;
+    }
+
+    th, td {
+      padding: 16px 18px;
+      text-align: left;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+      vertical-align: top;
+    }
+
+    th {
+      background: #f8fafc;
+      color: #0f172a;
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    td {
+      color: #475569;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Flow */
+    .flow-box {
       margin-top: 30px;
-      padding: 28px;
+      padding: 30px;
       border-radius: 30px;
       background: #0f172a;
       color: white;
       box-shadow: 0 24px 54px rgba(15, 23, 42, 0.22);
     }
 
-    .flow {
+    .flow-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 12px;
@@ -355,7 +460,7 @@
 
     .flow-item {
       position: relative;
-      min-height: 116px;
+      min-height: 120px;
       padding: 18px 14px;
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.08);
@@ -390,145 +495,36 @@
       font-weight: 700;
     }
 
-    /* ===== Detail Section ===== */
-    .two-column {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 22px;
+    /* Glossary */
+    .glossary-grid {
       margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    .info-panel {
-      padding: 30px;
-      border-radius: 28px;
+    .glossary-card {
+      padding: 22px;
+      border-radius: 24px;
       background: white;
       border: 1px solid rgba(148, 163, 184, 0.26);
-      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.05);
     }
 
-    .info-panel h3 {
-      font-size: 24px;
-      letter-spacing: -0.04em;
-      margin-bottom: 12px;
+    .glossary-card h3 {
+      font-size: 18px;
       color: #0f172a;
-    }
-
-    .info-panel p {
-      color: #475569;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .mini-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .mini-list div {
-      padding: 14px 15px;
-      border-radius: 16px;
-      background: #f8fafc;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      font-size: 14px;
-      font-weight: 800;
-      color: #334155;
-    }
-
-    .mini-list b {
-      color: #2563eb;
-    }
-
-    /* ===== Don't Overlap Section ===== */
-    .avoid-grid {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-
-    .avoid-card {
-      padding: 20px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(148, 163, 184, 0.24);
-    }
-
-    .avoid-card h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
-      letter-spacing: -0.03em;
-    }
-
-    .avoid-card p {
-      font-size: 13px;
-      color: #64748b;
-      font-weight: 700;
-    }
-
-    /* ===== Quiz ===== */
-    .quiz-box {
-      margin-top: 30px;
-      padding: 30px;
-      border-radius: 30px;
-      background: white;
-      border: 1px solid rgba(148, 163, 184, 0.26);
-      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.06);
-    }
-
-    .quiz-question {
-      font-size: 22px;
-      font-weight: 950;
       letter-spacing: -0.04em;
-      margin-bottom: 18px;
+      margin-bottom: 8px;
     }
 
-    .quiz-options {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .quiz-options button {
-      cursor: pointer;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      background: #f8fafc;
-      border-radius: 16px;
-      padding: 15px;
-      text-align: left;
+    .glossary-card p {
+      color: #64748b;
       font-size: 14px;
-      font-weight: 850;
-      color: #334155;
-      transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+      font-weight: 650;
     }
 
-    .quiz-options button:hover {
-      transform: translateY(-2px);
-      background: #eff6ff;
-      border-color: rgba(37, 99, 235, 0.38);
-    }
-
-    .quiz-result {
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      display: none;
-      font-weight: 850;
-    }
-
-    .quiz-result.correct {
-      display: block;
-      background: #ecfdf5;
-      color: #047857;
-    }
-
-    .quiz-result.wrong {
-      display: block;
-      background: #fff7ed;
-      color: #c2410c;
-    }
-
-    /* ===== Next Links ===== */
+    /* Next */
     .next-grid {
       margin-top: 30px;
       display: grid;
@@ -544,7 +540,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      transition: 0.22s ease;
       box-shadow: 0 16px 34px rgba(15, 23, 42, 0.14);
     }
 
@@ -586,7 +582,6 @@
       text-align: center;
     }
 
-    /* ===== Responsive ===== */
     @media (max-width: 980px) {
       .nav {
         align-items: flex-start;
@@ -600,15 +595,17 @@
       }
 
       .hero,
-      .two-column {
+      .two-col {
         grid-template-columns: 1fr;
       }
 
-      .card-grid {
+      .overview-grid,
+      .glossary-grid,
+      .next-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .flow {
+      .flow-grid {
         grid-template-columns: 1fr;
       }
 
@@ -618,11 +615,6 @@
         top: auto;
         bottom: -20px;
         transform: translateX(50%);
-      }
-
-      .avoid-grid,
-      .next-grid {
-        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -639,15 +631,18 @@
         min-height: 360px;
       }
 
-      .card-grid,
-      .avoid-grid,
-      .next-grid,
-      .quiz-options {
+      .overview-grid,
+      .glossary-grid,
+      .next-grid {
         grid-template-columns: 1fr;
       }
 
       .section-title {
         font-size: 28px;
+      }
+
+      .content-block {
+        padding: 24px;
       }
     }
   </style>
@@ -676,298 +671,643 @@
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero">
-      <div class="hero-text">
+      <div>
         <div class="section-label">BASIC NEUROSCIENCE</div>
-        <h1>뇌가 작동하는<br><span>가장 기본적인 원리</span></h1>
+        <h1>뇌를 이해하는<br><span>가장 기본적인 원리</span></h1>
         <p>
-          기초신경과학은 뇌와 신경계가 정보를 받아들이고, 처리하고,
-          행동과 기억으로 바꾸는 원리를 탐구하는 분야이다.
-          뉴런, 시냅스, 신경전달물질, 뇌 회로, 신경가소성은
-          뇌과학을 이해하기 위한 가장 기본적인 출발점이다.
+          기초신경과학은 뇌와 신경계가 정보를 받아들이고, 전기·화학적 신호로 처리하며,
+          행동·기억·감정·판단으로 바꾸는 과정을 탐구하는 분야이다. 이 페이지에서는
+          뉴런, 교세포, 활동전위, 시냅스, 신경전달물질, 신경회로, 신경가소성을 중심으로
+          뇌과학의 기본 구조를 정리한다.
         </p>
 
         <div class="hero-buttons">
-          <a href="#concepts" class="btn primary">핵심 개념 보기</a>
-          <a href="#flow" class="btn secondary">정보 전달 흐름 보기</a>
+          <a href="#overview" class="btn primary">핵심 개념 보기</a>
+          <a href="#signal" class="btn secondary">신호 전달 원리 보기</a>
         </div>
       </div>
 
-      <div class="hero-visual" aria-label="뉴런 네트워크 시각화">
-        <div class="neuron-node n1"></div>
-        <div class="neuron-node n2"></div>
-        <div class="neuron-node n3"></div>
-        <div class="neuron-node n4"></div>
-        <div class="neuron-node n5"></div>
+      <div class="hero-visual">
+        <div class="node n1"></div>
+        <div class="node n2"></div>
+        <div class="node n3"></div>
+        <div class="node n4"></div>
+        <div class="node n5"></div>
 
-        <div class="synapse-line l1"></div>
-        <div class="synapse-line l2"></div>
-        <div class="synapse-line l3"></div>
-        <div class="synapse-line l4"></div>
-        <div class="synapse-line l5"></div>
+        <div class="line l1"></div>
+        <div class="line l2"></div>
+        <div class="line l3"></div>
+        <div class="line l4"></div>
+        <div class="line l5"></div>
 
         <div class="hero-card">
           <h2>Neuron → Signal → Circuit → Plasticity</h2>
           <p>
-            뇌를 이해하려면 먼저 하나의 뉴런이 어떻게 신호를 만들고,
-            여러 뉴런이 어떻게 회로를 이루며, 경험에 따라 연결이 어떻게 변하는지 살펴봐야 한다.
+            뇌는 단순한 기관이 아니라 수많은 뉴런이 연결된 정보 처리 네트워크이다.
+            하나의 신호는 세포 수준에서 시작해 회로 수준의 기능으로 확장된다.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Concepts -->
-    <section class="section" id="concepts">
-      <div class="section-label">CORE CONCEPTS</div>
-      <h2 class="section-title">기초신경과학 핵심 개념 6가지</h2>
+    <section class="section" id="overview">
+      <div class="section-label">OVERVIEW</div>
+      <h2 class="section-title">기초신경과학에서 먼저 잡아야 할 4가지 관점</h2>
       <p class="section-desc">
-        이 페이지는 뇌의 세부 부위 암기보다, 뇌가 정보를 처리하는 기본 원리를 잡는 데 초점을 둔다.
+        뇌과학을 처음 공부할 때는 뇌 부위 이름을 외우기 전에, 신경계가 어떤 단위와 원리로 작동하는지 먼저 이해하는 것이 중요하다.
       </p>
 
-      <div class="card-grid">
-        <article class="concept-card">
-          <div class="card-num">01</div>
-          <h3>신경계의 큰 구조</h3>
-          <p>
-            신경계는 크게 중추신경계와 말초신경계로 나뉜다.
-            중추신경계는 뇌와 척수로 이루어져 정보를 통합하고 판단하며,
-            말초신경계는 감각 정보를 중추로 보내고 중추의 명령을 몸으로 전달한다.
-          </p>
-          <div class="keyword-row">
-            <span class="keyword">CNS</span>
-            <span class="keyword">PNS</span>
-            <span class="keyword">afferent</span>
-            <span class="keyword">efferent</span>
-          </div>
-        </article>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <strong>구조</strong>
+          <span>뇌, 척수, 말초신경이 어떻게 연결되는가?</span>
+        </div>
 
-        <article class="concept-card">
-          <div class="card-num">02</div>
-          <h3>뉴런과 교세포</h3>
-          <p>
-            뉴런은 신경계의 기본 정보 처리 세포이다.
-            감각뉴런은 정보를 받아들이고, 사이뉴런은 정보를 처리하며,
-            운동뉴런은 근육으로 명령을 전달한다. 교세포는 뉴런을 지지하고 보호한다.
-          </p>
-          <div class="keyword-row">
-            <span class="keyword">neuron</span>
-            <span class="keyword">glia</span>
-            <span class="keyword">axon</span>
-            <span class="keyword">dendrite</span>
-          </div>
-        </article>
+        <div class="overview-card">
+          <strong>세포</strong>
+          <span>뉴런과 교세포는 각각 어떤 역할을 하는가?</span>
+        </div>
 
-        <article class="concept-card">
-          <div class="card-num">03</div>
-          <h3>뉴런의 전기 신호</h3>
-          <p>
-            가지돌기와 세포체에서 들어온 흥분성 입력과 억제성 입력이 합쳐지고,
-            그 결과가 역치를 넘으면 축삭에서 활동전위가 발생한다.
-            활동전위는 축삭을 따라 이동하며 다음 뉴런으로 정보를 전달할 준비를 한다.
-          </p>
-          <div class="keyword-row">
-            <span class="keyword">action potential</span>
-            <span class="keyword">threshold</span>
-            <span class="keyword">EPSP</span>
-            <span class="keyword">IPSP</span>
-          </div>
-        </article>
+        <div class="overview-card">
+          <strong>신호</strong>
+          <span>전기 신호와 화학 신호는 어떻게 이어지는가?</span>
+        </div>
 
-        <article class="concept-card">
-          <div class="card-num">04</div>
-          <h3>시냅스와 신경전달물질</h3>
-          <p>
-            뉴런과 뉴런은 직접 붙어 있지 않고 시냅스라는 작은 틈을 사이에 두고 정보를 주고받는다.
-            활동전위가 축삭말단에 도착하면 신경전달물질이 방출되어 다음 뉴런의 수용체에 결합한다.
-          </p>
-          <div class="keyword-row">
-            <span class="keyword">synapse</span>
-            <span class="keyword">neurotransmitter</span>
-            <span class="keyword">receptor</span>
-          </div>
-        </article>
-
-        <article class="concept-card">
-          <div class="card-num">05</div>
-          <h3>뇌 회로와 정보 처리</h3>
-          <p>
-            하나의 뉴런만으로는 생각, 감각, 행동이 만들어지지 않는다.
-            여러 뉴런이 회로와 네트워크를 이루며 정보를 처리한다.
-            고등 기능은 여러 뇌 영역이 연결된 복잡한 네트워크에서 만들어진다.
-          </p>
-          <div class="keyword-row">
-            <span class="keyword">circuit</span>
-            <span class="keyword">network</span>
-            <span class="keyword">coding</span>
-          </div>
-        </article>
-
-        <article class="concept-card">
-          <div class="card-num">06</div>
-          <h3>신경가소성과 학습</h3>
-          <p>
-            신경가소성은 경험과 학습에 따라 신경 회로의 연결 강도가 변하는 성질이다.
-            반복적으로 함께 활성화되는 뉴런 사이의 시냅스는 강화될 수 있고,
-            덜 사용되는 연결은 약해질 수 있다.
-          </p>
-          <div class="keyword-row">
-            <span class="keyword">plasticity</span>
-            <span class="keyword">LTP</span>
-            <span class="keyword">LTD</span>
-            <span class="keyword">learning</span>
-          </div>
-        </article>
+        <div class="overview-card">
+          <strong>회로</strong>
+          <span>여러 뉴런의 연결은 감각, 행동, 기억을 어떻게 만드는가?</span>
+        </div>
       </div>
     </section>
 
-    <!-- Flow -->
-    <section class="section" id="flow">
-      <div class="section-label">INFORMATION FLOW</div>
-      <h2 class="section-title">한눈에 보는 정보 전달 흐름</h2>
+    <section class="section">
+      <div class="section-label">01 · NERVOUS SYSTEM</div>
+      <h2 class="section-title">신경계의 기본 구조</h2>
       <p class="section-desc">
-        뇌는 자극을 단순히 받아들이는 기관이 아니라, 정보를 해석하고 행동으로 바꾸며,
-        그 경험을 바탕으로 회로를 다시 조정하는 시스템이다.
+        신경계는 몸 전체에서 정보를 모으고, 해석하고, 반응을 만들어내는 통합 조절 시스템이다.
       </p>
 
-      <div class="flow-wrap">
-        <div class="flow">
+      <div class="content-block">
+        <h3>중추신경계와 말초신경계</h3>
+        <p>
+          신경계는 크게 <b>중추신경계(Central Nervous System, CNS)</b>와
+          <b>말초신경계(Peripheral Nervous System, PNS)</b>로 나눌 수 있다.
+          중추신경계는 뇌와 척수로 이루어져 있으며, 감각 정보의 통합, 판단, 기억, 운동 명령 생성 등
+          핵심적인 정보 처리를 담당한다. 말초신경계는 중추신경계와 몸의 각 부분을 연결하는 통로로,
+          감각 정보를 중추로 보내고 중추의 명령을 근육과 장기로 전달한다.
+        </p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <b>중추신경계 CNS</b>
+            <span>뇌와 척수. 정보의 해석, 통합, 판단, 명령 생성이 일어나는 중심 구조.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>말초신경계 PNS</b>
+            <span>뇌신경과 척수신경. 몸의 감각수용기, 근육, 장기와 중추신경계를 연결.</span>
+          </div>
+        </div>
+
+        <h4>정보의 방향: 구심성과 원심성</h4>
+        <p>
+          신경계의 정보 흐름은 방향에 따라 나눌 수 있다. 감각기관이나 피부, 근육, 장기에서 들어온 정보가
+          중추신경계로 향하는 흐름은 <b>구심성 경로(afferent pathway)</b>라고 한다.
+          반대로 중추신경계에서 생성된 명령이 근육이나 샘, 장기 쪽으로 나가는 흐름은
+          <b>원심성 경로(efferent pathway)</b>라고 한다.
+        </p>
+
+        <div class="highlight">
+          핵심 정리: 감각 정보는 몸에서 뇌와 척수로 들어오고, 운동 명령은 뇌와 척수에서 몸으로 나간다.
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>방향</th>
+                <th>주요 역할</th>
+                <th>예시</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>구심성 신경</td>
+                <td>말초 → 중추</td>
+                <td>감각 정보를 뇌와 척수로 전달</td>
+                <td>뜨거움, 통증, 빛, 소리, 압력 감지</td>
+              </tr>
+              <tr>
+                <td>원심성 신경</td>
+                <td>중추 → 말초</td>
+                <td>근육과 장기로 명령 전달</td>
+                <td>손 움직이기, 심박 조절, 침 분비</td>
+              </tr>
+              <tr>
+                <td>체성신경계</td>
+                <td>의식적 조절 중심</td>
+                <td>골격근 운동과 외부 감각 처리</td>
+                <td>걷기, 글쓰기, 피부 감각</td>
+              </tr>
+              <tr>
+                <td>자율신경계</td>
+                <td>무의식적 조절 중심</td>
+                <td>심장, 혈관, 내장, 샘 조절</td>
+                <td>심박수, 소화, 동공 반응</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="keyword-row">
+          <span class="keyword">CNS</span>
+          <span class="keyword">PNS</span>
+          <span class="keyword">afferent</span>
+          <span class="keyword">efferent</span>
+          <span class="keyword">somatic</span>
+          <span class="keyword">autonomic</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">02 · NEURONS & GLIA</div>
+      <h2 class="section-title">뉴런과 교세포</h2>
+      <p class="section-desc">
+        뇌의 기본 단위는 뉴런이지만, 뉴런만으로 뇌가 작동하는 것은 아니다. 교세포 역시 신경계 기능 유지에 필수적이다.
+      </p>
+
+      <div class="content-block">
+        <h3>뉴런: 정보를 처리하고 전달하는 세포</h3>
+        <p>
+          <b>뉴런(neuron)</b>은 전기적·화학적 신호를 이용해 정보를 전달하는 신경계의 핵심 세포이다.
+          뉴런은 일반적으로 <b>가지돌기(dendrite)</b>, <b>세포체(soma)</b>, <b>축삭(axon)</b>,
+          <b>축삭말단(axon terminal)</b>으로 구성된다. 가지돌기는 다른 뉴런으로부터 신호를 받아들이고,
+          세포체는 입력 정보를 통합하며, 축삭은 활동전위를 전달하고, 축삭말단은 다음 세포와 시냅스를 형성한다.
+        </p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <b>가지돌기 dendrite</b>
+            <span>다른 뉴런으로부터 신호를 받는 입력 부위. 많은 시냅스가 형성될 수 있다.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>세포체 soma</b>
+            <span>핵과 세포 소기관이 있는 부분. 여러 입력을 통합하는 중심부이다.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>축삭 axon</b>
+            <span>활동전위가 이동하는 긴 돌기. 신호를 먼 거리까지 전달한다.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>축삭말단 terminal</b>
+            <span>신경전달물질을 방출하여 다음 뉴런이나 근육에 신호를 전달한다.</span>
+          </div>
+        </div>
+
+        <h4>뉴런의 종류</h4>
+        <p>
+          뉴런은 기능에 따라 감각뉴런, 사이뉴런, 운동뉴런으로 나눌 수 있다. 감각뉴런은 외부나 내부 환경의 정보를
+          중추신경계로 전달하고, 사이뉴런은 중추신경계 안에서 정보를 처리하며, 운동뉴런은 중추신경계의 명령을 근육으로 보낸다.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>뉴런 종류</th>
+                <th>역할</th>
+                <th>정보 흐름</th>
+                <th>예시</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>감각뉴런</td>
+                <td>감각 정보를 받아 중추신경계로 전달</td>
+                <td>수용기 → 척수/뇌</td>
+                <td>피부 압력, 통증, 온도, 시각 정보</td>
+              </tr>
+              <tr>
+                <td>사이뉴런</td>
+                <td>중추신경계 내부에서 정보 처리</td>
+                <td>뉴런 ↔ 뉴런</td>
+                <td>반사 회로, 기억 회로, 판단 회로</td>
+              </tr>
+              <tr>
+                <td>운동뉴런</td>
+                <td>근육으로 명령 전달</td>
+                <td>척수/뇌 → 근육</td>
+                <td>손 움직임, 자세 조절, 발성</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>교세포: 뉴런을 돕는 세포 이상의 존재</h4>
+        <p>
+          과거에는 교세포(glial cell)를 단순한 지지 세포로 보았지만, 현재는 뇌 기능 유지에 적극적으로 관여하는 세포로 이해된다.
+          교세포는 뉴런에 영양을 공급하고, 이온 농도를 조절하며, 손상된 조직을 처리하고, 수초를 형성해 신호 전달 속도를 높인다.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>교세포</th>
+                <th>주요 기능</th>
+                <th>위치</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>성상세포 astrocyte</td>
+                <td>뉴런 주변 환경 조절, 영양 공급, 혈액-뇌 장벽 유지에 관여</td>
+                <td>중추신경계</td>
+              </tr>
+              <tr>
+                <td>희소돌기세포 oligodendrocyte</td>
+                <td>중추신경계 축삭에 수초 형성</td>
+                <td>중추신경계</td>
+              </tr>
+              <tr>
+                <td>슈반세포 Schwann cell</td>
+                <td>말초신경계 축삭에 수초 형성</td>
+                <td>말초신경계</td>
+              </tr>
+              <tr>
+                <td>미세아교세포 microglia</td>
+                <td>면역 방어, 손상 세포 제거</td>
+                <td>중추신경계</td>
+              </tr>
+              <tr>
+                <td>뇌실막세포 ependymal cell</td>
+                <td>뇌실을 둘러싸며 뇌척수액 생성과 순환에 관여</td>
+                <td>뇌실, 척수 중심관</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="highlight">
+          핵심 정리: 뉴런은 정보를 전달하고, 교세포는 뉴런이 안정적으로 작동할 수 있는 환경을 만든다.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="signal">
+      <div class="section-label">03 · ACTION POTENTIAL</div>
+      <h2 class="section-title">뉴런의 전기 신호: 활동전위</h2>
+      <p class="section-desc">
+        뇌가 정보를 처리한다는 말은 결국 뉴런들이 전기적 변화와 화학적 전달을 반복한다는 뜻이다.
+      </p>
+
+      <div class="content-block">
+        <h3>막전위와 역치</h3>
+        <p>
+          뉴런의 세포막 안팎에는 이온 농도 차이가 존재한다. 이 차이 때문에 뉴런은 안정 상태에서도 전기적 차이를 가지는데,
+          이를 <b>휴지기 막전위(resting membrane potential)</b>라고 한다. 뉴런은 다른 뉴런으로부터 흥분성 입력과 억제성 입력을 받으며,
+          이 입력들이 합쳐진 결과가 일정 수준, 즉 <b>역치(threshold)</b>를 넘으면 활동전위가 발생한다.
+        </p>
+
+        <h4>흥분성 입력과 억제성 입력</h4>
+        <p>
+          흥분성 입력은 뉴런이 활동전위를 발생시키기 쉬운 방향으로 막전위를 변화시키고,
+          억제성 입력은 활동전위가 발생하기 어려운 방향으로 막전위를 변화시킨다.
+          뉴런은 이 두 종류의 입력을 단순히 하나씩 따로 처리하는 것이 아니라, 시간적·공간적으로 합산하여 최종 반응을 결정한다.
+        </p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <b>EPSP</b>
+            <span>Excitatory Postsynaptic Potential. 막전위를 역치에 가까워지게 하는 흥분성 입력.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>IPSP</b>
+            <span>Inhibitory Postsynaptic Potential. 막전위를 역치에서 멀어지게 하는 억제성 입력.</span>
+          </div>
+        </div>
+
+        <h4>활동전위의 의미</h4>
+        <p>
+          활동전위는 뉴런이 정보를 먼 거리까지 전달하기 위해 사용하는 빠른 전기 신호이다.
+          축삭 시작 부위에서 활동전위가 발생하면, 이 신호는 축삭을 따라 이동해 축삭말단에 도달한다.
+          축삭말단에 도착한 전기 신호는 신경전달물질의 방출을 유도하고, 이때부터 정보 전달은 화학적 과정으로 전환된다.
+        </p>
+
+        <div class="highlight">
+          핵심 정리: 뉴런은 들어온 신호를 합산한 뒤, 역치를 넘으면 활동전위를 발생시킨다.
+          활동전위는 뉴런 내부에서 정보를 전달하는 전기 신호이다.
+        </div>
+
+        <div class="keyword-row">
+          <span class="keyword">resting potential</span>
+          <span class="keyword">threshold</span>
+          <span class="keyword">EPSP</span>
+          <span class="keyword">IPSP</span>
+          <span class="keyword">action potential</span>
+          <span class="keyword">axon hillock</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">04 · SYNAPSE</div>
+      <h2 class="section-title">시냅스와 신경전달물질</h2>
+      <p class="section-desc">
+        뉴런 내부의 신호는 전기적이지만, 뉴런과 뉴런 사이의 연결에서는 주로 화학적 전달이 일어난다.
+      </p>
+
+      <div class="content-block">
+        <h3>시냅스: 뉴런 사이의 연결 지점</h3>
+        <p>
+          <b>시냅스(synapse)</b>는 한 뉴런이 다른 뉴런 또는 근육, 샘과 정보를 주고받는 연결 지점이다.
+          대부분의 화학적 시냅스에서 뉴런들은 직접 붙어 있지 않고, 아주 좁은 틈인 <b>시냅스 틈(synaptic cleft)</b>을 사이에 둔다.
+          따라서 전기 신호가 그대로 건너가는 것이 아니라, 신경전달물질이라는 화학 물질이 방출되어 다음 세포에 영향을 준다.
+        </p>
+
+        <h4>시냅스 전달 과정</h4>
+        <ul>
+          <li>활동전위가 축삭말단에 도착한다.</li>
+          <li>축삭말단에서 칼슘 이온 유입이 일어난다.</li>
+          <li>신경전달물질이 담긴 소포가 세포막과 융합한다.</li>
+          <li>신경전달물질이 시냅스 틈으로 방출된다.</li>
+          <li>다음 뉴런의 수용체에 결합한다.</li>
+          <li>다음 뉴런에서 흥분성 또는 억제성 반응이 만들어진다.</li>
+        </ul>
+
+        <h4>신경전달물질의 작용</h4>
+        <p>
+          신경전달물질은 종류와 수용체에 따라 서로 다른 효과를 낸다. 어떤 경우에는 다음 뉴런을 흥분시켜 활동전위 발생 가능성을 높이고,
+          어떤 경우에는 다음 뉴런을 억제하여 신호 전달을 줄인다. 즉, 신경전달물질은 단순히 “신호를 켠다”가 아니라
+          회로 전체의 흥분과 억제 균형을 조절한다.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>신경전달물질</th>
+                <th>주요 관련 기능</th>
+                <th>기초적으로 이해할 포인트</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>글루탐산 glutamate</td>
+                <td>흥분성 전달, 학습과 기억</td>
+                <td>중추신경계의 대표적 흥분성 신경전달물질</td>
+              </tr>
+              <tr>
+                <td>GABA</td>
+                <td>억제성 전달, 회로 안정화</td>
+                <td>과도한 흥분을 막는 대표적 억제성 신경전달물질</td>
+              </tr>
+              <tr>
+                <td>도파민 dopamine</td>
+                <td>보상, 동기, 운동 조절</td>
+                <td>파킨슨병, 중독, 동기 시스템과 관련</td>
+              </tr>
+              <tr>
+                <td>세로토닌 serotonin</td>
+                <td>기분, 수면, 충동 조절</td>
+                <td>정서와 행동 조절에 중요한 조절성 물질</td>
+              </tr>
+              <tr>
+                <td>아세틸콜린 acetylcholine</td>
+                <td>근육 수축, 주의, 기억</td>
+                <td>말초 운동과 중추 인지 기능 모두에 관여</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="highlight">
+          핵심 정리: 뉴런 내부에서는 전기 신호가 이동하고, 뉴런 사이에서는 신경전달물질을 통한 화학 신호가 정보를 전달한다.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">05 · CIRCUITS</div>
+      <h2 class="section-title">뇌 회로와 정보 처리</h2>
+      <p class="section-desc">
+        뇌 기능은 하나의 뉴런이 아니라 여러 뉴런이 연결된 회로와 네트워크에서 만들어진다.
+      </p>
+
+      <div class="content-block">
+        <h3>뉴런 하나에서 회로로</h3>
+        <p>
+          하나의 뉴런은 입력을 받고 출력을 만들 수 있지만, 감각, 기억, 판단, 감정, 운동 같은 복잡한 기능은
+          수많은 뉴런이 서로 연결된 <b>신경회로(neural circuit)</b>에서 만들어진다.
+          회로 안에서는 어떤 뉴런은 신호를 강화하고, 어떤 뉴런은 신호를 억제하며, 여러 뇌 영역은 서로 정보를 주고받는다.
+        </p>
+
+        <h4>회로 수준에서 보는 뇌 기능</h4>
+        <p>
+          예를 들어 시각 정보는 눈에서 시작해 시상과 시각피질을 거치며 처리된다.
+          단순히 빛을 감지하는 데서 끝나는 것이 아니라, 선, 색, 움직임, 위치, 물체 인식 같은 여러 정보가 단계적으로 분석된다.
+          운동 역시 단순히 근육에 명령을 보내는 과정이 아니라, 대뇌피질, 기저핵, 소뇌, 척수 등이 함께 조절하는 회로적 과정이다.
+        </p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <b>감각 회로</b>
+            <span>외부 자극을 받아들이고, 위치·강도·의미를 분석하는 회로.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>운동 회로</b>
+            <span>움직임의 시작, 조절, 정확도 보정, 습관화를 담당하는 회로.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>기억 회로</b>
+            <span>해마, 전전두엽, 감각피질 등이 연결되어 경험을 저장하고 회상.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>정서 회로</b>
+            <span>편도체, 해마, 전전두엽 등이 감정과 기억, 판단을 연결.</span>
+          </div>
+        </div>
+
+        <h4>흥분과 억제의 균형</h4>
+        <p>
+          뇌 회로가 제대로 작동하려면 흥분성 신호와 억제성 신호의 균형이 중요하다.
+          흥분성 신호만 강하면 회로가 과도하게 활성화될 수 있고, 억제성 신호가 지나치면 필요한 정보 전달이 약해질 수 있다.
+          뇌는 이 균형을 통해 필요한 정보는 강화하고, 불필요한 정보는 억제한다.
+        </p>
+
+        <div class="highlight">
+          핵심 정리: 뇌는 개별 뉴런의 집합이 아니라, 흥분과 억제가 조절되는 회로 네트워크이다.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">06 · PLASTICITY</div>
+      <h2 class="section-title">신경가소성과 학습</h2>
+      <p class="section-desc">
+        뇌는 고정된 회로가 아니라 경험, 학습, 환경에 따라 계속 변하는 시스템이다.
+      </p>
+
+      <div class="content-block">
+        <h3>신경가소성이란?</h3>
+        <p>
+          <b>신경가소성(neural plasticity)</b>은 경험과 학습에 따라 신경계의 구조와 기능이 변하는 성질이다.
+          새로운 내용을 학습하거나, 반복적으로 어떤 행동을 연습하거나, 환경이 달라지면 뉴런 사이의 연결 강도도 달라질 수 있다.
+          이 원리는 학습과 기억뿐 아니라 발달, 회복, 습관 형성, 감각 적응을 이해하는 데 핵심적이다.
+        </p>
+
+        <h4>LTP와 LTD</h4>
+        <p>
+          신경가소성을 설명하는 대표적인 개념으로 <b>장기강화(Long-Term Potentiation, LTP)</b>와
+          <b>장기억제(Long-Term Depression, LTD)</b>가 있다.
+          LTP는 반복적인 활동으로 시냅스 전달 효율이 높아지는 현상이고,
+          LTD는 반대로 시냅스 연결의 효과가 약해지는 현상이다.
+        </p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <b>LTP</b>
+            <span>반복적으로 함께 활성화된 뉴런 사이의 연결이 강해지는 현상. 학습과 기억 형성과 관련된다.</span>
+          </div>
+
+          <div class="mini-card">
+            <b>LTD</b>
+            <span>덜 필요하거나 덜 사용되는 연결의 효과가 약해지는 현상. 회로 조정과 정보 선택에 관여한다.</span>
+          </div>
+        </div>
+
+        <h4>“같이 발화하는 뉴런은 함께 연결된다”</h4>
+        <p>
+          신경가소성을 직관적으로 설명하는 문장으로 “함께 발화하는 뉴런은 함께 연결된다”는 표현이 자주 쓰인다.
+          어떤 경험을 반복하면 관련 회로가 자주 함께 활성화되고, 그 결과 해당 회로의 연결이 강화될 수 있다.
+          반대로 사용되지 않는 연결은 약해지거나 제거될 수 있다.
+        </p>
+
+        <h4>학습과 회복에서의 의미</h4>
+        <p>
+          신경가소성은 공부나 운동 연습뿐 아니라 손상 이후 회복에서도 중요하다.
+          뇌의 일부 기능이 손상되었을 때 다른 회로가 기능을 일부 보완하거나, 반복 훈련을 통해 새로운 경로가 강화될 수 있다.
+          다만 모든 기능이 완전히 회복되는 것은 아니며, 회복 정도는 손상 부위, 시기, 훈련, 개인차에 따라 달라진다.
+        </p>
+
+        <div class="highlight">
+          핵심 정리: 뇌는 경험에 따라 연결을 강화하거나 약화한다. 학습은 회로가 바뀌는 과정이다.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">INFORMATION FLOW</div>
+      <h2 class="section-title">정보가 행동으로 바뀌는 흐름</h2>
+      <p class="section-desc">
+        감각 정보는 뉴런의 전기·화학 신호를 거쳐 회로에서 처리되고, 운동 명령과 행동으로 이어진다.
+      </p>
+
+      <div class="flow-box">
+        <div class="flow-grid">
           <div class="flow-item">
             <strong>자극</strong>
-            <span>빛, 소리, 압력, 냄새 등</span>
+            <span>빛, 소리, 압력, 냄새, 온도</span>
           </div>
+
           <div class="flow-item">
             <strong>감각수용기</strong>
-            <span>외부 정보를 신경 신호로 변환</span>
+            <span>자극을 신경 신호로 변환</span>
           </div>
+
           <div class="flow-item">
             <strong>감각뉴런</strong>
             <span>정보를 중추신경계로 전달</span>
           </div>
+
           <div class="flow-item">
             <strong>척수/뇌</strong>
             <span>정보 통합과 해석</span>
           </div>
+
           <div class="flow-item">
-            <strong>회로 처리</strong>
-            <span>뉴런 네트워크의 계산</span>
+            <strong>신경회로</strong>
+            <span>판단, 기억, 감정과 연결</span>
           </div>
+
           <div class="flow-item">
             <strong>운동뉴런</strong>
             <span>근육과 장기로 명령 전달</span>
           </div>
+
           <div class="flow-item">
             <strong>행동/학습</strong>
-            <span>경험에 따른 회로 변화</span>
+            <span>경험에 따라 회로 변화</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Detail -->
     <section class="section">
-      <div class="section-label">DEEPER VIEW</div>
-      <h2 class="section-title">전기 신호와 화학 신호가 만나는 지점</h2>
+      <div class="section-label">GLOSSARY</div>
+      <h2 class="section-title">기초 용어 정리</h2>
       <p class="section-desc">
-        뇌의 정보 전달은 하나의 방식으로만 이루어지지 않는다.
-        뉴런 내부에서는 전기 신호가 이동하고, 뉴런 사이에서는 화학 신호가 정보를 넘겨준다.
+        다른 페이지를 읽기 전에 알아두면 좋은 기본 용어들이다.
       </p>
 
-      <div class="two-column">
-        <div class="info-panel">
-          <h3>뉴런 내부: 전기 신호</h3>
-          <p>
-            뉴런은 여러 입력을 받아들인 뒤, 흥분과 억제 신호의 합이 일정 기준을 넘으면 활동전위를 만든다.
-            이 활동전위는 축삭을 따라 빠르게 이동한다.
-          </p>
-
-          <div class="mini-list">
-            <div><b>가지돌기</b> — 다른 뉴런의 신호를 받는 부분</div>
-            <div><b>세포체</b> — 입력을 통합하는 부분</div>
-            <div><b>축삭</b> — 활동전위가 이동하는 통로</div>
-            <div><b>축삭말단</b> — 다음 뉴런으로 신호를 넘기는 부분</div>
-          </div>
+      <div class="glossary-grid">
+        <div class="glossary-card">
+          <h3>뉴런 neuron</h3>
+          <p>전기적·화학적 신호를 통해 정보를 처리하고 전달하는 신경계의 기본 세포.</p>
         </div>
 
-        <div class="info-panel">
-          <h3>뉴런 사이: 화학 신호</h3>
-          <p>
-            활동전위가 축삭말단에 도착하면 신경전달물질이 시냅스 틈으로 방출된다.
-            이 물질은 다음 뉴런의 수용체와 결합해 흥분성 또는 억제성 반응을 만든다.
-          </p>
+        <div class="glossary-card">
+          <h3>교세포 glia</h3>
+          <p>뉴런의 기능을 지지하고, 수초 형성, 면역 반응, 환경 조절 등에 관여하는 세포.</p>
+        </div>
 
-          <div class="mini-list">
-            <div><b>시냅스</b> — 뉴런과 뉴런 사이의 연결 지점</div>
-            <div><b>신경전달물질</b> — 시냅스에서 정보를 전달하는 화학물질</div>
-            <div><b>수용체</b> — 신경전달물질을 인식하는 구조</div>
-            <div><b>흥분/억제</b> — 다음 뉴런의 발화 가능성을 조절</div>
-          </div>
+        <div class="glossary-card">
+          <h3>활동전위 action potential</h3>
+          <p>역치를 넘은 뉴런에서 발생해 축삭을 따라 이동하는 빠른 전기 신호.</p>
+        </div>
+
+        <div class="glossary-card">
+          <h3>시냅스 synapse</h3>
+          <p>뉴런과 뉴런, 또는 뉴런과 다른 세포가 정보를 주고받는 연결 지점.</p>
+        </div>
+
+        <div class="glossary-card">
+          <h3>신경전달물질 neurotransmitter</h3>
+          <p>시냅스에서 방출되어 다음 세포의 수용체에 작용하는 화학 신호 물질.</p>
+        </div>
+
+        <div class="glossary-card">
+          <h3>신경회로 neural circuit</h3>
+          <p>여러 뉴런이 연결되어 감각, 운동, 기억, 판단 같은 기능을 수행하는 네트워크.</p>
+        </div>
+
+        <div class="glossary-card">
+          <h3>신경가소성 plasticity</h3>
+          <p>경험과 학습에 따라 신경 연결의 강도나 구조가 변화하는 성질.</p>
+        </div>
+
+        <div class="glossary-card">
+          <h3>흥분 excitation</h3>
+          <p>뉴런이 활동전위를 발생시키기 쉬운 방향으로 막전위를 변화시키는 작용.</p>
+        </div>
+
+        <div class="glossary-card">
+          <h3>억제 inhibition</h3>
+          <p>뉴런이 활동전위를 발생시키기 어려운 방향으로 막전위를 변화시키는 작용.</p>
         </div>
       </div>
     </section>
 
-    <!-- Avoid overlap -->
-    <section class="section">
-      <div class="section-label">SITE STRUCTURE</div>
-      <h2 class="section-title">이 페이지에서는 깊게 다루지 않는 내용</h2>
-      <p class="section-desc">
-        기초신경과학 페이지는 전체 구조를 잡는 입문 페이지이므로,
-        아래 내용은 다른 페이지에서 더 자세히 다루는 것이 좋다.
-      </p>
-
-      <div class="avoid-grid">
-        <div class="avoid-card">
-          <h3>대뇌엽별 기능</h3>
-          <p>자세한 구조 설명은 신경해부학 페이지로 분리</p>
-        </div>
-
-        <div class="avoid-card">
-          <h3>해마·편도체·시상</h3>
-          <p>여기서는 예시로만 언급하고 세부 구조는 별도 정리</p>
-        </div>
-
-        <div class="avoid-card">
-          <h3>시각·청각·미각</h3>
-          <p>감각/인지 페이지에서 감각 경로 중심으로 설명</p>
-        </div>
-
-        <div class="avoid-card">
-          <h3>파킨슨병·뇌졸중</h3>
-          <p>뇌질환 페이지에서 원인과 증상 중심으로 설명</p>
-        </div>
-
-        <div class="avoid-card">
-          <h3>EEG·fMRI·BCI</h3>
-          <p>연구/기술 페이지에서 측정 기술 중심으로 설명</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quiz -->
-    <section class="section">
-      <div class="section-label">CHECKPOINT</div>
-      <h2 class="section-title">짧은 확인 퀴즈</h2>
-      <p class="section-desc">
-        기초 개념을 읽은 뒤 바로 확인할 수 있는 간단한 퀴즈이다.
-      </p>
-
-      <div class="quiz-box">
-        <div class="quiz-question">
-          Q. 뉴런과 뉴런 사이에서 화학물질을 통해 정보가 전달되는 연결 지점은?
-        </div>
-
-        <div class="quiz-options">
-          <button onclick="checkAnswer(false)">A. 축삭</button>
-          <button onclick="checkAnswer(false)">B. 세포체</button>
-          <button onclick="checkAnswer(true)">C. 시냅스</button>
-          <button onclick="checkAnswer(false)">D. 뇌하수체</button>
-        </div>
-
-        <div id="quizResult" class="quiz-result"></div>
-      </div>
-    </section>
-
-    <!-- Next Links -->
     <section class="section">
       <div class="section-label">NEXT STEP</div>
       <h2 class="section-title">다음으로 이어지는 주제</h2>
@@ -1014,19 +1354,5 @@
       Brain-Structured Research Archive · Basic Neuroscience
     </footer>
   </main>
-
-  <script>
-    function checkAnswer(isCorrect) {
-      const result = document.getElementById("quizResult");
-
-      if (isCorrect) {
-        result.className = "quiz-result correct";
-        result.textContent = "정답! 시냅스는 뉴런과 뉴런 사이에서 신호가 전달되는 연결 지점이다.";
-      } else {
-        result.className = "quiz-result wrong";
-        result.textContent = "아쉽다. 정답은 C. 시냅스이다. 축삭말단에서 나온 신경전달물질이 시냅스 틈을 지나 다음 뉴런에 작용한다.";
-      }
-    }
-  </script>
 </body>
 </html>
