@@ -1,0 +1,211 @@
+[
+  {
+    "id": "lecture-anatomy",
+    "type": "제공 PDF",
+    "title": "신경해부학(서종모 교수) 강의자료",
+    "creator": "서종모 교수",
+    "year": "자료 표기 기준",
+    "pages": 31,
+    "use": [
+      "신경해부학",
+      "감각·운동 경로",
+      "뇌영역 상세"
+    ],
+    "note": "전체 텍스트와 단원 흐름 확인. 그림의 작은 레이블은 원본 복제 없이 별도 검증."
+  },
+  {
+    "id": "lecture-neuroscience",
+    "type": "제공 PDF",
+    "title": "신경과학(민병경 교수) 강의자료",
+    "creator": "민병경 교수",
+    "year": "자료 표기 기준",
+    "pages": 123,
+    "use": [
+      "7개 학습 영역 구조",
+      "감각·인지",
+      "운동·행동",
+      "연구 기술"
+    ],
+    "note": "전체 텍스트와 주제 전환 확인. 도식·시기 의존 수치는 사용 전 재검증."
+  },
+  {
+    "id": "brain-facts",
+    "type": "제공 PDF",
+    "title": "Brain Facts",
+    "creator": "Society for Neuroscience",
+    "year": "2018",
+    "pages": 71,
+    "use": [
+      "기초 신경과학",
+      "발달",
+      "질환",
+      "연구 기술"
+    ],
+    "note": "18개 장 범위 확인. 유병률·치료 통계는 사이트에 옮기지 않고 최신 공식 자료와 대조."
+  },
+  {
+    "id": "science-brain",
+    "type": "제공 PDF",
+    "title": "Neuroscience: The Science of the Brain",
+    "creator": "British Neuroscience Association 외",
+    "year": "2003",
+    "pages": 60,
+    "use": [
+      "활동전위",
+      "감각계",
+      "발달",
+      "연구 방법"
+    ],
+    "note": "20개 장 범위 확인. 역사적 예시와 오래된 설명은 현재 관점과 구분."
+  },
+  {
+    "id": "lecture-disorders",
+    "type": "제공 PDF",
+    "title": "뇌질환(장원석 교수) 강의자료",
+    "creator": "장원석 교수",
+    "year": "자료 표기 기준",
+    "pages": 39,
+    "use": [
+      "뇌질환",
+      "진단",
+      "치료 원리"
+    ],
+    "note": "질환 범위 확인. 단일 전달물질 설명, 낙인 가능 표현, 임상 통계는 최신 공식 자료로 교정."
+  },
+  {
+    "id": "camp-1",
+    "type": "제공 PDF",
+    "title": "뇌캠프 교재 part 1 — neurons, glial cells, neurotransmitters",
+    "creator": "제공된 뇌캠프 교재",
+    "year": "자료 표기 기준",
+    "pages": 43,
+    "use": [
+      "뉴런·교세포",
+      "막전위",
+      "시냅스",
+      "전달물질"
+    ],
+    "note": "오래된 뉴런·교세포 수와 고정 10:1 비율 설명을 사용하지 않음."
+  },
+  {
+    "id": "camp-2",
+    "type": "제공 PDF",
+    "title": "뇌캠프 교재 part 2 — brain anatomy",
+    "creator": "제공된 뇌캠프 교재",
+    "year": "자료 표기 기준",
+    "pages": 73,
+    "use": [
+      "뇌 해부",
+      "발달",
+      "척수·자율신경"
+    ],
+    "note": "삼위일체뇌·원시/고등의 서열적 진화 설명을 문자 그대로 사용하지 않음."
+  },
+  {
+    "id": "camp-4",
+    "type": "제공 PDF",
+    "title": "뇌캠프 교재 part 4 — 뇌인지 및 기타",
+    "creator": "제공된 뇌캠프 교재",
+    "year": "자료 표기 기준",
+    "pages": 46,
+    "use": [
+      "감각·인지",
+      "기억",
+      "수면",
+      "퀴즈 개념 범위"
+    ],
+    "note": "기출 문항은 복제하지 않고 동일 개념을 평가하는 새 문항만 작성."
+  },
+  {
+    "id": "glia-review",
+    "type": "검증 자료",
+    "title": "The search for true numbers of neurons and glial cells in the human brain: A review of 150 years of cell counting",
+    "creator": "von Bartheld, Bahney & Herculano-Houzel",
+    "year": "2016",
+    "pages": null,
+    "use": [
+      "교세포:뉴런 비율 검수"
+    ],
+    "note": "세포 수 추정의 방법론과 영역별 차이를 확인하는 검토 자료.",
+    "url": "https://doi.org/10.1002/cne.24040"
+  },
+  {
+    "id": "brain-numbers",
+    "type": "검증 자료",
+    "title": "The human brain in numbers: a linearly scaled-up primate brain",
+    "creator": "Herculano-Houzel",
+    "year": "2009",
+    "pages": null,
+    "use": [
+      "사람 뇌 세포 수 일반화 검수"
+    ],
+    "note": "등방성 분획법에 기반한 추정 연구. 숫자는 측정법·정의와 함께 해석.",
+    "url": "https://doi.org/10.1002/cne.21974"
+  },
+  {
+    "id": "bold-study",
+    "type": "검증 자료",
+    "title": "Neurophysiological investigation of the basis of the fMRI signal",
+    "creator": "Logothetis et al.",
+    "year": "2001",
+    "pages": null,
+    "use": [
+      "fMRI BOLD 직접·간접 측정 구분"
+    ],
+    "note": "BOLD를 뉴런 발화의 직접 영상으로 설명하지 않기 위한 1차 연구.",
+    "url": "https://doi.org/10.1038/35084005"
+  },
+  {
+    "id": "epilepsy-definition",
+    "type": "검증 자료",
+    "title": "ILAE official report: A practical clinical definition of epilepsy",
+    "creator": "Fisher et al. / ILAE",
+    "year": "2014",
+    "pages": null,
+    "use": [
+      "발작과 뇌전증 용어 구분"
+    ],
+    "note": "교육 페이지는 개인 진단이 아닌 개념 구분에만 사용.",
+    "url": "https://doi.org/10.1111/epi.12550"
+  },
+  {
+    "id": "official-health",
+    "type": "공식기관",
+    "title": "NINDS·NIMH·WHO 질환별 교육 자료",
+    "creator": "미국 국립보건원 산하기관 및 세계보건기구",
+    "year": "접속 시 최신판",
+    "pages": null,
+    "use": [
+      "신경·정신질환의 비낙인적 설명",
+      "시기 의존 통계 검토"
+    ],
+    "note": "현재 사이트는 검증되지 않은 유병률·예후 숫자를 싣지 않음."
+  },
+  {
+    "id": "mne",
+    "type": "공식 문서",
+    "title": "MNE-Python Documentation",
+    "creator": "MNE-Python project",
+    "year": "접속 시 최신판",
+    "pages": null,
+    "use": [
+      "유리프 EEG 전처리·Welch PSD 계획",
+      "EEG/MEG 기술 설명"
+    ],
+    "note": "분석 절차는 장비 사양과 실제 프로토콜 확정 후 기록.",
+    "url": "https://mne.tools/stable/"
+  },
+  {
+    "id": "wcag",
+    "type": "표준",
+    "title": "Web Content Accessibility Guidelines (WCAG) 2.2",
+    "creator": "W3C",
+    "year": "2023",
+    "pages": null,
+    "use": [
+      "키보드·포커스·대비·반응형 검수"
+    ],
+    "note": "정적 사이트 접근성 기준.",
+    "url": "https://www.w3.org/TR/WCAG22/"
+  }
+]
