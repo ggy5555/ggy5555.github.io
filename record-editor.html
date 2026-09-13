@@ -1,0 +1,40 @@
+<!doctype html><html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="서버 없이 유리프 연구기록과 CA 개발일지를 작성·저장·내보내는 로컬 편집기">
+<title>로컬 기록 편집기 | NEURO ARCHIVE</title>
+<link rel="stylesheet" href="assets/css/base.css"><link rel="stylesheet" href="assets/css/layout.css"><link rel="stylesheet" href="assets/css/components.css"><link rel="stylesheet" href="assets/css/content.css">
+</head><body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">N</span><span class="brand-copy">NEURO ARCHIVE<small>EXPLORE · CONNECT · UNDERSTAND</small></span></a><button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-nav"><span class="menu-toggle-lines" aria-hidden="true"></span><span class="sr-only">메뉴 열기</span></button><nav class="primary-nav" id="primary-nav" data-primary-nav data-open="false" aria-label="주 메뉴"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="basic-neuroscience.html">기초 신경과학</a></li><li><a href="neuroanatomy.html">신경해부학</a></li><li><a href="sensory-cognition.html">감각·인지</a></li><li><a href="movement-behavior.html">운동·행동</a></li><li><a href="brain-development.html">뇌 발달</a></li><li><a href="brain-disorders.html">뇌질환</a></li><li><a href="research-tech.html">연구·기술</a></li><li><a href="research-archive.html">탐구 기록</a></li><li><a href="quiz.html">Quiz</a></li></ul></nav></div></header>
+<main id="main"><section class="learning-hero"><div class="page-shell"><span class="eyebrow">LOCAL RECORD EDITOR</span><h1>기록 편집기<br><span lang="en">Record Editor</span></h1><p class="lead">유리프 연구기록과 CA 개발일지를 같은 자료 구조로 작성하되 출력 형식은 목적에 맞게 복사할 수 있습니다.</p></div></section>
+<div class="page-shell learning-main">
+<div class="callout warning"><strong>저장 위치를 꼭 확인하세요.</strong> 임시저장은 이 브라우저의 <code>localStorage</code>에만 남습니다. 사이트가 GitHub 저장소에 직접 기록하는 기능은 없습니다. 공개하려면 JSON을 내보내 개인정보를 검토한 뒤 저장소에 반영해야 하며, 브라우저 데이터 삭제에 대비해 백업이 필요합니다.</div>
+<div class="callout caution"><strong>입력 금지</strong> 피험자 이름·연락처·동의서 내용, 직접 식별 가능한 정보와 민감한 EEG 원자료 경로를 공개용 기록에 넣지 마세요. 참가자는 익명 ID를 사용하세요.</div>
+<div data-editor-error class="callout caution" role="alert" hidden></div>
+<div class="card-grid two">
+<section class="learning-section"><h2>기록 작성</h2>
+<form data-record-form novalidate>
+<div class="form-grid">
+<div class="field"><label for="record-type">기록 종류</label><select id="record-type" name="type"><option value="eureka">유리프 연구기록</option><option value="ca">CA 사이트 개발일지</option></select></div>
+<div class="field"><label for="record-date">날짜</label><input id="record-date" name="date" type="date" required></div>
+<div class="field full"><label for="record-title">제목</label><input id="record-title" name="title" required maxlength="120"></div>
+<div class="field"><label for="record-stage">단계</label><input id="record-stage" name="stage" placeholder="예: 설계 검토 / 구현·테스트" required></div>
+<div class="field"><label for="record-status">상태</label><select id="record-status" name="status"><option>계획</option><option>진행</option><option>검토</option><option>확정</option><option>완료</option></select></div>
+<div class="field full"><label for="record-goal">목표·핵심 질문</label><textarea id="record-goal" name="goal"></textarea></div>
+<div class="field full"><label for="record-work">실제 수행 내용</label><textarea id="record-work" name="actualWork" required placeholder="실제로 한 일만 작성. 수행 전이면 수행 전이라고 표시"></textarea></div>
+<div class="field full"><label for="record-changes">변경 사항과 이유</label><textarea id="record-changes" name="changes"></textarea></div>
+<div class="field full"><label for="record-difficulties">어려웠던 점</label><textarea id="record-difficulties" name="difficulties"></textarea></div>
+<div class="field full"><label for="record-solution">해결 과정</label><textarea id="record-solution" name="solution"></textarea></div>
+<div class="field full"><label for="record-decisions">결정 사항</label><textarea id="record-decisions" name="decisions"></textarea></div>
+<div class="field full"><label for="record-ai">AI 사용 목적·채택/수정/기각</label><textarea id="record-ai" name="aiUsage" placeholder="사용 목적, 받은 제안, 그대로 채택하지 않고 수정·기각한 이유"></textarea></div>\n<div class="field full"><label for="record-evidence">증거 링크</label><textarea id="record-evidence" name="evidenceLinks" placeholder="한 줄에 URL 하나"></textarea></div>
+<div class="field full"><label for="record-next">다음 목표</label><textarea id="record-next" name="nextGoal"></textarea></div>
+<div class="field full"><label for="record-refs">참고 자료</label><textarea id="record-refs" name="references" placeholder="한 줄에 하나"></textarea></div>
+<div class="field full"><label><input name="public" type="checkbox"> 공개 후보로 표시</label><span class="text-muted text-small">체크해도 자동 공개되지 않습니다.</span></div>
+</div>
+<div class="button-row"><button class="btn primary" type="submit">브라우저에 저장</button><button class="btn secondary" type="button" data-cancel-edit hidden>수정 취소</button><button class="btn ghost" type="button" data-reset-form>입력 초기화</button></div>
+</form></section>
+<aside class="learning-section"><h2>미리보기·복사</h2><pre data-record-preview style="white-space:pre-wrap;max-height:520px;overflow:auto;padding:1rem;border-radius:.75rem;background:#0f172a;color:#e2e8f0"></pre><div class="button-row"><button class="btn secondary" type="button" data-copy-eureka>유리프 기록용 텍스트 복사</button><button class="btn secondary" type="button" data-copy-ca>CA 제출용 텍스트 복사</button></div></aside>
+</div>
+<section class="learning-section"><div class="section-heading"><div><h2>브라우저 저장 기록</h2><p>수정·삭제는 현재 브라우저의 로컬 사본에만 적용됩니다.</p></div><div><label class="field">가져오기 방식<select data-import-mode><option value="merge">ID 기준 병합</option><option value="replace">현재 기록 교체</option></select></label></div></div><div class="button-row"><button class="btn primary" type="button" data-export>JSON 내보내기</button><label class="btn secondary" for="json-import">JSON 가져오기</label><input class="sr-only" id="json-import" data-import type="file" accept="application/json,.json"></div><div class="card-grid" data-saved-records></div></section>
+</div></main>
+<footer class="site-footer"><div class="footer-inner"><div><strong>NEURO ARCHIVE</strong><br><span class="text-small">로컬 전용 기록 편집기</span></div><div class="footer-links"><a href="research-archive.html">공개 아카이브</a><span>© <span data-current-year></span></span></div></div></footer>
+<script src="assets/js/site.js" defer></script><script src="assets/js/record-editor.js" defer></script></body></html>
