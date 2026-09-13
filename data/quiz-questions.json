@@ -1,0 +1,745 @@
+[
+  {
+    "id": "bas-01",
+    "category": "basic",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "네른스트 방정식이 직접 구하는 것은 무엇인가?",
+    "options": [
+      "한 이온의 평형전위",
+      "모든 이온을 고려한 실제 발화율",
+      "시냅스 소포의 방출 확률",
+      "축삭의 전도 속도"
+    ],
+    "answer": 0,
+    "explanation": "네른스트 방정식은 한 이온의 농도 기울기와 전기력이 평형을 이루는 전위를 계산합니다.",
+    "wrong": "골드만 방정식이나 회로 수준 변수와 혼동한 선택입니다.",
+    "conceptUrl": "basic-neuroscience.html#electrophysiology"
+  },
+  {
+    "id": "bas-02",
+    "category": "basic",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "휴지막전위를 여러 이온으로 근사할 때 네른스트 방정식에 추가로 필요한 핵심 정보는?",
+    "options": [
+      "뉴런의 전체 길이",
+      "각 이온의 상대 막 투과성",
+      "시냅스 수만의 합",
+      "수상돌기의 색"
+    ],
+    "answer": 1,
+    "explanation": "골드만–호지킨–카츠 식은 주요 이온의 농도와 상대 투과성을 함께 고려합니다.",
+    "wrong": "여러 이온이 막전위에 미치는 비중은 상대 투과성으로 반영해야 합니다.",
+    "conceptUrl": "basic-neuroscience.html#electrophysiology"
+  },
+  {
+    "id": "bas-03",
+    "category": "basic",
+    "difficulty": "core",
+    "type": "truefalse",
+    "prompt": "더 강한 역치 이상 자극은 같은 축삭에서 개별 활동전위의 진폭을 계속 크게 만든다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "개별 활동전위는 전부-아니면-무 특성을 보이며 강도는 주로 발화율과 모집 패턴에 반영됩니다.",
+    "wrong": "자극 세기와 개별 활동전위 진폭을 일대일로 대응한 오해입니다.",
+    "conceptUrl": "basic-neuroscience.html#signal"
+  },
+  {
+    "id": "bas-04",
+    "category": "basic",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "한 시냅스가 짧은 간격으로 반복 활성화되어 축삭둔덕의 전위 변화가 겹치는 현상은?",
+    "options": [
+      "공간적 합산",
+      "시간적 합산",
+      "역행성 전도",
+      "가쪽억제"
+    ],
+    "answer": 1,
+    "explanation": "같은 입력의 연속 반응이 시간상 겹치는 것을 시간적 합산이라고 합니다.",
+    "wrong": "여러 위치의 동시 입력인 공간적 합산과 구분해야 합니다.",
+    "conceptUrl": "basic-neuroscience.html#electrophysiology"
+  },
+  {
+    "id": "bas-05",
+    "category": "basic",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "수초가 축삭 전도를 빠르게 하는 설명으로 가장 적절한 것은?",
+    "options": [
+      "모든 이온통로를 없앤다",
+      "막 저항을 높이고 유효 막용량을 낮춰 결절 사이 전류 확산을 돕는다",
+      "활동전위가 축삭 밖으로 순간이동한다",
+      "신경전달물질을 축삭 안에 방출한다"
+    ],
+    "answer": 1,
+    "explanation": "수초는 누출을 줄이고 다음 랑비에결절이 빠르게 역치에 도달하도록 합니다.",
+    "wrong": "도약전도는 실제 신호의 순간이동이나 시냅스 방출이 아닙니다.",
+    "conceptUrl": "basic-neuroscience.html#electrophysiology"
+  },
+  {
+    "id": "bas-06",
+    "category": "basic",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "전기적 시냅스의 직접 연결 구조는?",
+    "options": [
+      "수초",
+      "gap junction",
+      "시냅스 소포",
+      "핵공"
+    ],
+    "answer": 1,
+    "explanation": "gap junction을 통해 세포 사이 전류가 직접 흐를 수 있습니다.",
+    "wrong": "화학적 시냅스의 소포나 축삭 절연 구조와 혼동한 선택입니다.",
+    "conceptUrl": "basic-neuroscience.html#synapse"
+  },
+  {
+    "id": "bas-07",
+    "category": "basic",
+    "difficulty": "core",
+    "type": "truefalse",
+    "prompt": "사람 뇌에서는 모든 영역에서 교세포가 뉴런보다 정확히 10배 많다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "교세포와 뉴런의 비율은 영역과 측정 정의에 따라 다르며 고정 10:1 일반화는 부정확합니다.",
+    "wrong": "오래된 추정치를 모든 뇌 영역의 법칙처럼 적용한 설명입니다.",
+    "conceptUrl": "basic-neuroscience.html#neuron"
+  },
+  {
+    "id": "bas-08",
+    "category": "basic",
+    "difficulty": "advanced",
+    "type": "multiple",
+    "prompt": "LTP에 대한 가장 정확한 설명은?",
+    "options": [
+      "모든 기억을 저장하는 단일 분자",
+      "일정 조건에서 시냅스 전달효율이 오래 증가하는 현상군",
+      "뉴런이 영구적으로 계속 발화하는 상태",
+      "축삭이 수초를 잃는 과정"
+    ],
+    "answer": 1,
+    "explanation": "LTP는 여러 유도·발현 기전을 포함하는 장기적 시냅스 강화 현상입니다.",
+    "wrong": "LTP를 기억 전체나 지속 발화와 동일시하면 회로·시스템 수준을 놓칩니다.",
+    "conceptUrl": "basic-neuroscience.html#memory"
+  },
+  {
+    "id": "ana-01",
+    "category": "neuroanatomy",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "좌우 관계를 가장 직접적으로 보여 주는 절단면은?",
+    "options": [
+      "시상면",
+      "관상면",
+      "수평면",
+      "피부절"
+    ],
+    "answer": 0,
+    "explanation": "시상면은 몸을 좌우 방향으로 나눕니다.",
+    "wrong": "관상면은 앞뒤, 수평면은 위아래 관계에 특히 유용합니다.",
+    "conceptUrl": "neuroanatomy.html#orientation"
+  },
+  {
+    "id": "ana-02",
+    "category": "neuroanatomy",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "말초신경계의 축삭 다발을 부르는 말은?",
+    "options": [
+      "핵 nucleus",
+      "로 tract",
+      "신경 nerve",
+      "피질 cortex"
+    ],
+    "answer": 2,
+    "explanation": "PNS의 축삭 다발은 보통 신경, CNS의 축삭 다발은 로라고 합니다.",
+    "wrong": "핵·피질은 세포체가 많은 구조이고 tract는 CNS 용어입니다.",
+    "conceptUrl": "neuroanatomy.html#orientation"
+  },
+  {
+    "id": "ana-03",
+    "category": "neuroanatomy",
+    "difficulty": "detail",
+    "type": "sequence",
+    "prompt": "뇌척수액의 대표 흐름 순서로 알맞은 것은?",
+    "options": [
+      "가쪽뇌실 → 제3뇌실 → 중뇌수도관 → 제4뇌실",
+      "제4뇌실 → 가쪽뇌실 → 제3뇌실 → 중뇌수도관",
+      "제3뇌실 → 가쪽뇌실 → 제4뇌실 → 중뇌수도관",
+      "가쪽뇌실 → 제4뇌실 → 제3뇌실 → 중뇌수도관"
+    ],
+    "answer": 0,
+    "explanation": "CSF는 가쪽뇌실에서 제3뇌실, 중뇌수도관, 제4뇌실 방향으로 흐릅니다.",
+    "wrong": "뇌실의 앞뒤 연결 순서를 뒤섞은 선택입니다.",
+    "conceptUrl": "neuroanatomy.html#ventricles"
+  },
+  {
+    "id": "ana-04",
+    "category": "neuroanatomy",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "일차체성감각피질이 위치하는 대표 이랑은?",
+    "options": [
+      "중심앞이랑",
+      "중심뒤이랑",
+      "방추상이랑",
+      "띠이랑"
+    ],
+    "answer": 1,
+    "explanation": "S1은 중심고랑 뒤쪽의 중심뒤이랑에 있습니다.",
+    "wrong": "중심앞이랑의 일차운동피질과 혼동하기 쉽습니다.",
+    "conceptUrl": "parietal.html#location"
+  },
+  {
+    "id": "ana-05",
+    "category": "neuroanatomy",
+    "difficulty": "advanced",
+    "type": "multiple",
+    "prompt": "오른쪽 척수 뒤기둥이 연수 교차 전 손상되면 주로 예상되는 변화는?",
+    "options": [
+      "병변 아래 오른쪽 진동·고유감각 변화",
+      "병변 아래 왼쪽 진동·고유감각 변화",
+      "양쪽 청각 소실",
+      "오른쪽 후각 소실"
+    ],
+    "answer": 0,
+    "explanation": "뒤기둥 경로는 연수에서 교차하므로 척수 병변에서는 아래쪽 같은 편 변화가 예상됩니다.",
+    "wrong": "교차 위치를 척수시상로와 혼동한 선택입니다.",
+    "conceptUrl": "neuroanatomy.html#spinal-pathways"
+  },
+  {
+    "id": "ana-06",
+    "category": "neuroanatomy",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "청각과 평형감각을 전달하는 뇌신경은?",
+    "options": [
+      "V 삼차신경",
+      "VII 얼굴신경",
+      "VIII 속귀신경",
+      "X 미주신경"
+    ],
+    "answer": 2,
+    "explanation": "VIII 속귀신경은 달팽이와 전정 입력을 전달합니다.",
+    "wrong": "얼굴 감각·표정·내장 조절 신경과 구분해야 합니다.",
+    "conceptUrl": "neuroanatomy.html#cranial-nerves"
+  },
+  {
+    "id": "ana-07",
+    "category": "neuroanatomy",
+    "difficulty": "detail",
+    "type": "truefalse",
+    "prompt": "기저핵은 운동을 켜거나 끄는 한 개의 독립 스위치이다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "기저핵은 여러 병렬 피질–시상 순환에서 행동 선택, 억제와 학습을 조절합니다.",
+    "wrong": "고전적 직접·간접 경로를 단일 스위치로 과도하게 단순화한 설명입니다.",
+    "conceptUrl": "neuroanatomy.html#subcortical"
+  },
+  {
+    "id": "ana-08",
+    "category": "neuroanatomy",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "윌리스고리에 대한 설명으로 적절한 것은?",
+    "options": [
+      "모든 사람에게 완전한 동일 형태다",
+      "앞·뒤 뇌순환을 연결할 수 있으나 해부 변이가 흔하다",
+      "정맥으로만 이루어진다",
+      "뇌척수액을 생성한다"
+    ],
+    "answer": 1,
+    "explanation": "윌리스고리는 동맥 연결망이며 구성의 개인차가 흔합니다.",
+    "wrong": "완전한 고리를 보편적 형태로 전제하거나 CSF 구조와 혼동하면 안 됩니다.",
+    "conceptUrl": "neuroanatomy.html#blood"
+  },
+  {
+    "id": "sen-01",
+    "category": "sensory-cognition",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "빛을 받은 척추동물 막대·원뿔세포의 일반적 반응은?",
+    "options": [
+      "탈분극",
+      "과분극",
+      "즉시 활동전위 발생",
+      "수초 형성"
+    ],
+    "answer": 1,
+    "explanation": "광변환은 광수용기를 과분극시켜 글루탐산 방출을 변화시킵니다.",
+    "wrong": "다른 감각수용기의 탈분극과 동일하게 생각한 선택입니다.",
+    "conceptUrl": "sensory-cognition.html#vision"
+  },
+  {
+    "id": "sen-02",
+    "category": "sensory-cognition",
+    "difficulty": "core",
+    "type": "sequence",
+    "prompt": "의식적 시각 경로의 대표 순서는?",
+    "options": [
+      "망막 → 시신경 → LGN → V1",
+      "망막 → V1 → 시신경 → LGN",
+      "LGN → 망막 → V1 → 시신경",
+      "망막 → 달팽이핵 → LGN → V1"
+    ],
+    "answer": 0,
+    "explanation": "망막신경절세포 축삭은 시신경·시삭을 거쳐 LGN과 V1로 이어집니다.",
+    "wrong": "중계 구조 순서를 바꾸거나 청각핵을 섞은 선택입니다.",
+    "conceptUrl": "sensory-cognition.html#vision"
+  },
+  {
+    "id": "sen-03",
+    "category": "sensory-cognition",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "배측 시각경로와 특히 관련된 기능은?",
+    "options": [
+      "공간·움직임을 행동에 이용하기",
+      "냄새 수용체 생성",
+      "청각 주파수 분해",
+      "호르몬 분비"
+    ],
+    "answer": 0,
+    "explanation": "후두–두정 배측경로는 공간·운동 정보와 시각 유도 행동에 특히 관여합니다.",
+    "wrong": "다른 감각계나 내분비 기능과 혼동한 선택입니다.",
+    "conceptUrl": "occipital.html#pathways"
+  },
+  {
+    "id": "sen-04",
+    "category": "sensory-cognition",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "달팽이관 털세포에서 기계적 자극을 전기 신호로 바꾸는 직접 계기는?",
+    "options": [
+      "섬모 다발이 휘며 기계개폐 통로가 변함",
+      "광자가 옵신에 결합함",
+      "근방추가 늘어남",
+      "시상에서 호르몬이 분비됨"
+    ],
+    "answer": 0,
+    "explanation": "기저막 운동으로 섬모가 휘면 기계개폐 통로의 열림이 달라집니다.",
+    "wrong": "시각·고유감각·내분비 변환과 혼동한 선택입니다.",
+    "conceptUrl": "sensory-cognition.html#audition"
+  },
+  {
+    "id": "sen-05",
+    "category": "sensory-cognition",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "머리가 오른쪽으로 돌 때 전정안반사의 기본 목적에 맞는 눈 움직임은?",
+    "options": [
+      "오른쪽으로 함께 움직임",
+      "왼쪽으로 보상 이동",
+      "위로만 움직임",
+      "눈을 감음"
+    ],
+    "answer": 1,
+    "explanation": "VOR은 머리 움직임과 반대 방향으로 눈을 움직여 망막상을 안정화합니다.",
+    "wrong": "머리와 같은 방향으로 움직이면 시선이 더 크게 이동합니다.",
+    "conceptUrl": "sensory-cognition.html#vestibular"
+  },
+  {
+    "id": "sen-06",
+    "category": "sensory-cognition",
+    "difficulty": "detail",
+    "type": "truefalse",
+    "prompt": "통증 경험의 크기는 조직 손상 정도와 언제나 정확히 비례한다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "통증은 유해수용 입력뿐 아니라 염증, 하행 조절, 주의, 기대와 맥락의 영향을 받습니다.",
+    "wrong": "손상과 통증을 완전히 분리할 수도, 언제나 일치한다고 볼 수도 없습니다.",
+    "conceptUrl": "sensory-cognition.html#somatosensation"
+  },
+  {
+    "id": "sen-07",
+    "category": "sensory-cognition",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "해마의 역할을 가장 정확하게 설명한 것은?",
+    "options": [
+      "모든 장기기억의 영구 저장 상자",
+      "새 일화·관계·공간 기억 형성에 중요한 분산 회로의 일부",
+      "근육 수축을 직접 실행",
+      "빛을 전기 신호로 변환"
+    ],
+    "answer": 1,
+    "explanation": "해마는 피질과 상호작용해 새로운 관계·일화 기억 형성에 중요합니다.",
+    "wrong": "기억 전체를 한 부위에 저장한다고 보거나 다른 기능과 혼동한 선택입니다.",
+    "conceptUrl": "temporal.html#memory"
+  },
+  {
+    "id": "mov-01",
+    "category": "movement-behavior",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "골격근 근외근섬유로 직접 출력하는 뉴런은?",
+    "options": [
+      "알파운동뉴런",
+      "망막신경절세포",
+      "푸르키네세포",
+      "교감절후뉴런"
+    ],
+    "answer": 0,
+    "explanation": "알파운동뉴런과 지배 근섬유가 운동단위를 이룹니다.",
+    "wrong": "다른 감각·소뇌·자율신경 출력과 혼동한 선택입니다.",
+    "conceptUrl": "movement-behavior.html#cortex-corticospinal"
+  },
+  {
+    "id": "mov-02",
+    "category": "movement-behavior",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "근방추와 골지힘줄기관의 대표 감지 조합은?",
+    "options": [
+      "근육 길이 / 힘줄 장력",
+      "빛 / 소리",
+      "혈당 / 체온",
+      "통증 / 냄새"
+    ],
+    "answer": 0,
+    "explanation": "근방추는 길이·변화율, 골지힘줄기관은 장력을 주로 감지합니다.",
+    "wrong": "고유감각 수용기의 서로 다른 기계적 변수를 구분해야 합니다.",
+    "conceptUrl": "movement-behavior.html#proprioception-reflex"
+  },
+  {
+    "id": "mov-03",
+    "category": "movement-behavior",
+    "difficulty": "detail",
+    "type": "truefalse",
+    "prompt": "중추패턴발생기는 실제 보행에서 감각 피드백과 하행 조절이 전혀 필요 없다는 뜻이다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "CPG는 기본 리듬을 만들 수 있지만 실제 행동은 감각 피드백과 피질·뇌간 조절로 수정됩니다.",
+    "wrong": "‘내재적 리듬 생성’과 ‘외부 조절 불필요’를 같은 뜻으로 본 오해입니다.",
+    "conceptUrl": "movement-behavior.html#cpg"
+  },
+  {
+    "id": "mov-04",
+    "category": "movement-behavior",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "기저핵의 기능을 가장 잘 요약한 것은?",
+    "options": [
+      "행동 후보 선택·억제와 강화학습 조절",
+      "시각 광변환",
+      "CSF 생성",
+      "말초 수초 형성"
+    ],
+    "answer": 0,
+    "explanation": "기저핵은 피질–시상 순환에서 행동 선택과 결과 학습에 참여합니다.",
+    "wrong": "다른 세포·감각·뇌실 기능과 혼동한 선택입니다.",
+    "conceptUrl": "movement-behavior.html#basal-ganglia"
+  },
+  {
+    "id": "mov-05",
+    "category": "movement-behavior",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "소뇌 기능과 가장 가까운 것은?",
+    "options": [
+      "의도한 결과와 실제 피드백의 오차를 이용한 보정",
+      "호르몬을 혈액으로 직접 분비",
+      "후각수용체 생성",
+      "언어 의미의 영구 저장"
+    ],
+    "answer": 0,
+    "explanation": "소뇌는 예측·오차·타이밍과 운동학습에 핵심적으로 참여합니다.",
+    "wrong": "소뇌를 내분비·감각수용기·기억 저장소와 혼동한 선택입니다.",
+    "conceptUrl": "cerebellum.html#functions"
+  },
+  {
+    "id": "mov-06",
+    "category": "movement-behavior",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "NREM N2의 대표 EEG 사건은?",
+    "options": [
+      "수면방추와 K복합파",
+      "항상 평평한 EEG",
+      "오직 델타파만 존재",
+      "망막 활동전위"
+    ],
+    "answer": 0,
+    "explanation": "N2에서는 수면방추와 K복합파가 중요한 판정 특징입니다.",
+    "wrong": "수면 단계는 단일 대역만으로 분류하지 않으며 EEG가 평평하지 않습니다.",
+    "conceptUrl": "movement-behavior.html#sleep"
+  },
+  {
+    "id": "dev-01",
+    "category": "brain-development",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "신경능선에서 유래하는 대표 구조는?",
+    "options": [
+      "말초 감각신경절",
+      "대뇌피질 전체",
+      "척수 중심관",
+      "제3뇌실"
+    ],
+    "answer": 0,
+    "explanation": "신경능선은 말초 감각·자율신경절과 슈반세포 등으로 분화합니다.",
+    "wrong": "뇌·척수와 뇌실은 주로 신경관에서 유래합니다.",
+    "conceptUrl": "brain-development.html#germ-layers"
+  },
+  {
+    "id": "dev-02",
+    "category": "brain-development",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "종뇌와 간뇌가 유래하는 일차 뇌소포는?",
+    "options": [
+      "전뇌",
+      "중뇌",
+      "후뇌",
+      "척수"
+    ],
+    "answer": 0,
+    "explanation": "전뇌가 종뇌와 간뇌로 분화합니다.",
+    "wrong": "후뇌는 뒤뇌·숨뇌, 중뇌는 중뇌로 이어집니다.",
+    "conceptUrl": "brain-development.html#vesicles"
+  },
+  {
+    "id": "dev-03",
+    "category": "brain-development",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "대뇌 신피질 흥분성 투사뉴런 층 형성의 대표 경향은?",
+    "options": [
+      "바깥층이 먼저, 안쪽층이 나중",
+      "안쪽층이 먼저, 바깥층이 나중",
+      "모든 층이 동시에 고정",
+      "뉴런이 이동하지 않음"
+    ],
+    "answer": 1,
+    "explanation": "방사 이동에서는 안쪽 층 뉴런이 먼저 자리 잡고 나중 뉴런이 지나가 바깥층을 이루는 inside-out 경향이 있습니다.",
+    "wrong": "층 형성 순서를 반대로 기억하거나 이동 자체를 부정한 선택입니다.",
+    "conceptUrl": "brain-development.html#proliferation-migration"
+  },
+  {
+    "id": "dev-04",
+    "category": "brain-development",
+    "difficulty": "detail",
+    "type": "truefalse",
+    "prompt": "시냅스 가지치기는 단순히 사용하지 않은 뉴런 전체를 없애는 과정이다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "가지치기는 활동·분자 신호·교세포가 관여하는 선택적 시냅스 조정이며 세포사멸과도 구분됩니다.",
+    "wrong": "시냅스 제거와 뉴런 전체 제거를 같은 과정으로 본 오해입니다.",
+    "conceptUrl": "brain-development.html#refinement"
+  },
+  {
+    "id": "dev-05",
+    "category": "brain-development",
+    "difficulty": "core",
+    "type": "truefalse",
+    "prompt": "청소년의 뇌는 열등한 미완성 성인 뇌이므로 합리적 판단이 불가능하다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "청소년기 네트워크는 계속 변화하지만 탐색·사회학습에 적응적인 특성과 큰 개인차를 보입니다.",
+    "wrong": "발달 차이를 능력·가치의 결함으로 일반화한 설명입니다.",
+    "conceptUrl": "brain-development.html#lifespan"
+  },
+  {
+    "id": "dis-01",
+    "category": "brain-disorders",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "EEG가 직접 기록하는 것은?",
+    "options": [
+      "두피 전위차",
+      "뇌 전체 뉴런 수",
+      "개인의 진단명",
+      "혈관의 3차원 구조"
+    ],
+    "answer": 0,
+    "explanation": "EEG는 전극 사이 두피 전위차의 시간 변화를 기록합니다.",
+    "wrong": "신호와 진단·구조 정보를 동일시하면 안 됩니다.",
+    "conceptUrl": "brain-disorders.html#diagnosis"
+  },
+  {
+    "id": "dis-02",
+    "category": "brain-disorders",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "갑작스러운 얼굴 비대칭·한쪽 팔 약화·말 이상이 함께 나타날 때 가장 적절한 대응은?",
+    "options": [
+      "며칠간 온라인 검색만 한다",
+      "증상 시작 시간을 기록하고 즉시 응급의료 도움을 요청한다",
+      "잠을 자면 반드시 낫는다",
+      "개인 성격 문제로 본다"
+    ],
+    "answer": 1,
+    "explanation": "급성 뇌졸중 가능성을 포함해 빠른 전문 평가가 중요합니다.",
+    "wrong": "시간을 지연하거나 원인을 단정하는 선택은 안전하지 않습니다.",
+    "conceptUrl": "brain-disorders.html#stroke"
+  },
+  {
+    "id": "dis-03",
+    "category": "brain-disorders",
+    "difficulty": "detail",
+    "type": "truefalse",
+    "prompt": "급성 유발 원인이 있는 발작 한 번은 언제나 뇌전증 진단을 뜻한다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "뇌전증은 반복되는 비유발성 발작 소인을 중심으로 평가하며 유발 발작과 구분합니다.",
+    "wrong": "단일 사건과 장기적 발작 소인을 같은 것으로 본 오해입니다.",
+    "conceptUrl": "brain-disorders.html#epilepsy"
+  },
+  {
+    "id": "dis-04",
+    "category": "brain-disorders",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "다발성경화증의 대표 표적은?",
+    "options": [
+      "중추신경계 수초와 축삭",
+      "뼈의 칼슘만",
+      "눈의 수정체만",
+      "골격근 단백질만"
+    ],
+    "answer": 0,
+    "explanation": "다발성경화증은 CNS의 염증성 탈수초와 축삭 손상에 관련됩니다.",
+    "wrong": "말초·근육·뼈의 단일 문제로 바꾼 선택입니다.",
+    "conceptUrl": "brain-disorders.html#injury-inflammation"
+  },
+  {
+    "id": "dis-05",
+    "category": "brain-disorders",
+    "difficulty": "core",
+    "type": "truefalse",
+    "prompt": "우울·조현병·중독은 각각 하나의 전달물질 과다 또는 부족만으로 개인 진단과 증상을 모두 설명할 수 있다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "정신건강 질환은 여러 회로, 발달, 신체·사회 환경과 개인차가 상호작용합니다.",
+    "wrong": "교육용 단일 전달물질 설명을 완전한 개인 진단 모형으로 과장한 것입니다.",
+    "conceptUrl": "brain-disorders.html#mental-health"
+  },
+  {
+    "id": "res-01",
+    "category": "research-tech",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "fMRI BOLD 신호가 직접 반영하는 물리적 변화는?",
+    "options": [
+      "혈중 산소화와 관련된 자기공명 신호 변화",
+      "뉴런 한 개의 활동전위 진폭",
+      "두피 전위차",
+      "축삭의 실제 색"
+    ],
+    "answer": 0,
+    "explanation": "BOLD는 신경 활동과 연결된 혈류·산소화 관련 MR 신호이며 뉴런 발화를 직접 측정하지 않습니다.",
+    "wrong": "신경 활동과 혈관성 간접 신호를 동일시한 선택입니다.",
+    "conceptUrl": "research-tech.html#fmri"
+  },
+  {
+    "id": "res-02",
+    "category": "research-tech",
+    "difficulty": "core",
+    "type": "truefalse",
+    "prompt": "두피 EEG의 alpha 파워 하나만으로 개인의 집중 상태를 확정할 수 있다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "대역 파워는 과제·기준선·채널·잡음과 개인차에 영향을 받으며 단독 확정 지표가 아닙니다.",
+    "wrong": "집단 연관성을 개인의 정신상태 판독기로 과장한 설명입니다.",
+    "conceptUrl": "research-tech.html#eeg"
+  },
+  {
+    "id": "res-03",
+    "category": "research-tech",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "DTI tractography의 선에 대한 가장 정확한 설명은?",
+    "options": [
+      "물 확산 모형에서 추정한 경로",
+      "축삭을 한 가닥씩 직접 촬영한 사진",
+      "혈액 산소화 지도",
+      "두피 전위차 파형"
+    ],
+    "answer": 0,
+    "explanation": "tractography는 확산 신호와 알고리즘으로 가능한 백질 경로를 추정합니다.",
+    "wrong": "추정 모형의 출력을 직접 해부 사진으로 해석한 선택입니다.",
+    "conceptUrl": "research-tech.html#imaging"
+  },
+  {
+    "id": "res-04",
+    "category": "research-tech",
+    "difficulty": "detail",
+    "type": "multiple",
+    "prompt": "TMS의 기본 원리는?",
+    "options": [
+      "변화하는 자기장으로 피질에 전기장을 유도",
+      "방사성 추적자를 주입해 대사를 촬영",
+      "두피에서 전위차만 수동 기록",
+      "X선 감쇠를 재구성"
+    ],
+    "answer": 0,
+    "explanation": "TMS는 전자기 유도로 뇌 조직에 전기장을 만들어 회로 흥분성을 조절합니다.",
+    "wrong": "PET·EEG·CT의 측정 원리와 혼동한 선택입니다.",
+    "conceptUrl": "research-tech.html#stimulation"
+  },
+  {
+    "id": "res-05",
+    "category": "research-tech",
+    "difficulty": "advanced",
+    "type": "truefalse",
+    "prompt": "분류기가 뇌 신호에서 자극을 높은 정확도로 예측하면 그 모형이 뇌의 인과 계산방식을 그대로 밝혔다는 뜻이다.",
+    "options": [
+      "참",
+      "거짓"
+    ],
+    "answer": 1,
+    "explanation": "decoding 성능은 정보가 예측 가능함을 보일 뿐 교란·상관 단서와 인과 기전은 별도 검증이 필요합니다.",
+    "wrong": "예측 가능성과 인과적·생물학적 설명을 동일시한 오해입니다.",
+    "conceptUrl": "research-tech.html#bci"
+  },
+  {
+    "id": "res-06",
+    "category": "research-tech",
+    "difficulty": "core",
+    "type": "multiple",
+    "prompt": "공개 EEG 연구기록의 개인정보 원칙으로 가장 적절한 것은?",
+    "options": [
+      "이름만 지우면 모든 원자료를 즉시 공개",
+      "동의 범위와 재식별 위험을 검토하고 익명 ID를 쓰며 민감 원자료는 공개하지 않음",
+      "참가자 연락처를 증거 링크로 남김",
+      "실제 결과가 없으면 수치를 예상해 채움"
+    ],
+    "answer": 1,
+    "explanation": "뇌 데이터는 민감할 수 있어 목적·동의·재식별 위험과 공개 범위를 별도로 검토해야 합니다.",
+    "wrong": "직접 식별정보 공개나 가상 결과 생성은 연구윤리와 사이트 원칙에 어긋납니다.",
+    "conceptUrl": "research-tech.html#neuroethics"
+  }
+]
