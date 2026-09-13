@@ -1,744 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEURO ARCHIVE</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
-      background: #f5f7fb;
-      color: #111827;
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    .hero {
-      min-height: 620px;
-      background:
-        radial-gradient(circle at 70% 35%, rgba(37, 99, 235, 0.35), transparent 35%),
-        radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.18), transparent 30%),
-        linear-gradient(180deg, #050b18 0%, #08111f 100%);
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.25;
-    }
-
-    header {
-      height: 74px;
-      padding: 0 42px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      position: relative;
-      z-index: 5;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      flex-shrink: 0;
-    }
-
-    .logo-icon {
-      width: 34px;
-      height: 34px;
-      border: 2px solid #3b82f6;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      color: #60a5fa;
-    }
-
-    .logo small {
-      display: block;
-      font-size: 10px;
-      color: #93c5fd;
-      font-weight: 600;
-      margin-top: 2px;
-    }
-
-    nav {
-      display: flex;
-      gap: 14px;
-      font-size: 12.8px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    nav a {
-      color: #dbeafe;
-      padding: 26px 0;
-      border-bottom: 3px solid transparent;
-      transition: 0.2s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: #60a5fa;
-      border-bottom-color: #3b82f6;
-    }
-
-    .search {
-      width: 150px;
-      padding: 11px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #94a3b8;
-      font-size: 13px;
-      flex-shrink: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 0.85fr 1.35fr;
-      gap: 34px;
-      align-items: center;
-      padding: 70px 50px 40px;
-      max-width: 1250px;
-      margin: 0 auto;
-    }
-
-    .hero-text h1 {
-      font-size: 52px;
-      line-height: 1.18;
-      letter-spacing: -2px;
-      margin-bottom: 26px;
-    }
-
-    .hero-text h1 span { color: #3b82f6; }
-
-    .hero-text p {
-      color: #cbd5e1;
-      font-size: 18px;
-      line-height: 1.8;
-      margin-bottom: 34px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 42px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 15px 28px;
-      border-radius: 15px;
-      font-weight: 700;
-      font-size: 15px;
-      border: 1px solid rgba(255,255,255,0.16);
-      transition: 0.2s;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn.primary {
-      background: linear-gradient(135deg, #2563eb, #60a5fa);
-      color: white;
-      box-shadow: 0 12px 30px rgba(37,99,235,0.35);
-    }
-
-    .btn.secondary {
-      background: rgba(255,255,255,0.04);
-      color: #e5e7eb;
-    }
-
-    .stats {
-      display: flex;
-      gap: 30px;
-      color: #dbeafe;
-    }
-
-    .stat {
-      border-right: 1px solid rgba(255,255,255,0.15);
-      padding-right: 28px;
-      font-size: 13px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 22px;
-      color: white;
-    }
-
-    .brain-stage {
-      height: 455px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .brain-image {
-      width: 680px;
-      max-width: 100%;
-      filter:
-        drop-shadow(0 0 30px rgba(59,130,246,0.5))
-        drop-shadow(0 0 80px rgba(37,99,235,0.25));
-      user-select: none;
-      transition: 0.25s;
-      cursor: pointer;
-    }
-
-    .brain-image:hover {
-      transform: scale(1.02);
-    }
-
-    section {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 46px 40px;
-    }
-
-    .section-title {
-      font-size: 26px;
-      margin-bottom: 22px;
-      letter-spacing: -1px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 4fr;
-      gap: 36px;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: #475569;
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
-
-    .card-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .info-card,
-    .research-card,
-    .path-card {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      box-shadow: 0 10px 28px rgba(15,23,42,0.06);
-    }
-
-    .info-card {
-      padding: 30px 22px;
-      text-align: center;
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 18px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      color: #2563eb;
-      border: 2px solid #3b82f6;
-      font-size: 24px;
-      font-weight: 800;
-    }
-
-    .info-card h3 {
-      font-size: 17px;
-      margin-bottom: 12px;
-    }
-
-    .info-card p {
-      color: #64748b;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .research-head,
-    .path-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 22px;
-    }
-
-    .more {
-      color: #2563eb;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .research-card { overflow: hidden; }
-
-    .thumb {
-      height: 112px;
-      background:
-        radial-gradient(circle at 70% 30%, rgba(59,130,246,0.9), transparent 20%),
-        linear-gradient(135deg, #0f172a, #1e3a8a);
-      position: relative;
-    }
-
-    .tag {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(15,23,42,0.72);
-      color: #bfdbfe;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .research-body { padding: 18px; }
-
-    .research-body h3 {
-      font-size: 17px;
-      margin-bottom: 11px;
-    }
-
-    .research-body p {
-      font-size: 14px;
-      color: #64748b;
-      line-height: 1.65;
-      min-height: 70px;
-    }
-
-    .meta {
-      margin-top: 14px;
-      color: #94a3b8;
-      font-size: 13px;
-    }
-
-    .learning-path {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 22px;
-      align-items: center;
-    }
-
-    .path-card {
-      min-height: 165px;
-      padding: 24px 16px;
-      text-align: center;
-      position: relative;
-    }
-
-    .path-card:not(:last-child)::after {
-      content: "→";
-      position: absolute;
-      right: -20px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #94a3b8;
-      font-size: 24px;
-    }
-
-    .path-card .icon {
-      width: 52px;
-      height: 52px;
-      font-size: 25px;
-      border-color: #bfdbfe;
-      background: #eff6ff;
-    }
-
-    .path-card h3 {
-      font-size: 15px;
-      margin-bottom: 10px;
-    }
-
-    .path-card p {
-      font-size: 13px;
-      color: #64748b;
-      line-height: 1.55;
-    }
-
-    .concept {
-      max-width: none;
-      background: linear-gradient(180deg, #06101f, #020617);
-      color: white;
-      padding: 48px 0;
-    }
-
-    .concept-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
-    .concept-grid {
-      display: grid;
-      grid-template-columns: 2.2fr 1fr;
-      gap: 28px;
-    }
-
-    .concept-card {
-      display: grid;
-      grid-template-columns: 230px 1fr;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    .concept-img {
-      min-height: 200px;
-      background:
-        radial-gradient(circle, rgba(56,189,248,0.85), transparent 35%),
-        linear-gradient(135deg, #020617, #0f172a);
-      display: grid;
-      place-items: center;
-      font-size: 66px;
-    }
-
-    .concept-info { padding: 30px; }
-
-    .concept-info small {
-      color: #60a5fa;
-      font-weight: 800;
-    }
-
-    .concept-info h3 {
-      font-size: 28px;
-      margin: 8px 0;
-    }
-
-    .concept-info p {
-      color: #cbd5e1;
-      line-height: 1.75;
-      margin-bottom: 16px;
-    }
-
-    .chips {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-
-    .chip {
-      background: rgba(255,255,255,0.08);
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: #dbeafe;
-    }
-
-    .quick-menu {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    .quick-menu a {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.09);
-      color: #dbeafe;
-      font-weight: 700;
-    }
-
-    footer {
-      background: #020617;
-      color: #94a3b8;
-      padding: 24px 58px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-    }
-
-    @media (max-width: 1050px) {
-      .search { display: none; }
-      nav { gap: 10px; font-size: 12px; }
-      header { padding: 0 24px; }
-    }
-
-    @media (max-width: 900px) {
-      nav { display: none; }
-
-      .hero-content,
-      .about-grid,
-      .concept-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-content { padding: 50px 28px 30px; }
-
-      .hero-text h1 { font-size: 40px; }
-
-      .brain-stage { height: 330px; }
-
-      .brain-image { width: 520px; }
-
-      .card-row,
-      .research-grid,
-      .learning-path {
-        grid-template-columns: 1fr;
-      }
-
-      .path-card::after { display: none; }
-
-      .concept-card { grid-template-columns: 1fr; }
-
-      footer {
-        flex-direction: column;
-        gap: 10px;
-        padding: 24px 28px;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="뇌과학을 구조적으로 학습하고 유리프 AR·EEG 탐구 과정을 기록하는 NEURO ARCHIVE">
+  <title>NEURO ARCHIVE | 뇌과학 학습·탐구 아카이브</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
 </head>
-
 <body>
-  <div class="hero">
-    <header>
-      <div class="logo">
-        <div class="logo-icon">☊</div>
-        <div>
-          NEURO ARCHIVE
-          <small>EXPLORE · CONNECT · UNDERSTAND</small>
-        </div>
-      </div>
-
-      <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="brainmap.html">뇌맵</a>
-        <a href="basic-neuroscience.html">기초 신경과학</a>
-        <a href="neuroanatomy.html">신경해부학</a>
-        <a href="cognition.html">감각·인지</a>
-        <a href="behavior.html">운동·행동</a>
-        <a href="development.html">뇌 발달</a>
-        <a href="disease.html">뇌질환</a>
-        <a href="research.html">연구·기술</a>
-        <a href="quiz.html">Quiz</a>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">N</span><span class="brand-copy">NEURO ARCHIVE<small>EXPLORE · CONNECT · UNDERSTAND</small></span></a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-nav"><span class="menu-toggle-lines" aria-hidden="true"></span><span class="sr-only">메뉴 열기</span></button>
+      <nav class="primary-nav" id="primary-nav" data-primary-nav data-open="false" aria-label="주 메뉴">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li><li><a href="basic-neuroscience.html">기초 신경과학</a></li><li><a href="neuroanatomy.html">신경해부학</a></li><li><a href="sensory-cognition.html">감각·인지</a></li><li><a href="movement-behavior.html">운동·행동</a></li><li><a href="brain-development.html">뇌 발달</a></li><li><a href="brain-disorders.html">뇌질환</a></li><li><a href="research-tech.html">연구·기술</a></li><li><a href="research-archive.html">탐구 기록</a></li><li><a href="quiz.html">Quiz</a></li>
+        </ul>
       </nav>
-
-      <div class="search">⌕ 검색...</div>
-    </header>
-
-    <main class="hero-content">
-      <div class="hero-text">
-        <h1>
-          뇌를 탐구하고,<br />
-          지식을 <span>연결하다</span>
-        </h1>
-
-        <p>
-          신경과학의 구조를 이해하고<br />
-          나만의 탐구 여정을 기록하는 공간
-        </p>
-
-        <div class="buttons">
-          <a href="brainmap.html" class="btn primary">뇌맵 탐색하기 →</a>
-          <a href="#research" class="btn secondary">탐구 노트 보기</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat"><strong>60+</strong>뇌 구조</div>
-          <div class="stat"><strong>120+</strong>연구 노트</div>
-          <div class="stat"><strong>25+</strong>학습 루트</div>
-        </div>
-      </div>
-
-      <div class="brain-stage" id="brain">
-        <a href="brainmap.html">
-          <img src="brain.png" alt="뇌맵 인터랙션 이미지" class="brain-image" />
-        </a>
-      </div>
-    </main>
-  </div>
-
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-text">
-        <h2 class="section-title">사이트 소개</h2>
-        <p>
-          이 사이트는 뇌과학을 체계적으로 학습하고, 탐구한 내용을 기록하며,
-          지식을 연결하기 위한 개인 아카이브입니다.
-        </p>
-        <a class="btn secondary" style="color:#2563eb;border-color:#bfdbfe;" href="#">더 알아보기 →</a>
-      </div>
-
-      <div class="card-row">
-        <div class="info-card">
-          <div class="icon">♧</div>
-          <h3>구조적 학습</h3>
-          <p>뇌의 구조와 기능을 체계적으로 정리합니다.</p>
-        </div>
-
-        <div class="info-card">
-          <div class="icon">⌘</div>
-          <h3>지식 연결</h3>
-          <p>개념 간 관계를 통해 깊이 있는 이해를 추구합니다.</p>
-        </div>
-
-        <div class="info-card">
-          <div class="icon">▤</div>
-          <h3>탐구 기록</h3>
-          <p>연구 과정과 생각을 기록하고 발전시킵니다.</p>
-        </div>
-
-        <div class="info-card">
-          <div class="icon">↗</div>
-          <h3>실제 적용</h3>
-          <p>배운 지식을 실제 연구와 프로젝트에 적용합니다.</p>
-        </div>
-      </div>
+      <form class="header-search" action="index.html#search" role="search" data-site-search><label class="sr-only" for="header-q">사이트 검색</label><input id="header-q" name="q" type="search" placeholder="용어 검색"></form>
     </div>
-  </section>
-
-  <section id="research">
-    <div class="research-head">
-      <h2 class="section-title">최근 탐구</h2>
-      <a class="more" href="#">더 보기 →</a>
-    </div>
-
-    <div class="research-grid">
-      <article class="research-card">
-        <div class="thumb"><span class="tag">EEG 분석</span></div>
-        <div class="research-body">
-          <h3>EEG 기반 집중도 변화 분석</h3>
-          <p>Alpha, Beta, Theta 파워 변화를 통해 집중도와 인지 반응을 정리했습니다.</p>
-          <div class="meta">♡ 12　▢ 3</div>
-        </div>
-      </article>
-
-      <article class="research-card">
-        <div class="thumb"><span class="tag">뇌 구조</span></div>
-        <div class="research-body">
-          <h3>전전두엽 실행 기능 정리</h3>
-          <p>전두엽의 하위 영역별 역할과 실행 기능을 연결해 정리했습니다.</p>
-          <div class="meta">♡ 8　▢ 1</div>
-        </div>
-      </article>
-
-      <article class="research-card">
-        <div class="thumb"><span class="tag">프로젝트</span></div>
-        <div class="research-body">
-          <h3>EEG-AR 위치 최적화</h3>
-          <p>인지 반응 기반 AR 객체 위치 조정 알고리즘을 설계했습니다.</p>
-          <div class="meta">♡ 15　▢ 4</div>
-        </div>
-      </article>
-
-      <article class="research-card">
-        <div class="thumb"><span class="tag">인지과학</span></div>
-        <div class="research-body">
-          <h3>작업 기억과 주의 전환</h3>
-          <p>작업 기억 용량과 주의 전환 속도의 관계를 탐구했습니다.</p>
-          <div class="meta">♡ 10　▢ 2</div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="learn">
-    <div class="path-head">
-      <h2 class="section-title">추천 학습 루트</h2>
-      <a class="more" href="#">전체 루트 보기 →</a>
-    </div>
-
-    <div class="learning-path">
-      <div class="path-card">
-        <div class="icon">🧠</div>
-        <h3>신경해부학 입문</h3>
-        <p>뇌의 구조와 주요 영역 이해하기</p>
-      </div>
-
-      <div class="path-card">
-        <div class="icon">✦</div>
-        <h3>뉴런과 신경전달물질</h3>
-        <p>신경 세포의 구조와 신호 전달 과정</p>
-      </div>
-
-      <div class="path-card">
-        <div class="icon">☻</div>
-        <h3>인지 신경과학</h3>
-        <p>뇌와 인지 기능의 관계 탐구하기</p>
-      </div>
-
-      <div class="path-card">
-        <div class="icon">〰</div>
-        <h3>EEG/BCI 이해</h3>
-        <p>뇌파의 원리와 응용 기술 학습</p>
-      </div>
-
-      <div class="path-card">
-        <div class="icon">◎</div>
-        <h3>탐구 및 연구</h3>
-        <p>배운 내용을 바탕으로 연구 진행</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="concept">
-    <div class="concept-inner">
-      <h2 class="section-title">오늘의 개념</h2>
-
-      <div class="concept-grid">
-        <div class="concept-card">
-          <div class="concept-img">☽</div>
-
-          <div class="concept-info">
-            <small>TODAY'S CONCEPT</small>
-            <h3>Hippocampus</h3>
-
-            <p>
-              해마는 기억 형성과 공간 인지에 핵심적인 역할을 하는
-              변연계의 주요 구조입니다.
-            </p>
-
-            <div class="chips">
-              <span class="chip">기억</span>
-              <span class="chip">공간 인지</span>
-              <span class="chip">변연계</span>
-            </div>
-
-            <a class="btn secondary" href="#">자세히 보기 →</a>
+  </header>
+  <main id="main">
+    <section class="dark-hero">
+      <div class="page-shell hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">BRAIN SCIENCE LEARNING ARCHIVE</span>
+          <h1>뇌를 탐구하고,<br>지식을 <span>연결하다</span></h1>
+          <p>세포의 전기 신호부터 인지·행동과 연구 기술까지 단계적으로 배우고, 실제 탐구가 바뀌어 온 근거를 기록합니다.</p>
+          <div class="hero-actions"><a class="btn primary" href="brainmap.html">인터랙티브 뇌맵 →</a><a class="btn secondary" href="basic-neuroscience.html">기초부터 학습하기</a><a class="btn secondary" href="research-archive.html">탐구 기록 보기</a></div>
+          <div class="stat-row" aria-label="실제 데이터에서 계산한 사이트 현황">
+            <div class="stat"><strong data-count="pages">—</strong>검색 가능한 페이지</div>
+            <div class="stat"><strong data-count="records">—</strong>공개 탐구 기록</div>
+            <div class="stat"><strong data-count="questions">—</strong>퀴즈 문항</div>
           </div>
         </div>
-
-        <div class="quick-menu">
-          <a href="brainmap.html">뇌맵 탐색하기 <span>→</span></a>
-          <a href="#research">탐구 노트 작성하기 <span>→</span></a>
-          <a href="#learn">학습 루트 시작하기 <span>→</span></a>
-          <a href="#">개념 랜덤 보기 <span>→</span></a>
+        <div class="hero-art">
+          <a href="brainmap.html" aria-label="인터랙티브 뇌맵 열기"><img src="brain.png" alt="뇌의 측면 구조를 표현한 NEURO ARCHIVE 뇌맵 미리보기"></a>
+          <div class="hero-art-card"><strong>오늘의 연결</strong><p>뉴런의 신호가 회로를 거쳐 감각·운동·기억으로 확장되는 흐름을 따라가 보세요.</p></div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <footer>
-    <div><b>NEURO ARCHIVE</b> · Explore. Connect. Understand.</div>
-    <div>© 2026 Neuro Archive. All rights reserved.</div>
-  </footer>
+    </section>
+    <section class="content-section alt" aria-labelledby="intro-title">
+      <div class="section-inner">
+        <div class="section-heading"><div><span class="eyebrow">ABOUT</span><h2 id="intro-title">세 축으로 배우고 기록합니다</h2><p>학습 콘텐츠가 중심이며, 도구는 이해를 돕고 유리프 기록은 실제 적용 사례로 분리됩니다.</p></div><a href="references.html">자료와 검수 원칙 →</a></div>
+        <div class="card-grid">
+          <article class="info-card"><div class="card-icon" aria-hidden="true">01</div><h3>학습 콘텐츠</h3><p>기초·해부·감각·인지·운동·발달·질환·연구 기술을 연결합니다.</p></article>
+          <article class="info-card"><div class="card-icon" aria-hidden="true">02</div><h3>학습 도구</h3><p>뇌맵, 검색, 용어 연결, 자가점검과 퀴즈로 능동적으로 복습합니다.</p></article>
+          <article class="info-card"><div class="card-icon" aria-hidden="true">03</div><h3>탐구 기록</h3><p>유리프 AR·EEG 연구와 CA 사이트 개발 과정을 결과가 아닌 근거 중심으로 남깁니다.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="content-section" id="learn" aria-labelledby="learn-title">
+      <div class="section-inner">
+        <div class="section-heading"><div><span class="eyebrow">LEARNING ROUTES</span><h2 id="learn-title">추천 학습 루트</h2><p>각 카드는 실제 페이지의 해당 단원으로 바로 연결됩니다.</p></div><a href="quiz.html">학습 후 퀴즈 →</a></div>
+        <div class="card-grid four">
+          <article class="path-card"><h3><a href="basic-neuroscience.html#neuron">뉴런에서 회로까지</a></h3><p>뉴런·교세포 → 막전위 → 시냅스 → 가소성</p></article>
+          <article class="path-card"><h3><a href="neuroanatomy.html#cortex">구조에서 경로까지</a></h3><p>대뇌엽 → 피질하 구조 → 뇌간·소뇌 → 척수 경로</p></article>
+          <article class="path-card"><h3><a href="sensory-cognition.html#vision">자극에서 지각까지</a></h3><p>감각변환 → 시각·청각 경로 → 주의·기억</p></article>
+          <article class="path-card"><h3><a href="research-tech.html#eeg">신호에서 연구까지</a></h3><p>EEG → 영상 기술 → 자극 → BCI와 신경윤리</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="content-section alt" id="research" aria-labelledby="research-title">
+      <div class="section-inner">
+        <div class="section-heading"><div><span class="eyebrow">RECENT LOGS</span><h2 id="research-title">최근 탐구 기록</h2><p>완료되지 않은 결과를 만들지 않고 공개 상태인 실제 계획·검토 기록만 표시합니다.</p></div><a href="research-archive.html">전체 기록 →</a></div>
+        <div class="card-grid" data-research-records data-limit="3" aria-live="polite"><p class="empty-state">기록을 불러오는 중입니다.</p></div>
+      </div>
+    </section>
+    <section class="content-section" id="search" aria-labelledby="search-title">
+      <div class="section-inner">
+        <div class="section-heading"><div><span class="eyebrow">SEARCH</span><h2 id="search-title">개념·영문명·질환·연구기술 검색</h2><p>검색 결과는 설명이 있는 정확한 페이지와 앵커로 이동합니다.</p></div></div>
+        <form class="search-box" role="search" data-site-search><label class="sr-only" for="main-q">뇌과학 검색어</label><input id="main-q" name="q" type="search" autocomplete="off" placeholder="예: 활동전위, hippocampus, fMRI"><button class="btn primary" type="submit">검색</button></form>
+        <div class="search-results" data-search-results aria-live="polite"></div>
+      </div>
+    </section>
+    <section class="content-section alt" aria-labelledby="concept-title">
+      <div class="section-inner card-grid two">
+        <article class="content-card"><span class="eyebrow">TODAY'S CONCEPT</span><h2 id="concept-title">해마 · Hippocampus</h2><p>새로운 일화·공간 기억의 형성과 회수에 중요한 내측 측두엽 구조입니다. 기억이 한 부위에 ‘저장되는 상자’라기보다 여러 피질 영역과 상호작용하는 회로의 일부로 이해해야 합니다.</p><a class="btn ghost" href="temporal.html#memory">관련 설명 읽기 →</a></article>
+        <article class="content-card"><span class="eyebrow">RANDOM LINK</span><h2>오늘은 어디서 시작할까?</h2><p>실제 존재하는 학습 단원 가운데 하나를 무작위로 엽니다.</p><a class="btn ghost" href="basic-neuroscience.html#signal" data-random-concept>개념 랜덤 보기 →</a></article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-inner"><div><strong>NEURO ARCHIVE</strong><br><span class="text-small">1학기 CA 뇌과학 학습·탐구 아카이브</span></div><div class="footer-links"><a href="references.html">참고 자료</a><a href="record-editor.html">기록 편집기</a><span>© <span data-current-year></span></span></div></div></footer>
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
+  <script src="assets/js/research-records.js" defer></script>
 </body>
 </html>

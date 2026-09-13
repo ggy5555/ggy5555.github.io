@@ -1,0 +1,87 @@
+.learning-hero {
+  color: white;
+  background:
+    radial-gradient(circle at 85% 25%, rgba(37,99,235,.38), transparent 30rem),
+    linear-gradient(140deg, var(--navy-950), var(--navy-800));
+}
+.learning-hero .page-shell { padding-block: clamp(3.6rem, 8vw, 6.5rem); }
+.learning-hero h1 { max-width: 900px; color: white; font-size: clamp(2.2rem, 5vw, 4.15rem); }
+.learning-hero .lead { max-width: 800px; margin: 1.2rem 0; color: #dbeafe; font-size: 1.1rem; }
+.learning-meta { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; max-width: 900px; margin-top: 1.5rem; }
+.learning-meta > div { padding: 1rem; border: 1px solid rgba(191,219,254,.25); border-radius: .75rem; background: rgba(255,255,255,.06); }
+.learning-meta strong { display: block; margin-bottom: .35rem; color: white; }
+.toc {
+  position: sticky;
+  top: 74px;
+  z-index: 50;
+  border-bottom: 1px solid var(--slate-200);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(14px);
+}
+.toc-list {
+  width: min(calc(100% - 2rem), var(--content));
+  margin: 0 auto;
+  padding: .75rem 0;
+  display: flex;
+  gap: .45rem;
+  overflow-x: auto;
+  list-style: none;
+  white-space: nowrap;
+}
+.toc a { display: block; padding: .45rem .7rem; border-radius: .55rem; color: var(--slate-700); text-decoration: none; font-size: .88rem; font-weight: 800; }
+.toc a:hover { color: var(--blue-700); background: #eff6ff; }
+.learning-main { padding-block: 2.5rem 5rem; }
+.learning-section {
+  padding: clamp(1.4rem, 3vw, 2.25rem);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  background: white;
+  box-shadow: var(--shadow-sm);
+}
+.learning-section + .learning-section { margin-top: 1.35rem; }
+.learning-section h2 { margin: .55rem 0 1rem; }
+.learning-section h3 { margin: 1.35rem 0 .55rem; }
+.learning-section ul, .learning-section ol { padding-left: 1.25rem; }
+.pathway {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: .65rem;
+  margin-block: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.pathway li {
+  position: relative;
+  padding: .85rem;
+  border: 1px solid #bfdbfe;
+  border-radius: .65rem;
+  color: var(--slate-800);
+  background: #eff6ff;
+  font-weight: 750;
+}
+.pathway li:not(:last-child)::after { content: "→"; position: absolute; right: -.52rem; top: 50%; z-index: 2; transform: translateY(-50%); color: var(--blue-600); }
+.term-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .75rem; }
+.term-grid div { padding: .9rem; border: 1px solid var(--slate-200); border-radius: .65rem; background: var(--surface-soft); }
+.term-grid dt { color: var(--slate-950); font-weight: 900; }
+.term-grid dd { margin: .25rem 0 0; color: var(--slate-600); }
+.self-check { display: grid; gap: .75rem; padding: 0; list-style: none; counter-reset: question; }
+.self-check li { counter-increment: question; padding: 1rem; border-radius: .7rem; background: var(--slate-100); }
+.self-check li::before { content: "Q" counter(question) ". "; color: var(--blue-700); font-weight: 900; }
+.self-check details { margin-top: .55rem; }
+.self-check summary { cursor: pointer; color: var(--blue-700); font-weight: 800; }
+.prev-next { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; margin-top: 1.5rem; }
+.prev-next a { padding: 1rem; border: 1px solid var(--slate-200); border-radius: .75rem; background: white; text-decoration: none; font-weight: 850; }
+.references-list li { margin-bottom: .5rem; }
+.misconception { display: grid; grid-template-columns: minmax(140px,.35fr) 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--slate-200); }
+.misconception:last-child { border-bottom: 0; }
+.misconception strong { color: var(--danger); }
+@media (max-width: 760px) {
+  .learning-meta, .prev-next { grid-template-columns: 1fr; }
+  .term-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .misconception { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .term-grid { grid-template-columns: 1fr; }
+  .pathway { grid-template-columns: 1fr; }
+  .pathway li:not(:last-child)::after { content: "↓"; right: 50%; top: auto; bottom: -.78rem; transform: translateX(50%); }
+}
