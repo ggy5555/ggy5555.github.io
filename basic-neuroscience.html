@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>기초 신경과학 | Brain Archive</title>
+  <title>기초 신경과학 | NEURO ARCHIVE</title>
 
   <style>
     * {
@@ -648,31 +648,26 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/content.css">
 </head>
 
 <body>
-  <header>
-    <nav class="nav">
-      <a href="index.html" class="logo">
-        <span class="main">Brain Archive</span>
-        <span class="sub">Brain-Structured Research Archive</span>
-      </a>
-
-      <div class="menu">
-        <a href="index.html">Home</a>
-        <a href="basic-neuroscience.html" class="active">기초 신경과학</a>
-        <a href="neuroanatomy.html">신경해부학</a>
-        <a href="sensory-cognition.html">감각/인지</a>
-        <a href="movement-behavior.html">운동/행동</a>
-        <a href="brain-development.html">뇌 발달</a>
-        <a href="brain-disorders.html">뇌질환</a>
-        <a href="research-tech.html">연구/기술</a>
-        <a href="quiz.html">퀴즈</a>
-      </div>
-    </nav>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">N</span><span class="brand-copy">NEURO ARCHIVE<small>EXPLORE · CONNECT · UNDERSTAND</small></span></a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-nav"><span class="menu-toggle-lines" aria-hidden="true"></span><span class="sr-only">메뉴 열기</span></button>
+      <nav class="primary-nav" id="primary-nav" data-primary-nav data-open="false" aria-label="주 메뉴"><ul class="nav-list">
+        <li><a href="index.html">Home</a></li><li><a href="basic-neuroscience.html">기초 신경과학</a></li><li><a href="neuroanatomy.html">신경해부학</a></li><li><a href="sensory-cognition.html">감각·인지</a></li><li><a href="movement-behavior.html">운동·행동</a></li><li><a href="brain-development.html">뇌 발달</a></li><li><a href="brain-disorders.html">뇌질환</a></li><li><a href="research-tech.html">연구·기술</a></li><li><a href="research-archive.html">탐구 기록</a></li><li><a href="quiz.html">Quiz</a></li>
+      </ul></nav>
+      <form class="header-search" action="index.html#search" role="search"><label class="sr-only" for="header-q-basic">사이트 검색</label><input id="header-q-basic" name="q" type="search" placeholder="용어 검색"></form>
+    </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <div>
         <div class="section-label">BASIC NEUROSCIENCE</div>
@@ -683,6 +678,10 @@
           뇌과학의 연구 수준, 감각과 지각, 신경계 구조, 뉴런과 교세포, 활동전위,
           시냅스, 신경회로, 학습과 기억의 기본 원리를 정리한다.
         </p>
+        <div class="callout">
+          <strong>학습 목표</strong> CNS와 PNS를 구분하고, 이온 농도·막 투과성에서 활동전위와 시냅스 통합까지 설명하며, 세포 신호가 회로와 가소성으로 확장되는 과정을 연결한다.<br>
+          <strong>선수 개념</strong> 세포막, 확산·전기력, 단백질과 이온의 기본 성질
+        </div>
 
         <div class="hero-buttons">
           <a href="#scope" class="btn primary">내용 시작하기</a>
@@ -722,6 +721,7 @@
       <a href="#synapse">06. 시냅스</a>
       <a href="#circuit">07. 신경회로</a>
       <a href="#memory">08. 학습과 기억</a>
+      <a href="#electrophysiology">09. 전기생리 심화</a>
     </div>
 
     <section class="section" id="scope">
@@ -1601,10 +1601,50 @@
         </a>
       </div>
     </section>
-
-    <footer>
-      Brain-Structured Research Archive · Basic Neuroscience
-    </footer>
-  </main>
+    <section class="learning-section" id="electrophysiology">
+      <span class="level-badge level-advanced">올림피아드 심화</span>
+      <h2>막전위·시냅스 통합·신경부호화 보강</h2>
+      <p>기존 본문의 뉴런–신호–회로 흐름을 유지하면서, 정량적 전기생리와 신경부호화 개념을 보강한다.</p>
+      <h3>네른스트 방정식과 골드만 방정식</h3>
+      <p>네른스트 방정식 <b>E<sub>ion</sub> = RT/(zF) · ln([ion]<sub>out</sub>/[ion]<sub>in</sub>)</b>은 한 이온에 대해 농도 기울기와 전기력이 평형을 이루는 전위를 구한다. 실제 휴지막전위는 여러 이온의 상대 투과성이 함께 결정하므로 골드만–호지킨–카츠 방정식을 사용한다. 염화이온은 전하가 음수이므로 농도 항의 안팎 위치가 양이온과 반대로 들어간다.</p>
+      <div class="table-wrap"><table><thead><tr><th scope="col">개념</th><th scope="col">무엇을 계산하는가</th><th scope="col">핵심 변수</th></tr></thead><tbody>
+        <tr><td>네른스트 전위</td><td>한 이온의 평형전위</td><td>안팎 농도, 전하수, 온도</td></tr>
+        <tr><td>골드만 막전위</td><td>여러 이온을 고려한 막전위 근사</td><td>농도와 상대 막 투과성</td></tr>
+        <tr><td>구동력</td><td>이온전류의 방향·크기에 영향을 주는 차이</td><td>V<sub>m</sub> − E<sub>ion</sub></td></tr>
+      </tbody></table></div>
+      <h3>EPSP·IPSP와 시간적·공간적 합산</h3>
+      <p>흥분성 시냅스후전위(EPSP)는 활동전위 발생 가능성을 높이고 억제성 시냅스후전위(IPSP)는 낮춘다. 이를 단순히 탈분극·과분극과 항상 일치시키면 안 된다. 억제는 막전위를 역치에서 멀어지게 하거나, 막전도도를 높여 다른 입력을 누설시키는 <b>shunting inhibition</b>으로도 작동한다.</p>
+      <ol class="pathway"><li>여러 시냅스 입력</li><li>수상돌기·세포체에서 감쇠</li><li>시간적·공간적 합산</li><li>축삭둔덕 부근 역치</li><li>활동전위 열</li></ol>
+      <p><b>시간적 합산</b>은 한 입력이 짧은 간격으로 반복될 때, <b>공간적 합산</b>은 서로 다른 위치의 입력이 비슷한 시점에 도달할 때 일어난다. 입력의 위치, 막 시간상수, 수상돌기 능동전도와 억제 위치가 결과를 바꾼다.</p>
+      <h3>활동전위, 불응기와 도약전도</h3>
+      <p>전압개폐성 Na<sup>+</sup> 통로의 빠른 활성화와 불활성화, 뒤따르는 K<sup>+</sup> 전도 증가가 활동전위 파형을 만든다. 절대불응기에는 새 활동전위를 거의 만들 수 없고, 상대불응기에는 더 큰 자극이 필요하다. 이 특성은 발화 빈도의 상한과 한 방향 전파에 기여한다.</p>
+      <p>수초는 막 저항을 높이고 유효 막용량을 낮춰 결절 사이 전류 확산을 돕는다. 활동전위는 랑비에결절에서 재생되며, 이를 도약전도라고 한다. 신호가 물리적으로 공간을 순간이동하는 것은 아니다.</p>
+      <h3>전기·화학 시냅스, 수용체와 전달물질</h3>
+      <p>전기적 시냅스는 gap junction으로 세포 사이 전류를 빠르게 전달해 동기화에 유리하다. 화학적 시냅스는 방출·확산·수용체 결합 단계를 거쳐 상대적으로 느리지만 증폭과 다양한 조절이 가능하다. 같은 전달물질도 이온성·대사성 수용체와 회로 위치에 따라 효과가 달라지므로, 전달물질 하나를 감정 하나와 일대일로 연결하지 않는다.</p>
+      <h3>신경부호화와 가소성</h3>
+      <p>자극 정보는 평균 발화율뿐 아니라 정확한 발화 시점, 뉴런 집단의 패턴, 상관구조와 리듬에 담길 수 있다. LTP와 LTD는 시냅스 전달효율이 오래 증가하거나 감소하는 현상군이며, 모든 기억이 한 가지 LTP 기전으로 저장되는 것은 아니다. NMDA 수용체 의존성, AMPA 수용체 이동, 단백질 합성 및 회로 수준의 항상성 조절을 조건에 따라 구분한다.</p>
+      <div class="callout warning"><strong>수치 주의</strong> 사람 뇌의 세포 수는 측정법과 정의에 따라 추정치가 달라진다. “교세포가 뉴런보다 항상 10배 많다”는 오래된 일반화를 사용하지 않으며, 교세포:뉴런 비율은 영역별로 다르다.</div>
+    </section>
+    <section class="learning-section" id="basic-misconceptions">
+      <span class="level-badge level-detail">흔한 오해</span><h2>기초 개념을 단순화하지 않기</h2>
+      <div class="misconception"><strong>“활동전위 크기가 자극 세기다.”</strong><div>단일 활동전위는 전부-아니면-무 방식이며 자극 세기는 주로 발화율·시간·모집된 뉴런 집단에 부호화된다.</div></div>
+      <div class="misconception"><strong>“흥분성 전달물질과 억제성 전달물질이 따로 정해져 있다.”</strong><div>효과는 전달물질 이름만이 아니라 수용체와 이온 기울기, 세포·회로 상태에 달려 있다.</div></div>
+      <div class="misconception"><strong>“교세포는 뉴런을 받치기만 한다.”</strong><div>교세포는 수초, 이온·전달물질 항상성, 대사 지원, 면역 반응과 시냅스 조절에 참여한다.</div></div>
+    </section>
+    <section class="learning-section" id="basic-self-check">
+      <span class="level-badge level-core">자가점검</span><h2>정량 개념 확인</h2>
+      <ol class="self-check">
+        <li>막전위가 K<sup>+</sup> 평형전위에서 멀어질 때 K<sup>+</sup> 구동력은 어떻게 달라지는가?<details><summary>정답과 해설</summary><p>V<sub>m</sub>−E<sub>K</sub>의 절댓값이 커져 K<sup>+</sup> 전류를 만드는 구동력이 일반적으로 커진다. 실제 전류는 통로 전도도도 함께 결정한다.</p></details></li>
+        <li>IPSP가 막을 크게 과분극시키지 않고도 억제할 수 있는 방법은?<details><summary>정답과 해설</summary><p>막전도도를 높여 동시에 들어오는 EPSP 전류를 누설시키는 shunting inhibition이 가능하다.</p></details></li>
+        <li>수초가 전도를 빠르게 하는 두 전기적 이유는?<details><summary>정답과 해설</summary><p>막 저항을 높여 전류 누출을 줄이고 유효 막용량을 낮춰 다음 결절의 전압 변화를 빠르게 한다.</p></details></li>
+      </ol>
+    </section>
+    <section class="learning-section" id="basic-references">
+      <h2>참고 자료</h2>
+      <ul class="references-list"><li>뇌캠프 교재 part 1: neurons, glial cells, neurotransmitters — 세포·막전위·시냅스 범위</li><li>Brain Facts (Society for Neuroscience, 2018) — 뉴런·교세포·가소성 개요</li><li>Neuroscience: The Science of the Brain (IBRO, 2003) — 활동전위·시냅스·신경부호화</li><li>신경과학(민병경 교수) 강의자료 — 연구 수준과 인지·회로 연결</li></ul>
+      <a href="references.html">전체 참고자료와 사용 영역 →</a>
+    </section>  </main>
+  <footer class="site-footer"><div class="footer-inner"><div><strong>NEURO ARCHIVE</strong><br><span class="text-small">기초 신경과학 학습 페이지</span></div><div class="footer-links"><a href="references.html">참고 자료</a><a href="quiz.html?category=basic">관련 퀴즈</a><span>© <span data-current-year></span></span></div></div></footer>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>
