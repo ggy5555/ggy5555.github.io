@@ -41,6 +41,7 @@
 - 객관식·참거짓·경로 순서 45문항, 즉시 해설, 오답 재도전, localStorage 진도
 - references 데이터와 저작권·개인정보·과학 검수 원칙
 - 기존 5개 주소 redirect와 404 안내 페이지
+- `.nojekyll` 및 공식 GitHub Pages 정적 배포 워크플로(배포 전 검증기 실행)
 
 ## 4. 정적 검증 결과
 
@@ -54,6 +55,8 @@
 - 뇌맵 CSS의 translate/scale/rotate: 0
 - PDF 원본 커밋: 0
 - 공개 사이트 코드의 다른 프로젝트 내용: 0
+- GitHub Actions 실행 `34738602601`: 검증·설정·업로드·Pages 배포 전 단계 성공
+- 검증 배포 SHA: `4bf87b938234ea7f003aead9f097e6bc89fc26ab`
 
 검증기는 `scripts/validate-site.mjs`이며 Node.js 18 이상에서 `node scripts/validate-site.mjs`로 실행한다.
 
@@ -65,8 +68,10 @@
 - `9470784d5b3e` — `feat: add research archive and local record editor`
 - `b1228c5a6ce9` — `feat: add searchable concepts and 45-question quiz`
 - `83df3fa10518` — `docs: add references and project validation guide`
+- `288a77573d40` — `fix: finalize accessibility and implementation checkpoint`
+- `4bf87b938234` — `ci: add static GitHub Pages deployment`
 
-마지막 접근성·체크포인트 커밋은 이 문서를 포함하는 다음 커밋이다.
+위 커밋까지 `main`에 fast-forward 반영됐고, 공식 Pages 워크플로의 첫 복구 실행이 성공했다. 이 문서는 배포 결과를 보존하는 후속 체크포인트다.
 
 ## 6. 아직 완료하지 못한 검수
 
@@ -79,7 +84,9 @@
 5. 퀴즈 새로고침 복구·오답 재도전·초기화
 6. 기록 저장·수정·삭제·잘못된 JSON·내보내기 파일·클립보드
 7. 검색 결과 이동
-8. 모든 페이지 콘솔 오류와 GitHub Pages 실제 HTTP 404
+8. 모든 페이지의 실제 브라우저 콘솔 오류와 공개 URL의 개별 경로 HTTP 404
+
+GitHub Actions의 정적 검증과 Pages 배포 단계는 성공했다. 다만 이 세션의 외부 HTTP 브라우저가 없어 `https://ggy5555.github.io/`의 렌더링 화면 자체는 직접 열지 못했다.
 
 ## 7. 절대로 하지 말 것
 
