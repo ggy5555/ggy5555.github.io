@@ -33,7 +33,7 @@
   function show(lobe, sticky) {
     if (active && active !== lobe) active.dataset.active = "false";
     active = lobe;
-    lobe.dataset.active = sticky ? "true" : lobe.dataset.active;
+    if (sticky) lobe.dataset.active = "true";
     setTooltipContent(lobe);
     tooltip.dataset.visible = "true";
     requestAnimationFrame(function () { placeTooltip(lobe); });

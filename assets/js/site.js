@@ -22,18 +22,19 @@
     else link.removeAttribute("aria-current");
   });
 
-  function closeMenu() {
+  function setMenu(open) {
     if (!toggle || !nav) return;
-    toggle.setAttribute("aria-expanded", "false");
-    nav.dataset.open = "false";
-    document.body.classList.remove("menu-open");
+    toggle.setAttribute("aria-expanded", String(open));
+    nav.dataset.open = String(open);
+    document.body.classList.toggle("menu-open", open);
+    var label = toggle.querySelector(".sr-only");
+    if (label) label.textContent = open ? "메뉴 닫기" : "메뉴 열기";
   }
+  function closeMenu() { setMenu(false); }
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = toggle.getAttribute("aria-expanded") !== "true";
-      toggle.setAttribute("aria-expanded", String(open));
-      nav.dataset.open = String(open);
-      document.body.classList.toggle("menu-open", open);
+      setMenu(open);
     });
     nav.addEventListener("click", function (event) {
       if (event.target.closest("a")) closeMenu();
@@ -86,7 +87,7 @@
     document.querySelectorAll("[data-count]").forEach(function (node) { node.textContent = "—"; });
   });
 
-  if (header) {
+  if (header && "IntersectionObserver" in window) {
     var observer = new IntersectionObserver(function (entries) {
       header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
     });

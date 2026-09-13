@@ -49,7 +49,9 @@
     setup.hidden=true;resultBox.hidden=true;questionBox.hidden=false;
     var current=state.pool[state.index];
     progressText.textContent=(state.index+1)+" / "+state.pool.length;
-    progressBar.style.width=((state.index/state.pool.length)*100)+"%";
+    var progressValue=Math.round((state.index/state.pool.length)*100);
+    progressBar.style.width=progressValue+"%";
+    progressBar.parentElement.setAttribute("aria-valuenow",String(progressValue));
     typeNode.textContent=current.type==="truefalse"?"참·거짓":current.type==="sequence"?"경로 순서":"객관식";
     promptNode.textContent=current.prompt;
     while(optionsNode.firstChild)optionsNode.removeChild(optionsNode.firstChild);
@@ -97,7 +99,7 @@
     return shuffle(pool).slice(0,Math.min(count,pool.length));
   }
   function finish(){
-    clearSession();questionBox.hidden=true;resultBox.hidden=false;progressBar.style.width="100%";
+    clearSession();questionBox.hidden=true;resultBox.hidden=false;progressBar.style.width="100%";progressBar.parentElement.setAttribute("aria-valuenow","100");
     var total=state.pool.length;var percent=total?Math.round(state.score/total*100):0;
     resultText.textContent=state.score+" / "+total+" 정답 ("+percent+"%)";
     retryButton.hidden=state.wrong.length===0;

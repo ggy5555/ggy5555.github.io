@@ -62,5 +62,30 @@
     "public": true,
     "evidenceLinks": [],
     "references": []
+  },
+  {
+    "id": "2026-09-13-site-first-pass",
+    "type": "ca",
+    "date": "2026-09-13",
+    "stage": "사이트 1차 구현",
+    "status": "검토",
+    "title": "NEURO ARCHIVE 학습·도구·기록 구조 1차 구현",
+    "goal": "기존 디자인과 기초신경과학 본문을 보존하면서 canonical 학습 페이지와 핵심 학습 도구를 연결한다.",
+    "actualWork": "공통 내비게이션·스타일, 인터랙티브 뇌맵, 7개 학습 영역, 5개 뇌영역 상세, 연구 아카이브·로컬 편집기, 검색 80항목과 독창 퀴즈 45문항을 작성하고 정적 경로·앵커·JSON·JavaScript 구문을 검사했다.",
+    "changes": "가상 홈 통계와 좋아요·댓글을 제거하고 실제 JSON 데이터 기반 표시로 바꿨다. 기존 basic-neuroscience.html의 핵심 섹션은 유지하며 빠진 전기생리 내용을 보강했다.",
+    "reason": "기존 사용자 작업을 보존하면서 404 없는 일관된 학습 경로와 사실 기반 탐구 기록을 만들기 위해서다.",
+    "difficulties": "로컬 exec-server 연결 실패로 실제 브라우저 자동화와 화면 캡처를 이 세션에서 실행할 수 없었다.",
+    "solution": "원격 GitHub Git Data API에서 불완전한 상태가 main에 노출되지 않도록 커밋 체인을 먼저 만들고, 인메모리 정적 검증과 GitHub Pages 배포 검증을 분리했다.",
+    "decisions": "뇌맵 hover에는 형태 변형을 쓰지 않고 밝기·외곽선·그림자만 사용한다. 실험 결과는 생성하지 않는다.",
+    "aiUsage": "AI를 구조 설계, 독창적 초안 작성, 코드 생성과 정적 검증에 사용했다. PDF 문장·그림·문항은 복제하지 않고 오류 가능성이 있는 설명은 검수 원칙에 따라 수정했다.",
+    "evidenceLinks": [
+      "https://github.com/ggy5555/ggy5555.github.io/commit/83df3fa105184188ebfffbc4d96645ced7c12932"
+    ],
+    "nextGoal": "360·768·1024·1440px 실제 브라우저 화면과 키보드·터치 동작을 수동 또는 자동화로 재확인한다.",
+    "references": [
+      "planning/PDF_ANALYSIS_CHECKPOINT.md",
+      "planning/SITE_LONG_TERM_PLAN.md"
+    ],
+    "public": true
   }
 ]
