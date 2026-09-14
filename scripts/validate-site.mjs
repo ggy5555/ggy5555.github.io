@@ -7,7 +7,7 @@ const required=[
   "movement-behavior.html","brain-development.html","brain-disorders.html","research-tech.html",
   "research-archive.html","record-editor.html","quiz.html","references.html","frontal.html","parietal.html",
   "temporal.html","occipital.html","cerebellum.html",
-  "assets/css/base.css","assets/css/layout.css","assets/css/components.css","assets/css/content.css","assets/css/brainmap.css",
+  "assets/css/base.css","assets/css/layout.css","assets/css/components.css","assets/css/content.css","assets/css/brainmap.css","assets/css/theme.css",
   "assets/js/site.js","assets/js/search.js","assets/js/brainmap.js","assets/js/quiz.js","assets/js/research-records.js","assets/js/record-editor.js",
   "data/search-index.json","data/quiz-questions.json","data/research-records.json","data/references.json"
 ];
@@ -33,6 +33,10 @@ for(const [file,html] of docs){
   }
   if(!/<main\b/i.test(html))errors.push(file+": main 요소 누락");
   if(!/<title>[^<]+<\/title>/i.test(html))errors.push(file+": title 누락");
+  if(/class=["'][^"']*site-header/.test(html)){
+    if(!html.includes('href="assets/css/theme.css"'))errors.push(file+": 테마 스타일 연결 누락");
+    if(!html.includes('href="brainmap.html">뇌맵</a>'))errors.push(file+": 상단 뇌맵 메뉴 누락");
+  }
 }
 for(const json of ["data/search-index.json","data/quiz-questions.json","data/research-records.json","data/references.json"]){
   try{JSON.parse(fs.readFileSync(path.join(root,json),"utf8"));}catch(error){errors.push(json+" JSON 오류: "+error.message);}
@@ -55,6 +59,10 @@ const index=docs.get("index.html");
 for(const fake of ["60+","120+","25+","♡","댓글"])if(index.includes(fake))errors.push("홈에 제거 대상 가상 수치/메타 존재: "+fake);
 const mapCss=fs.readFileSync(path.join(root,"assets/css/brainmap.css"),"utf8");
 if(/(?:translate|scale|rotate)\s*\(/.test(mapCss))errors.push("뇌맵 CSS에 형태 변형 transform 존재");
+const themeCss=fs.readFileSync(path.join(root,"assets/css/theme.css"),"utf8");
+const siteJs=fs.readFileSync(path.join(root,"assets/js/site.js"),"utf8");
+if(!themeCss.includes(':root[data-theme="dark"]'))errors.push("어두운 테마 스타일 누락");
+if(!siteJs.includes("neuro-archive-theme")||!siteJs.includes("dataset.themeToggle"))errors.push("테마 전환·저장 기능 누락");
 const refs=JSON.parse(fs.readFileSync(path.join(root,"data/references.json"),"utf8"));
 if(refs.filter(r=>r.type==="제공 PDF").length!==8)errors.push("제공 PDF 참고자료가 8개가 아님");
 

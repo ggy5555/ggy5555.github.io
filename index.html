@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -17,7 +18,7 @@
       <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-nav"><span class="menu-toggle-lines" aria-hidden="true"></span><span class="sr-only">메뉴 열기</span></button>
       <nav class="primary-nav" id="primary-nav" data-primary-nav data-open="false" aria-label="주 메뉴">
         <ul class="nav-list">
-          <li><a href="index.html">Home</a></li><li><a href="basic-neuroscience.html">기초 신경과학</a></li><li><a href="neuroanatomy.html">신경해부학</a></li><li><a href="sensory-cognition.html">감각·인지</a></li><li><a href="movement-behavior.html">운동·행동</a></li><li><a href="brain-development.html">뇌 발달</a></li><li><a href="brain-disorders.html">뇌질환</a></li><li><a href="research-tech.html">연구·기술</a></li><li><a href="research-archive.html">탐구 기록</a></li><li><a href="quiz.html">Quiz</a></li>
+          <li><a href="index.html">Home</a></li><li><a href="basic-neuroscience.html">기초 신경과학</a></li><li><a href="neuroanatomy.html">신경해부학</a></li><li><a href="brainmap.html">뇌맵</a></li><li><a href="sensory-cognition.html">감각·인지</a></li><li><a href="movement-behavior.html">운동·행동</a></li><li><a href="brain-development.html">뇌 발달</a></li><li><a href="brain-disorders.html">뇌질환</a></li><li><a href="research-tech.html">연구·기술</a></li><li><a href="research-archive.html">탐구 기록</a></li><li><a href="quiz.html">Quiz</a></li>
         </ul>
       </nav>
       <form class="header-search" action="index.html#search" role="search" data-site-search><label class="sr-only" for="header-q">사이트 검색</label><input id="header-q" name="q" type="search" placeholder="용어 검색"></form>
@@ -38,7 +39,16 @@
           </div>
         </div>
         <div class="hero-art">
-          <a href="brainmap.html" aria-label="인터랙티브 뇌맵 열기"><img src="brain.png" alt="뇌의 측면 구조를 표현한 NEURO ARCHIVE 뇌맵 미리보기"></a>
+          <a class="hero-brain-link" href="brainmap.html" aria-label="파스텔 인터랙티브 뇌맵 열기">
+            <span class="mini-brain" aria-hidden="true">
+              <span class="mini-lobe mini-frontal"></span>
+              <span class="mini-lobe mini-parietal"></span>
+              <span class="mini-lobe mini-temporal"></span>
+              <span class="mini-lobe mini-occipital"></span>
+              <span class="mini-lobe mini-cerebellum"></span>
+              <span class="hero-map-label">INTERACTIVE BRAIN MAP ↗</span>
+            </span>
+          </a>
           <div class="hero-art-card"><strong>오늘의 연결</strong><p>뉴런의 신호가 회로를 거쳐 감각·운동·기억으로 확장되는 흐름을 따라가 보세요.</p></div>
         </div>
       </div>

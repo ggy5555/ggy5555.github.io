@@ -4,16 +4,86 @@
   var toggle = document.querySelector("[data-menu-toggle]");
   var nav = document.querySelector("[data-primary-nav]");
   var current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  var root = document.documentElement;
+  var themeKey = "neuro-archive-theme";
+  var themeMedia = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function storedTheme() {
+    try {
+      var value = localStorage.getItem(themeKey);
+      return value === "light" || value === "dark" ? value : "";
+    } catch (error) {
+      return "";
+    }
+  }
+
+  function updateThemeControl(theme) {
+    var control = document.querySelector("[data-theme-toggle]");
+    if (!control) return;
+    var dark = theme === "dark";
+    control.setAttribute("aria-pressed", String(dark));
+    control.setAttribute("aria-label", dark ? "밝은 모드로 전환" : "어두운 모드로 전환");
+    control.title = dark ? "밝은 모드로 전환" : "어두운 모드로 전환";
+    var icon = control.querySelector(".theme-toggle-icon");
+    var label = control.querySelector(".theme-toggle-label");
+    if (icon) icon.textContent = dark ? "☀" : "☾";
+    if (label) label.textContent = dark ? "라이트" : "다크";
+  }
+
+  function applyTheme(theme, persist) {
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    updateThemeControl(theme);
+    var themeColor = document.querySelector("meta[name='theme-color']");
+    if (!themeColor) {
+      themeColor = document.createElement("meta");
+      themeColor.name = "theme-color";
+      document.head.appendChild(themeColor);
+    }
+    themeColor.content = theme === "dark" ? "#111628" : "#fff9fc";
+    if (persist) {
+      try { localStorage.setItem(themeKey, theme); } catch (error) { /* localStorage가 막혀도 전환은 유지 */ }
+    }
+  }
+
+  applyTheme(storedTheme() || (themeMedia && themeMedia.matches ? "dark" : "light"), false);
+
+  if (header) {
+    var themeToggle = document.createElement("button");
+    themeToggle.type = "button";
+    themeToggle.className = "theme-toggle";
+    themeToggle.dataset.themeToggle = "";
+    themeToggle.setAttribute("aria-pressed", "false");
+    var themeIcon = document.createElement("span");
+    themeIcon.className = "theme-toggle-icon";
+    themeIcon.setAttribute("aria-hidden", "true");
+    var themeLabel = document.createElement("span");
+    themeLabel.className = "theme-toggle-label";
+    themeToggle.append(themeIcon, themeLabel);
+    if (nav && nav.parentNode) nav.parentNode.insertBefore(themeToggle, nav.nextSibling);
+    else header.querySelector(".header-inner").appendChild(themeToggle);
+    updateThemeControl(root.dataset.theme);
+    themeToggle.addEventListener("click", function () {
+      applyTheme(root.dataset.theme === "dark" ? "light" : "dark", true);
+    });
+  }
+
+  if (themeMedia) {
+    var followSystemTheme = function (event) {
+      if (!storedTheme()) applyTheme(event.matches ? "dark" : "light", false);
+    };
+    if (themeMedia.addEventListener) themeMedia.addEventListener("change", followSystemTheme);
+    else if (themeMedia.addListener) themeMedia.addListener(followSystemTheme);
+  }
 
   document.querySelectorAll(".nav-list a").forEach(function (link) {
     var target = (link.getAttribute("href") || "").split("#")[0].toLowerCase();
     var aliases = {
-      "brainmap.html": "neuroanatomy.html",
-      "frontal.html": "neuroanatomy.html",
-      "parietal.html": "neuroanatomy.html",
-      "temporal.html": "neuroanatomy.html",
-      "occipital.html": "neuroanatomy.html",
-      "cerebellum.html": "neuroanatomy.html",
+      "frontal.html": "brainmap.html",
+      "parietal.html": "brainmap.html",
+      "temporal.html": "brainmap.html",
+      "occipital.html": "brainmap.html",
+      "cerebellum.html": "brainmap.html",
       "record-editor.html": "research-archive.html",
       "references.html": ""
     };
