@@ -34,7 +34,7 @@ for(const [file,html] of docs){
   if(!/<main\b/i.test(html))errors.push(file+": main 요소 누락");
   if(!/<title>[^<]+<\/title>/i.test(html))errors.push(file+": title 누락");
   if(/class=["'][^"']*site-header/.test(html)){
-    if(!html.includes('href="assets/css/theme.css?v=20260914-1"'))errors.push(file+": 최신 테마 스타일 연결 누락");
+    if(!html.includes('href="assets/css/theme.css?v=20260914-2"'))errors.push(file+": 최신 테마 스타일 연결 누락");
     if(!html.includes('href="brainmap.html">뇌맵</a>'))errors.push(file+": 상단 뇌맵 메뉴 누락");
   }
 }
@@ -63,6 +63,8 @@ const themeCss=fs.readFileSync(path.join(root,"assets/css/theme.css"),"utf8");
 const siteJs=fs.readFileSync(path.join(root,"assets/js/site.js"),"utf8");
 if(!themeCss.includes(':root[data-theme="dark"]'))errors.push("어두운 테마 스타일 누락");
 if(!/\.brain-lobe\s+\.cerebellum-shape\s*\{[^}]*display:\s*flex/s.test(themeCss))errors.push("소뇌 라벨 flex 배치 누락");
+if(!/\.hero-art::before\s*\{[^}]*content:\s*none/s.test(themeCss))errors.push("홈 뇌맵을 가리는 장식 레이어가 남아 있음");
+if(!/\.hero-art-card\s*\{[^}]*position:\s*relative/s.test(themeCss))errors.push("홈 정보 카드가 뇌맵 위에 겹칠 수 있음");
 if(!siteJs.includes("neuro-archive-theme")||!siteJs.includes("dataset.themeToggle"))errors.push("테마 전환·저장 기능 누락");
 const refs=JSON.parse(fs.readFileSync(path.join(root,"data/references.json"),"utf8"));
 if(refs.filter(r=>r.type==="제공 PDF").length!==8)errors.push("제공 PDF 참고자료가 8개가 아님");
