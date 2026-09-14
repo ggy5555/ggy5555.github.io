@@ -60,7 +60,7 @@
 - PDF 원본 커밋: 0
 - 공개 사이트 코드의 다른 프로젝트 내용: 0
 - GitHub Actions 실행 `34819298417`: 검증·설정·업로드·Pages 배포 전 단계 성공
-- 최신 검증 배포 SHA: `d0719b0fb809deda56ebcd0ae8a1a5f988ce30e2`
+- 학습 진도 기능 검증 배포 SHA: `d0719b0fb809deda56ebcd0ae8a1a5f988ce30e2`
 
 검증기는 `scripts/validate-site.mjs`이며 Node.js 18 이상에서 `node scripts/validate-site.mjs`로 실행한다.
 
@@ -114,7 +114,7 @@
 
 ## 8. 다음 세션의 정확한 시작 지점
 
-1. 원격 `main`의 최신 SHA `d0719b0fb809deda56ebcd0ae8a1a5f988ce30e2`와 `git status` 확인
+1. 원격 `main`의 현재 SHA와 `git status` 확인. 기능 기준점은 `d0719b0fb809deda56ebcd0ae8a1a5f988ce30e2`이며 그 뒤에 문서 체크포인트 커밋이 이어진다.
 2. `node scripts/validate-site.mjs` 실행
 3. 가능하면 실제 360px 또는 모바일 기기에서 햄버거, 뇌맵 첫 터치 설명·두 번째 이동, 소뇌 라벨, 진행도 체크리스트·초기화 대화상자를 확인
 4. 768·1024·1440px에서 헤더 줄바꿈, 표 가로 스크롤, 진행도 카드 열 수를 확인
