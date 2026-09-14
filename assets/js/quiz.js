@@ -17,7 +17,6 @@
   var resultBox=document.querySelector("[data-quiz-result]");
   var resultText=document.querySelector("[data-result-text]");
   var retryButton=document.querySelector("[data-retry-wrong]");
-  var resetButton=document.querySelector("[data-reset-progress]");
   var lifetime=document.querySelector("[data-lifetime-progress]");
   var sessionKey="neuroArchive.quizSession.v1";
   var progressKey="neuroArchive.quizProgress.v1";
@@ -119,9 +118,8 @@
     if(pool.length)start(pool);
   });
   document.querySelector("[data-new-quiz]").addEventListener("click",function(){clearSession();state=null;resultBox.hidden=true;questionBox.hidden=true;setup.hidden=false;});
-  resetButton.addEventListener("click",function(){
-    if(!confirm("이 브라우저의 퀴즈 누적 진도와 진행 중 세션을 초기화할까요?"))return;
-    localStorage.removeItem(progressKey);clearSession();state=null;questionBox.hidden=true;resultBox.hidden=true;setup.hidden=false;renderLifetime();
+  window.addEventListener("neuro-progress-reset",function(){
+    state=null;questionBox.hidden=true;resultBox.hidden=true;setup.hidden=false;renderLifetime();
   });
   fetch("data/quiz-questions.json").then(function(r){if(!r.ok)throw new Error();return r.json();}).then(function(data){
     questions=data;renderLifetime();

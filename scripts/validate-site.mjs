@@ -8,7 +8,7 @@ const required=[
   "research-archive.html","record-editor.html","quiz.html","references.html","frontal.html","parietal.html",
   "temporal.html","occipital.html","cerebellum.html",
   "assets/css/base.css","assets/css/layout.css","assets/css/components.css","assets/css/content.css","assets/css/brainmap.css","assets/css/theme.css",
-  "assets/js/site.js","assets/js/search.js","assets/js/brainmap.js","assets/js/quiz.js","assets/js/research-records.js","assets/js/record-editor.js",
+  "assets/js/site.js","assets/js/search.js","assets/js/brainmap.js","assets/js/quiz.js","assets/js/progress.js","assets/js/research-records.js","assets/js/record-editor.js",
   "data/search-index.json","data/quiz-questions.json","data/research-records.json","data/references.json"
 ];
 const errors=[];
@@ -34,7 +34,7 @@ for(const [file,html] of docs){
   if(!/<main\b/i.test(html))errors.push(file+": main 요소 누락");
   if(!/<title>[^<]+<\/title>/i.test(html))errors.push(file+": title 누락");
   if(/class=["'][^"']*site-header/.test(html)){
-    if(!html.includes('href="assets/css/theme.css?v=20260914-2"'))errors.push(file+": 최신 테마 스타일 연결 누락");
+    if(!html.includes('href="assets/css/theme.css?v=20260914-3"'))errors.push(file+": 최신 테마 스타일 연결 누락");
     if(!html.includes('href="brainmap.html">뇌맵</a>'))errors.push(file+": 상단 뇌맵 메뉴 누락");
   }
 }
@@ -57,15 +57,37 @@ for(const item of search){
 }
 const index=docs.get("index.html");
 for(const fake of ["60+","120+","25+","♡","댓글"])if(index.includes(fake))errors.push("홈에 제거 대상 가상 수치/메타 존재: "+fake);
+const progressPages=[
+  "basic-neuroscience.html","neuroanatomy.html","sensory-cognition.html","movement-behavior.html",
+  "brain-development.html","brain-disorders.html","research-tech.html","frontal.html","parietal.html",
+  "temporal.html","occipital.html","cerebellum.html"
+];
+for(const file of progressPages){
+  if(!docs.get(file)?.includes('src="assets/js/progress.js?v=20260914-1"'))errors.push(file+": 학습 진도 모듈 연결 누락");
+}
+if((index.match(/data-progress-item=/g)||[]).length!==progressPages.length)errors.push("홈 학습 진도 항목 수가 12개가 아님");
+if(!index.includes("data-learning-dashboard")||!index.includes("data-progress-reset"))errors.push("홈 학습 진도 대시보드·초기화 버튼 누락");
 const mapCss=fs.readFileSync(path.join(root,"assets/css/brainmap.css"),"utf8");
 if(/(?:translate|scale|rotate)\s*\(/.test(mapCss))errors.push("뇌맵 CSS에 형태 변형 transform 존재");
 const themeCss=fs.readFileSync(path.join(root,"assets/css/theme.css"),"utf8");
 const siteJs=fs.readFileSync(path.join(root,"assets/js/site.js"),"utf8");
+const progressJs=fs.readFileSync(path.join(root,"assets/js/progress.js"),"utf8");
+const quizJs=fs.readFileSync(path.join(root,"assets/js/quiz.js"),"utf8");
 if(!themeCss.includes(':root[data-theme="dark"]'))errors.push("어두운 테마 스타일 누락");
 if(!/\.brain-lobe\s+\.cerebellum-shape\s*\{[^}]*display:\s*flex/s.test(themeCss))errors.push("소뇌 라벨 flex 배치 누락");
 if(!/\.hero-art::before\s*\{[^}]*content:\s*none/s.test(themeCss))errors.push("홈 뇌맵을 가리는 장식 레이어가 남아 있음");
 if(!/\.hero-art-card\s*\{[^}]*position:\s*relative/s.test(themeCss))errors.push("홈 정보 카드가 뇌맵 위에 겹칠 수 있음");
 if(!siteJs.includes("neuro-archive-theme")||!siteJs.includes("dataset.themeToggle"))errors.push("테마 전환·저장 기능 누락");
+if(/\bconfirm\s*\(/.test(progressJs+quizJs))errors.push("단일 브라우저 confirm 초기화가 남아 있음");
+for(const phrase of ["학습 진도를 초기화할까요?","정말 초기화할까요?","네, 진짜 초기화"]){
+  if(!progressJs.includes(phrase))errors.push("2단계 초기화 문구 누락: "+phrase);
+}
+for(const key of ["neuroArchive.learningProgress.v1","neuroArchive.quizProgress.v1","neuroArchive.quizSession.v1"]){
+  if(!progressJs.includes(key))errors.push("진도 저장 키 누락: "+key);
+}
+for(const protectedKey of ["neuroArchive.records.v1","neuro-archive-theme"]){
+  if(progressJs.includes(protectedKey))errors.push("진도 모듈이 보호 대상 저장 키를 참조함: "+protectedKey);
+}
 const refs=JSON.parse(fs.readFileSync(path.join(root,"data/references.json"),"utf8"));
 if(refs.filter(r=>r.type==="제공 PDF").length!==8)errors.push("제공 PDF 참고자료가 8개가 아님");
 

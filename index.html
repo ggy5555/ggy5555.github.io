@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
-  <link rel="stylesheet" href="assets/css/theme.css?v=20260914-2">
+  <link rel="stylesheet" href="assets/css/theme.css?v=20260914-3">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -63,6 +63,44 @@
         </div>
       </div>
     </section>
+    <section class="content-section" id="progress" aria-labelledby="progress-title">
+      <div class="section-inner">
+        <div class="section-heading"><div><span class="eyebrow">MY NEURAL PATH</span><h2 id="progress-title">나의 학습 진행도</h2><p>읽기를 마친 페이지에서 직접 완료 표시하고, 이 브라우저에 나만의 학습 경로를 남겨 보세요.</p></div><a href="quiz.html">퀴즈로 기억 확인 →</a></div>
+        <div class="learning-progress-dashboard" data-learning-dashboard>
+          <div class="progress-summary-grid">
+            <article class="progress-level-card">
+              <span class="progress-orb" aria-hidden="true">✦</span>
+              <div><span class="eyebrow">LEARNING LEVEL</span><h3 data-learning-level>시냅스 준비</h3><p><strong class="progress-count"><span data-learning-completed>0</span>/<span data-learning-total>12</span></strong>개 학습 페이지 완료</p></div>
+              <div class="progress progress-large" role="progressbar" aria-label="전체 학습 페이지 완료율" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-learning-progress-bar style="width:0%"></span></div>
+              <p class="text-small" data-learning-encouragement aria-live="polite">첫 페이지를 완료하면 학습 회로가 연결되기 시작합니다.</p>
+            </article>
+            <article class="quiz-progress-card">
+              <span class="eyebrow">QUIZ MEMORY</span><h3>퀴즈 누적 기록</h3>
+              <dl class="quiz-stat-list"><div><dt>도전</dt><dd><span data-quiz-attempts>0</span>회</dd></div><div><dt>응답</dt><dd><span data-quiz-answered>0</span>문항</dd></div><div><dt>정답률</dt><dd><span data-quiz-accuracy>—</span></dd></div></dl>
+              <a class="btn ghost" href="quiz.html">이어 풀기 →</a>
+            </article>
+          </div>
+          <div class="learning-checklist" aria-label="학습 페이지별 완료 상태">
+            <a href="basic-neuroscience.html" data-progress-item="basic-neuroscience.html"><span>기초 신경과학</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="neuroanatomy.html" data-progress-item="neuroanatomy.html"><span>신경해부학</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="sensory-cognition.html" data-progress-item="sensory-cognition.html"><span>감각·인지</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="movement-behavior.html" data-progress-item="movement-behavior.html"><span>운동·행동</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="brain-development.html" data-progress-item="brain-development.html"><span>뇌 발달</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="brain-disorders.html" data-progress-item="brain-disorders.html"><span>뇌질환</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="research-tech.html" data-progress-item="research-tech.html"><span>연구·기술</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="frontal.html" data-progress-item="frontal.html"><span>전두엽</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="parietal.html" data-progress-item="parietal.html"><span>두정엽</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="temporal.html" data-progress-item="temporal.html"><span>측두엽</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="occipital.html" data-progress-item="occipital.html"><span>후두엽</span><span class="progress-check" aria-hidden="true">○</span></a>
+            <a href="cerebellum.html" data-progress-item="cerebellum.html"><span>소뇌</span><span class="progress-check" aria-hidden="true">○</span></a>
+          </div>
+          <div class="progress-actions">
+            <p><strong>저장 안내</strong><br><span class="text-small">완료 표시와 퀴즈 기록은 현재 브라우저에만 저장됩니다. 탐구 기록과 화면 테마는 진도 초기화로 지워지지 않습니다.</span></p>
+            <button class="btn danger-soft" type="button" data-progress-reset>진도 초기화</button>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="content-section" id="learn" aria-labelledby="learn-title">
       <div class="section-inner">
         <div class="section-heading"><div><span class="eyebrow">LEARNING ROUTES</span><h2 id="learn-title">추천 학습 루트</h2><p>각 카드는 실제 페이지의 해당 단원으로 바로 연결됩니다.</p></div><a href="quiz.html">학습 후 퀴즈 →</a></div>
@@ -95,7 +133,7 @@
     </section>
   </main>
   <footer class="site-footer"><div class="footer-inner"><div><strong>NEURO ARCHIVE</strong><br><span class="text-small">1학기 CA 뇌과학 학습·탐구 아카이브</span></div><div class="footer-links"><a href="references.html">참고 자료</a><a href="record-editor.html">기록 편집기</a><span>© <span data-current-year></span></span></div></div></footer>
-  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/site.js" defer></script><script src="assets/js/progress.js?v=20260914-1" defer></script>
   <script src="assets/js/search.js" defer></script>
   <script src="assets/js/research-records.js" defer></script>
 </body>
