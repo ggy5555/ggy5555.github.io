@@ -1,6 +1,6 @@
 # WORK RESUME — NEURO ARCHIVE 인수인계
 
-- 마지막 갱신: 2026-09-13
+- 마지막 갱신: 2026-09-14
 - Repository: `ggy5555/ggy5555.github.io`
 - Branch: `main`
 - 프로젝트: 1학기 CA `NEURO ARCHIVE`
@@ -30,7 +30,9 @@
 
 - canonical 페이지 18개 전부 생성·연결
 - 기존 `basic-neuroscience.html`의 8개 주요 섹션 보존
-- 공통 남색·파란색 디자인, sticky header, active 메뉴, 모바일 햄버거, focus 표시
+- 뇌맵 팔레트 기반의 밝은 파스텔 기본 테마와 어두운 테마, sticky header, active 메뉴, 모바일 햄버거, focus 표시
+- Nunito·Noto Sans KR 글꼴 체계와 localStorage 기반 밝은/어두운 모드 저장
+- 모든 주 내비게이션의 독립 `뇌맵` 바로가기
 - 홈의 가상 수치·좋아요·댓글 제거 및 JSON 기반 실제 카운트·최근 기록
 - 뇌맵의 형태 변형 제거, 수평 viewport-clamped tooltip, 키보드·터치 지원
 - 5개 뇌영역 상세 페이지
@@ -55,8 +57,8 @@
 - 뇌맵 CSS의 translate/scale/rotate: 0
 - PDF 원본 커밋: 0
 - 공개 사이트 코드의 다른 프로젝트 내용: 0
-- GitHub Actions 실행 `34738602601`: 검증·설정·업로드·Pages 배포 전 단계 성공
-- 검증 배포 SHA: `4bf87b938234ea7f003aead9f097e6bc89fc26ab`
+- GitHub Actions 실행 `34801127985`: 검증·설정·업로드·Pages 배포 전 단계 성공
+- 최신 검증 배포 SHA: `32a78261d642ec78acc188684d45fb6a347e7617`
 
 검증기는 `scripts/validate-site.mjs`이며 Node.js 18 이상에서 `node scripts/validate-site.mjs`로 실행한다.
 
@@ -70,23 +72,27 @@
 - `83df3fa10518` — `docs: add references and project validation guide`
 - `288a77573d40` — `fix: finalize accessibility and implementation checkpoint`
 - `4bf87b938234` — `ci: add static GitHub Pages deployment`
+- `e71d2801e336` — `feat: add pastel themes and brain map navigation`
+- `a42788bd031a` — `fix: keep cerebellum labels visible`
+- `32a78261d642` — `fix: refresh shared theme assets`
 
-위 커밋까지 `main`에 fast-forward 반영됐고, 공식 Pages 워크플로의 첫 복구 실행이 성공했다. 이 문서는 배포 결과를 보존하는 후속 체크포인트다.
+위 커밋까지 `main`에 fast-forward 반영됐다. 최신 공식 Pages 워크플로 실행 `34801127985`가 성공했고 공개 URL에서 새 테마와 뇌맵을 직접 확인했다.
 
-## 6. 아직 완료하지 못한 검수
+## 6. 실제 브라우저 검수와 남은 범위
 
-이 세션의 로컬 exec-server 연결이 실패해 실제 브라우저 자동화·콘솔·스크린샷 검사를 실행하지 못했다. 다음 항목은 정적 코드 검사를 통과했지만 실제 브라우저에서 한 번 더 확인해야 한다.
+2026-09-14 공개 URL `https://ggy5555.github.io/`을 1363×936 브라우저에서 직접 검사했다.
 
-1. 360·768·1024·1440px 화면
-2. 모바일 햄버거와 focus 이동
-3. 뇌맵 hover·focus·Enter·Space·두 번 터치
-4. 툴팁의 네 모서리 viewport clipping
-5. 퀴즈 새로고침 복구·오답 재도전·초기화
-6. 기록 저장·수정·삭제·잘못된 JSON·내보내기 파일·클립보드
-7. 검색 결과 이동
-8. 모든 페이지의 실제 브라우저 콘솔 오류와 공개 URL의 개별 경로 HTTP 404
+- 홈과 뇌맵의 밝은·어두운 테마 렌더링 확인
+- 테마 버튼의 접근 가능한 이름·pressed 상태와 새로고침 후 선택 유지 확인
+- 홈·뇌맵·기초 신경과학·Quiz·기록 편집기에서 사이트 출처 콘솔 오류 0개 확인
+- 상단 `뇌맵` 메뉴와 현재 페이지 active 상태 확인
+- 뇌영역 hover 전후 bounding box 동일, 계산된 transform `none` 확인
+- 툴팁 영문·한글 줄바꿈, 수평 transform, viewport 내부 배치 확인
+- Space 키로 전두엽 상세 페이지 이동 확인
+- 소뇌 내부 컨테이너가 실제 `display:flex`로 적용되고 라벨이 모양 안쪽 하단에 보이는 것 확인
+- 페이지 가로 overflow 0 확인
 
-GitHub Actions의 정적 검증과 Pages 배포 단계는 성공했다. 다만 이 세션의 외부 HTTP 브라우저가 없어 `https://ggy5555.github.io/`의 렌더링 화면 자체는 직접 열지 못했다.
+브라우저 도구의 viewport 크기를 변경할 수 없어 정확한 360·768·1024·1440px 실기기 렌더링과 모바일 두 번 터치는 이번 세션에서 자동화하지 못했다. 해당 분기에서는 강제 `min-width:540px`을 제거하고 햄버거·모바일 상세 패널 CSS/JS를 정적으로 재검증했다. Quiz 전체 흐름과 기록 편집기의 모든 import/export 예외 흐름도 이번 디자인 변경 범위에서는 반복 실행하지 않았다.
 
 ## 7. 절대로 하지 말 것
 
@@ -101,11 +107,11 @@ GitHub Actions의 정적 검증과 Pages 배포 단계는 성공했다. 다만 �
 
 ## 8. 다음 세션의 정확한 시작 지점
 
-1. `git fetch origin main` 후 현재 브랜치와 `git status` 확인
+1. 원격 `main`의 최신 SHA `32a78261d642ec78acc188684d45fb6a347e7617`와 `git status` 확인
 2. `node scripts/validate-site.mjs` 실행
-3. `python -m http.server 8000`으로 로컬 서버 실행
-4. 브라우저 자동화 또는 수동 검사로 위 8개 미검수 항목 확인
+3. 가능하면 실제 360px 또는 모바일 기기에서 햄버거, 뇌맵 첫 터치 설명·두 번째 이동, 소뇌 라벨을 확인
+4. 768·1024·1440px에서 헤더 줄바꿈과 표 가로 스크롤을 확인
 5. 발견한 문제만 최소 수정하고 별도 `fix:` 커밋
-6. `planning/WORK_RESUME.md`에 실제 화면 검사 결과와 최종 SHA 추가
+6. 이후 Quiz 전체 흐름과 기록 편집기 import/export 오류 흐름을 회귀 검사
 
-사이트 구현은 이미 명시적으로 승인됐다. 다음 작업자는 계획 승인 질문으로 되돌아가지 말고, 남은 실제 브라우저 검증과 오류 수정부터 시작한다.
+사이트 구현은 이미 명시적으로 승인됐다. 다음 작업자는 계획 승인 질문으로 되돌아가지 말고, 남은 실기기 반응형 검증부터 시작한다.
