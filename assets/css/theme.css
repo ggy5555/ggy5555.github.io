@@ -564,7 +564,10 @@ th { color: var(--slate-950); background: var(--surface-lilac); }
 .brain-lobe.temporal { background: linear-gradient(145deg,#d5eaff,#8bbcf4); }
 .brain-lobe.occipital { background: linear-gradient(145deg,#fff1ad,#ffd84f); }
 .brain-lobe.cerebellum { width:24%; height:23%; left:64%; top:68%; z-index:3; }
-.cerebellum-shape {
+.brain-lobe .cerebellum-shape {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: flex-end;
   padding: 0 .35rem .8rem;
   border-color: rgba(255,255,255,.76);
@@ -640,6 +643,6 @@ th { color: var(--slate-950); background: var(--surface-lilac); }
   .brain-stage { min-width: 0; border-radius: 1rem; }
   .brain-lobe strong { font-size: clamp(.52rem, 2.6vw, .72rem); }
   .brain-lobe span { margin-top: .18rem; font-size: clamp(.5rem, 2.35vw, .66rem); }
-  .cerebellum-shape { padding: 0 .15rem .28rem; }
+  .brain-lobe .cerebellum-shape { padding: 0 .15rem .28rem; }
   .brainmap-help { text-align: left; font-size: .84rem; }
 }
