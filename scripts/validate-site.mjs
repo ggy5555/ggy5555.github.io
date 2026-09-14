@@ -34,7 +34,7 @@ for(const [file,html] of docs){
   if(!/<main\b/i.test(html))errors.push(file+": main 요소 누락");
   if(!/<title>[^<]+<\/title>/i.test(html))errors.push(file+": title 누락");
   if(/class=["'][^"']*site-header/.test(html)){
-    if(!html.includes('href="assets/css/theme.css"'))errors.push(file+": 테마 스타일 연결 누락");
+    if(!html.includes('href="assets/css/theme.css?v=20260914-1"'))errors.push(file+": 최신 테마 스타일 연결 누락");
     if(!html.includes('href="brainmap.html">뇌맵</a>'))errors.push(file+": 상단 뇌맵 메뉴 누락");
   }
 }
