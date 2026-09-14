@@ -24,7 +24,7 @@
     "title": "위치 효과와 설계 한계 재검토",
     "goal": "위치만으로 충분한 차이가 나타날지 비판적으로 검토한다.",
     "actualWork": "위치 효과가 작을 가능성을 고려해 깊이·가림·움직임을 대체 변인 후보로 비교했다.",
-    "changes": "단순 위치 비교의 한계를 연구 기록에 명시하고 대안 변인을 보류안으로 남겼다.",
+    "changes": "위치만 비교할 때의 한계를 연구 기록에 명시하고 대안 변인을 보류안으로 남겼다.",
     "reason": "실제 결과가 나오기 전에 효과를 전제하지 않기 위해서다.",
     "nextGoal": "과제 난이도와 행동 지표를 포함한 최종 프로토콜을 정한다.",
     "public": true,
@@ -128,7 +128,7 @@
     "reason": "페이지에 들어온 것만으로 학습 완료라고 간주하지 않고 사용자가 직접 완료를 선택하게 하며, 탐구 기록이나 테마 설정이 진도 초기화에 섞여 지워지는 일을 막기 위해서다.",
     "difficulties": "Work 브라우저가 로컬 HTTP 주소 접근을 차단해 커밋 전 로컬 화면 자동화가 불가능했다. 또한 실제 초기화 완료 클릭은 브라우저 데이터 삭제이므로 검증용 공개 브라우저에서 실행하지 않았다.",
     "solution": "JavaScript 구문·내부 경로·저장 키 허용 목록을 정적으로 검사한 뒤 fast-forward 배포하고 공개 사이트에서 완료 저장·복구와 초기화 1단계·2단계·돌아가기·취소·Escape 경로를 검사했다.",
-    "decisions": "학습 완료는 자동 방문 기록이 아니라 명시적 버튼으로 저장한다. 초기화 대상은 neuroArchive.learningProgress.v1, neuroArchive.quizProgress.v1, neuroArchive.quizSession.v1 세 키로 한정하고 연구기록과 테마 키는 참조하지 않는다.",
+    "decisions": "학습 완료는 사용자가 버튼을 누를 때만 저장한다. 초기화 대상은 neuroArchive.learningProgress.v1, neuroArchive.quizProgress.v1, neuroArchive.quizSession.v1 세 키로 한정하고 연구기록과 테마 키는 참조하지 않는다.",
     "aiUsage": "AI를 진행도 데이터 구조, 접근 가능한 대화상자, 반응형 파스텔 UI, 정적 검증 규칙과 공개 Pages 회귀 검사에 사용했다.",
     "evidenceLinks": [
       "https://github.com/ggy5555/ggy5555.github.io/commit/d0719b0fb809deda56ebcd0ae8a1a5f988ce30e2",

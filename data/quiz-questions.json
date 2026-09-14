@@ -245,7 +245,7 @@
     ],
     "answer": 1,
     "explanation": "기저핵은 여러 병렬 피질–시상 순환에서 행동 선택, 억제와 학습을 조절합니다.",
-    "wrong": "고전적 직접·간접 경로를 단일 스위치로 과도하게 단순화한 설명입니다.",
+    "wrong": "고전적 직접·간접 경로를 단일 스위치처럼 해석한 설명입니다.",
     "conceptUrl": "neuroanatomy.html#subcortical"
   },
   {
@@ -361,7 +361,7 @@
       "거짓"
     ],
     "answer": 1,
-    "explanation": "통증은 유해수용 입력뿐 아니라 염증, 하행 조절, 주의, 기대와 맥락의 영향을 받습니다.",
+    "explanation": "통증은 유해수용 입력, 염증, 하행 조절, 주의, 기대와 맥락의 영향을 받습니다.",
     "wrong": "손상과 통증을 완전히 분리할 수도, 언제나 일치한다고 볼 수도 없습니다.",
     "conceptUrl": "sensory-cognition.html#somatosensation"
   },
@@ -538,7 +538,7 @@
     "category": "brain-development",
     "difficulty": "detail",
     "type": "truefalse",
-    "prompt": "시냅스 가지치기는 단순히 사용하지 않은 뉴런 전체를 없애는 과정이다.",
+    "prompt": "시냅스 가지치기는 사용하지 않은 뉴런 전체를 없애는 과정이다.",
     "options": [
       "참",
       "거짓"

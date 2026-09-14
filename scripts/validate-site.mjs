@@ -91,9 +91,32 @@ for(const protectedKey of ["neuroArchive.records.v1","neuro-archive-theme"]){
 const refs=JSON.parse(fs.readFileSync(path.join(root,"data/references.json"),"utf8"));
 if(refs.filter(r=>r.type==="제공 PDF").length!==8)errors.push("제공 PDF 참고자료가 8개가 아님");
 
+const proseFiles=[...htmlFiles,"data/search-index.json","data/quiz-questions.json","data/research-records.json","data/references.json"];
+const discouragedProse=[
+  ["아니라",/아니라/],
+  ["뿐 아니라",/뿐(?:만)?\s+아니라/],
+  ["단순 계열 표현",/단순/],
+  ["하나의 단일한",/하나의\s+단일한/],
+  ["회로와 네트워크",/회로와\s+네트워크/],
+  ["네트워크, 연결",/네트워크,\s*연결/],
+  ["시냅스 연결",/시냅스\s+연결/],
+  ["저장·보관 중복",/저장은[^.]{0,80}보관/],
+  ["판단, 의사결정",/판단,\s*의사결정/],
+  ["위치·연결·경로",/위치·연결·경로/]
+];
+for(const file of proseFiles){
+  const source=fs.readFileSync(path.join(root,file),"utf8");
+  for(const [label,pattern] of discouragedProse){
+    if(pattern.test(source))errors.push(file+": 겹치거나 우회적인 설명 표현이 남아 있음 — "+label);
+  }
+}
+const misconceptionHeadingCount=[...docs.values()].reduce((total,html)=>total+(html.match(/<h2>개념 바로잡기<\/h2>/g)||[]).length,0);
+if(misconceptionHeadingCount!==12)errors.push("학습 페이지의 개념 바로잡기 제목 수가 12개가 아님: "+misconceptionHeadingCount);
+
 if(errors.length){console.error(errors.join("\n"));process.exit(1);}
 console.log("PASS: 필수 파일 "+required.length+"개");
 console.log("PASS: HTML "+htmlFiles.length+"개 내부 경로·앵커");
 console.log("PASS: 검색 색인 "+search.length+"개");
 console.log("PASS: 퀴즈 "+quiz.length+"문항");
 console.log("PASS: 제공 PDF 참고자료 8개");
+console.log("PASS: 직접적인 설명 문체와 중복 표현 검사");
