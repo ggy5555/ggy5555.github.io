@@ -135,3 +135,29 @@ test("capture before and after visual baselines", async ({ page }, testInfo) => 
     }
   }
 });
+
+test("self-hosted Korean fonts load and are actually used", async ({ page }) => {
+  const remoteFonts = [];
+  page.on("request", req => {
+    if (/fonts\.googleapis\.com|fonts\.gstatic\.com/.test(req.url())) remoteFonts.push(req.url());
+  });
+  await page.goto("/");
+  for (const filename of ["SUIT-Variable.woff2", "SUITE-Variable.woff2"]) {
+    const response = await page.request.get("/assets/fonts/" + filename);
+    expect(response.status(), filename).toBe(200);
+    const bytes = await response.body();
+    expect(bytes.subarray(0, 4).toString("ascii"), filename).toBe("wOF2");
+  }
+  const fonts = await page.evaluate(async () => {
+    const bodyFamily = getComputedStyle(document.body).fontFamily;
+    const titleFamily = getComputedStyle(document.querySelector(".hero-copy h1")).fontFamily;
+    const bodyFonts = await document.fonts.load('400 16px "SUIT Local"', "한글 과학 학습");
+    const titleFonts = await document.fonts.load('800 44px "SUITE Local"', "뇌를 탐구하고");
+    return { bodyFamily, titleFamily, bodyLoaded: bodyFonts.length, titleLoaded: titleFonts.length };
+  });
+  expect(fonts.bodyFamily).toContain("SUIT Local");
+  expect(fonts.titleFamily).toContain("SUITE Local");
+  expect(fonts.bodyLoaded).toBeGreaterThan(0);
+  expect(fonts.titleLoaded).toBeGreaterThan(0);
+  expect(remoteFonts).toEqual([]);
+});

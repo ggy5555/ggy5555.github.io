@@ -79,3 +79,11 @@ Automated checks do not replace these final PR review tasks:
 - Confirm production-like performance on a slow connection.
 
 The draft PR must not be merged into main without explicit user approval.
+
+## 2026-11-12 local typography revision
+
+- Replaced previous Noto Serif KR / Noto Sans KR pairing with **SUITE Variable (display)** and **SUIT Variable (body)**.
+- Added two locally hosted WOFF2 font assets, with original upstream SIL Open Font License 1.1 text and attribution.
+- Removed the remote Google Fonts import from theme.css; the new typography layer loads from this repository.
+- Added a browser test for actual font loading, family selection, binary validity, and zero Google Font requests.
+- CI executes the existing static regression suite and all browser tests; live-site typography should be visually reviewed on a real device after merge.

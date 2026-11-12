@@ -30,6 +30,19 @@ for (const key of ["neuroArchive.learningProgress.v1", "neuroArchive.quizProgres
 if (!read("assets/js/record-editor.js").includes("neuroArchive.records.v1")) errors.push("Lost records key");
 if (!read("assets/js/site.js").includes("neuro-archive-theme")) errors.push("Lost theme key");
 if (!fs.existsSync(path.join(root, "DESIGN.md"))) errors.push("DESIGN.md is missing");
+for (const name of ["SUIT-Variable.woff2", "SUITE-Variable.woff2"]) {
+  const filename = path.join(root, "assets/fonts", name);
+  if (!fs.existsSync(filename)) { errors.push("Missing local font: " + name); continue; }
+  const bytes = fs.readFileSync(filename);
+  if (bytes.subarray(0, 4).toString("ascii") !== "wOF2" || bytes.length < 100000) errors.push("Invalid WOFF2: " + name);
+  if (!css.includes('../fonts/' + name)) errors.push("Missing @font-face reference: " + name);
+}
+if (read("assets/css/theme.css").includes("fonts.googleapis.com")) errors.push("Remote Google Fonts stylesheet still referenced");
+for (const name of ["SUIT-LICENSE.txt", "SUITE-LICENSE.txt"]) {
+  if (!fs.existsSync(path.join(root, "assets/fonts", name))) errors.push("Missing font license: " + name);
+}
+if (!css.includes('font-family: "SUIT Local"') || !css.includes('font-family: "SUITE Local"')) errors.push("Local font declarations missing");
+
 
 if (errors.length) { console.error(errors.join("\n")); process.exit(1); }
 console.log("PASS: editorial links, design tokens, and protected functionality checks");
