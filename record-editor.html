@@ -3,6 +3,7 @@
 <title>로컬 기록 편집기 | NEURO ARCHIVE</title>
 <link rel="stylesheet" href="assets/css/base.css"><link rel="stylesheet" href="assets/css/layout.css"><link rel="stylesheet" href="assets/css/components.css"><link rel="stylesheet" href="assets/css/content.css">
   <link rel="stylesheet" href="assets/css/theme.css?v=20260914-3">
+<link rel="stylesheet" href="assets/css/editorial.css?v=20261112-1">
 </head><body>
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 <header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">N</span><span class="brand-copy">NEURO ARCHIVE<small>EXPLORE · CONNECT · UNDERSTAND</small></span></a><button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-nav"><span class="menu-toggle-lines" aria-hidden="true"></span><span class="sr-only">메뉴 열기</span></button><nav class="primary-nav" id="primary-nav" data-primary-nav data-open="false" aria-label="주 메뉴"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="basic-neuroscience.html">기초 신경과학</a></li><li><a href="neuroanatomy.html">신경해부학</a></li><li><a href="brainmap.html">뇌맵</a></li><li><a href="sensory-cognition.html">감각·인지</a></li><li><a href="movement-behavior.html">운동·행동</a></li><li><a href="brain-development.html">뇌 발달</a></li><li><a href="brain-disorders.html">뇌질환</a></li><li><a href="research-tech.html">연구·기술</a></li><li><a href="research-archive.html">탐구 기록</a></li><li><a href="quiz.html">Quiz</a></li></ul></nav></div></header>
@@ -33,7 +34,7 @@
 </div>
 <div class="button-row"><button class="btn primary" type="submit">브라우저에 저장</button><button class="btn secondary" type="button" data-cancel-edit hidden>수정 취소</button><button class="btn ghost" type="button" data-reset-form>입력 초기화</button></div>
 </form></section>
-<aside class="learning-section"><h2>미리보기·복사</h2><pre data-record-preview style="white-space:pre-wrap;max-height:520px;overflow:auto;padding:1rem;border-radius:.75rem;background:#0f172a;color:#e2e8f0"></pre><div class="button-row"><button class="btn secondary" type="button" data-copy-eureka>유리프 기록용 텍스트 복사</button><button class="btn secondary" type="button" data-copy-ca>CA 제출용 텍스트 복사</button></div></aside>
+<aside class="learning-section"><h2>미리보기·복사</h2><pre data-record-preview class="record-preview"></pre><div class="button-row"><button class="btn secondary" type="button" data-copy-eureka>유리프 기록용 텍스트 복사</button><button class="btn secondary" type="button" data-copy-ca>CA 제출용 텍스트 복사</button></div></aside>
 </div>
 <section class="learning-section"><div class="section-heading"><div><h2>브라우저 저장 기록</h2><p>수정·삭제는 현재 브라우저의 로컬 사본에만 적용됩니다.</p></div><div><label class="field">가져오기 방식<select data-import-mode><option value="merge">ID 기준 병합</option><option value="replace">현재 기록 교체</option></select></label></div></div><div class="button-row"><button class="btn primary" type="button" data-export>JSON 내보내기</button><label class="btn secondary" for="json-import">JSON 가져오기</label><input class="sr-only" id="json-import" data-import type="file" accept="application/json,.json"></div><div class="card-grid" data-saved-records></div></section>
 </div></main>

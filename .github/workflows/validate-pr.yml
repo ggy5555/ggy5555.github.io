@@ -1,0 +1,44 @@
+name: Validate NEURO ARCHIVE changes
+on:
+  pull_request:
+  push:
+    branches:
+      - design/neuro-archive-editorial
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout proposed changes
+        uses: actions/checkout@v4
+      - name: Checkout main baseline for comparisons
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: baseline
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run existing site regression validator
+        run: node scripts/validate-site.mjs
+      - name: Check editorial links and protected functionality
+        run: node scripts/validate-editorial.mjs
+      - name: Install QA dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run desktop and mobile browser QA
+        run: npm run test:e2e
+      - name: Upload before-after screenshots and test traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: neuro-archive-visual-qa
+          path: |
+            test-results/visual/
+            test-results/**/*.zip
+          if-no-files-found: ignore
