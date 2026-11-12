@@ -52,18 +52,16 @@ Do not assume that a pastel text color has sufficient contrast on white.
 Use the strong accent token for small link text and primary controls.
 All semantic progress/status colors must be verified in both themes.
 
-## Typography
+## Typography — locally hosted Korean fonts
 
-- Korean/English body and interface: Noto Sans KR → platform/system sans fallbacks.
-- Major editorial title: Noto Serif KR → Nanum Myeongjo → Georgia → serif.
-- Serif used only for page headings and article-level H2, not forms or dense tables.
-- Body: 16px, line-height ~1.75–1.85; readable copy <= 76ch when practical.
-- Page H1: responsive ~36–58px; home title can be larger.
-- Article H2: ~23–32px; H3: ~19px; metadata: ~12–14px.
-- Font delivery: use font-display: swap through Google Fonts CSS; request only
-  needed weights. Check Korean font fallback and performance before release.
-- Open-source Noto fonts are distributed under the SIL Open Font License.
-  No proprietary font binaries are added to this repository.
+- **Display headings: SUITE Variable** (SUN TYPEFACE); CSS family `SUITE Local`, variable weights 300–900.
+- **Body and interface: SUIT Variable** (SUN TYPEFACE); CSS family `SUIT Local`, variable weights 100–900.
+- The site serves `assets/fonts/SUITE-Variable.woff2` and `assets/fonts/SUIT-Variable.woff2` from its own origin.
+- `@font-face` uses `font-display: swap` and local system fallbacks. No external Google Fonts requests.
+- Both upstream fonts are licensed under **SIL Open Font License 1.1**. Unmodified files, license notices and source attribution are in `assets/fonts/`.
+- Headings: geometric sans, weight ~700–800; no ornamental serif type. Body: 16px / 1.75–1.85 line height, copy limited to approximately 76ch.
+- Major H1 ~36–58px responsive, H2 ~23–32px, H3 ~19px, small metadata ~12–14px.
+- Keep multilingual fallbacks for Korean/English/Japanese content. Verify local font loading on mobile/desktop and check performance.
 
 ## Spacing and layout
 

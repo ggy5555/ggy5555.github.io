@@ -1,6 +1,22 @@
 /* NEURO ARCHIVE · Scientific Editorial v2
    Loaded after theme.css. Existing application selectors, data attributes
    and brain-lobe geometry remain owned by their original stylesheets. */
+/* Local SUN TYPEFACE WOFF2 fonts · SIL Open Font License 1.1. */
+@font-face {
+  font-family: "SUIT Local";
+  src: url("../fonts/SUIT-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SUITE Local";
+  src: url("../fonts/SUITE-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+}
+
 :root {
   --ea-paper: #faf9fc;
   --ea-surface: #ffffff;
@@ -11,8 +27,8 @@
   --ea-accent-strong: #54468f;
   --ea-line: #e6e1ed;
   --ea-focus: #8270c8;
-  --ea-serif: "Noto Serif KR", "Nanum Myeongjo", Georgia, serif;
-  --ea-sans: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --ea-display: "SUITE Local", "SUIT Local", "Apple SD Gothic Neo", sans-serif;
+  --ea-sans: "SUIT Local", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --surface: var(--ea-surface);
   --surface-soft: var(--ea-paper);
   --surface-lilac: var(--ea-quiet);
@@ -89,7 +105,7 @@ body {
   word-break: keep-all;
   overflow-wrap: break-word;
 }
-h1, h2, h3, h4 { font-family: var(--ea-sans); letter-spacing: -.036em; font-weight: 750; }
+h1, h2, h3, h4 { font-family: var(--ea-display); letter-spacing: -.04em; font-weight: 700; }
 h1, h2 { text-wrap: balance; }
 p { line-height: 1.8; }
 a { color: var(--ea-accent-strong); }
@@ -107,7 +123,7 @@ a:hover { color: var(--ea-accent); }
 }
 .site-header.is-scrolled { box-shadow: 0 5px 17px rgba(40,31,71,.07); }
 .header-inner { min-height: 78px; }
-.brand { color: var(--ea-ink); font-family: var(--ea-sans); font-weight: 800; letter-spacing: -.045em; }
+.brand { color: var(--ea-ink); font-family: var(--ea-display); font-weight: 800; letter-spacing: -.04em; }
 .brand:hover { color: var(--ea-accent); }
 .brand-mark {
   width: 2rem; height: 2rem;
@@ -137,7 +153,7 @@ a:hover { color: var(--ea-accent); }
 .content-section.alt, :root[data-theme="dark"] .content-section.alt { background: var(--ea-surface); }
 .section-heading { margin-bottom: 2rem; }
 .section-heading > div { max-width: 800px; }
-.section-heading h2 { font-size: clamp(1.7rem,3vw,2.4rem); }
+.section-heading h2 { font-size: clamp(1.7rem,3vw,2.4rem); font-weight: 750; }
 .section-heading p { max-width: 66ch; margin-top: .65rem; }
 .section-heading > a { flex: 0 0 auto; font-size: .88rem; font-weight: 700; text-decoration-thickness: 1px; }
 .site-footer { border-top: 1px solid var(--ea-line); background: var(--footer-bg); }
@@ -263,7 +279,7 @@ th, td { padding: .85rem 1rem; border-color: var(--ea-line); }
 }
 .dark-hero::before, .dark-hero::after { content: none; }
 .hero-grid { min-height: 525px; grid-template-columns: minmax(0,1fr) minmax(330px,.92fr); gap: clamp(2rem,5vw,5rem); padding-block: clamp(3rem,7vw,5.6rem); }
-.hero-copy h1, .hero-copy h2 { font-family: var(--ea-serif); font-size: clamp(2.45rem,4.5vw,4.4rem); font-weight: 700; line-height: 1.35; letter-spacing: -.055em; color: var(--ea-ink); }
+.hero-copy h1, .hero-copy h2 { font-family: var(--ea-display); font-size: clamp(2.45rem,4.5vw,4.4rem); font-weight: 800; line-height: 1.28; letter-spacing: -.05em; color: var(--ea-ink); }
 .hero-copy h1 span { color: var(--ea-accent-strong); background: none; -webkit-text-fill-color: currentColor; }
 .hero-copy > p { color: var(--ea-secondary); max-width: 56ch; font-size: clamp(1rem,1.5vw,1.12rem); }
 .hero-actions { margin-top: 2rem; gap: .7rem; }
@@ -323,7 +339,7 @@ th, td { padding: .85rem 1rem; border-color: var(--ea-line); }
 }
 .learning-hero::after { content: none; }
 .learning-hero .page-shell { padding-block: clamp(3rem,6vw,4.5rem); }
-.learning-hero h1 { color: var(--ea-ink); font-family: var(--ea-serif); font-weight: 700; font-size: clamp(2.2rem,4vw,3.65rem); line-height: 1.4; }
+.learning-hero h1 { color: var(--ea-ink); font-family: var(--ea-display); font-weight: 750; font-size: clamp(2.2rem,4vw,3.65rem); line-height: 1.32; }
 .learning-hero .lead { color: var(--ea-secondary); max-width: 70ch; font-size: 1.08rem; }
 .learning-meta > div, :root[data-theme="dark"] .learning-meta > div { border: 1px solid var(--ea-line); background: var(--ea-surface); border-radius: .45rem; color: var(--ea-ink); }
 .learning-meta strong { color: var(--ea-ink); }
@@ -336,7 +352,7 @@ th, td { padding: .85rem 1rem; border-color: var(--ea-line); }
   box-shadow: none;
 }
 .learning-section + .learning-section { margin-top: .7rem; border-top: 1px solid var(--ea-line); }
-.learning-section h2 { max-width: 29ch; margin: .3rem 0 1.15rem; font-family: var(--ea-serif); font-weight: 700; font-size: clamp(1.45rem,2.7vw,2rem); line-height: 1.45; }
+.learning-section h2 { max-width: 29ch; margin: .3rem 0 1.15rem; font-family: var(--ea-display); font-weight: 750; font-size: clamp(1.45rem,2.7vw,2rem); line-height: 1.38; }
 .learning-section h3 { max-width: 48ch; margin: 2.05rem 0 .7rem; font-size: 1.18rem; font-weight: 750; }
 .learning-section > p, .learning-section > ul, .learning-section > ol, .learning-section > dl,
 .learning-section > blockquote { max-width: 76ch; }
@@ -362,7 +378,7 @@ th, td { padding: .85rem 1rem; border-color: var(--ea-line); }
 /* Atlas: preserve all lobe sizes and offsets from brainmap.css/theme.css. */
 .brainmap-page, :root[data-theme="dark"] .brainmap-page { color: var(--ea-ink); background: var(--ea-paper); }
 .brainmap-intro { max-width: 760px; text-align: left; margin: 0 0 2rem; }
-.brainmap-intro h1 { color: var(--ea-ink); font-family: var(--ea-serif); font-size: clamp(2.3rem,4vw,3.7rem); line-height: 1.4; }
+.brainmap-intro h1 { color: var(--ea-ink); font-family: var(--ea-display); font-size: clamp(2.3rem,4vw,3.7rem); font-weight: 750; line-height: 1.32; }
 .brainmap-intro h1 span { color: var(--ea-accent-strong); }
 .brainmap-intro p { color: var(--ea-secondary); }
 .brain-panel, :root[data-theme="dark"] .brain-panel { background: var(--ea-surface); border: 1px solid var(--ea-line); border-radius: .8rem; box-shadow: none; backdrop-filter: none; }

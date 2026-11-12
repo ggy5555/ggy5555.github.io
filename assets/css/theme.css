@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Serif+KR:wght@500;600;700&display=swap");
+/* Local SUIT / SUITE @font-face declarations live in editorial.css. */
 
 :root {
   color-scheme: light;
@@ -83,7 +83,7 @@
 
 html { background: var(--surface-soft); }
 body {
-  font-family: "Noto Sans KR", "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+  font-family: "SUIT Local", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   color: var(--ink);
   background:
     radial-gradient(circle at 7% 12%, rgba(239, 168, 208, .19), transparent 23rem),
@@ -94,7 +94,7 @@ body {
   transition: color .24s ease, background-color .24s ease;
 }
 h1, h2, h3, h4 {
-  font-family: Nunito, "Noto Sans KR", sans-serif;
+  font-family: "SUITE Local", "SUIT Local", sans-serif;
   font-weight: 900;
 }
 button, input, select, textarea { color: inherit; }
@@ -120,7 +120,7 @@ kbd { color: var(--ink); background: var(--surface); }
   min-height: 78px;
   gap: .75rem;
 }
-.brand { order: 1; color: var(--ink); font-family: Nunito, "Noto Sans KR", sans-serif; }
+.brand { order: 1; color: var(--ink); font-family: "SUITE Local", "SUIT Local", sans-serif; }
 .brand:hover { color: var(--blue-700); }
 .brand-mark {
   width: 2.35rem;
@@ -182,7 +182,7 @@ kbd { color: var(--ink); background: var(--surface); }
   color: var(--ink);
   background: var(--surface);
   box-shadow: 0 7px 18px rgba(75, 62, 108, .08);
-  font-family: Nunito, "Noto Sans KR", sans-serif;
+  font-family: "SUITE Local", "SUIT Local", sans-serif;
   font-size: .72rem;
   font-weight: 800;
   white-space: nowrap;
@@ -295,7 +295,7 @@ kbd { color: var(--ink); background: var(--surface); }
   color: #36384f;
   background: rgba(255,255,255,.8);
   box-shadow: var(--shadow-sm);
-  font-family: Nunito, "Noto Sans KR", sans-serif;
+  font-family: "SUITE Local", "SUIT Local", sans-serif;
   font-size: .76rem;
   font-weight: 900;
 }
@@ -520,7 +520,7 @@ th { color: var(--slate-950); background: var(--surface-lilac); }
   box-shadow: inset 0 0 17px rgba(255,255,255,.72), 0 10px 25px rgba(93,76,139,.17);
   font-size: 1.55rem;
 }
-.progress-count { color: var(--blue-700); font: 900 1.65rem/1 Nunito, "Noto Sans KR", sans-serif; }
+.progress-count { color: var(--blue-700); font: 900 1.65rem/1 "SUITE Local", "SUIT Local", sans-serif; }
 .progress-large { height: .9rem; border: 1px solid var(--line); }
 .progress-large > span { transition: width .38s ease; }
 .quiz-stat-list {
