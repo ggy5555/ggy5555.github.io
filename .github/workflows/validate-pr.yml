@@ -1,0 +1,24 @@
+name: Validate NEURO ARCHIVE changes
+on:
+  pull_request:
+  push:
+    branches:
+      - design/neuro-archive-editorial
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout proposed changes
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run existing site regression validator
+        run: node scripts/validate-site.mjs
+      - name: Check editorial links and protected functionality
+        run: node scripts/validate-editorial.mjs

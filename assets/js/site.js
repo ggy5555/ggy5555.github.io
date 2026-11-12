@@ -166,4 +166,34 @@
     document.body.prepend(sentinel);
     observer.observe(sentinel);
   }
+
+  // Progressive enhancement: indicate the section currently being read.
+  // Existing section IDs, links, history, and storage are untouched.
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  if (tocLinks.length) {
+    var tocItems = tocLinks.map(function (link) {
+      return { link: link, target: document.getElementById(decodeURIComponent(link.hash.slice(1))) };
+    }).filter(function (item) { return !!item.target; });
+    var tocFrame = false;
+    var updateToc = function () {
+      tocFrame = false;
+      if (!tocItems.length) return;
+      var selected = tocItems[0];
+      tocItems.forEach(function (item) {
+        if (item.target.getBoundingClientRect().top <= 175) selected = item;
+      });
+      tocItems.forEach(function (item) {
+        if (item === selected) item.link.setAttribute('aria-current', 'location');
+        else item.link.removeAttribute('aria-current');
+      });
+    };
+    var scheduleToc = function () {
+      if (!tocFrame) { tocFrame = true; requestAnimationFrame(updateToc); }
+    };
+    window.addEventListener('scroll', scheduleToc, { passive: true });
+    window.addEventListener('resize', scheduleToc);
+    window.addEventListener('hashchange', scheduleToc);
+    scheduleToc();
+  }
+
 })();
