@@ -9,7 +9,7 @@ const errors = [];
 for (const file of htmlFiles) {
   const html = read(file);
   if (html.includes("assets/css/theme.css?v=20260914-3") &&
-      !html.includes('href="assets/css/editorial.css?v=20261112-1"')) {
+      !html.includes('href="assets/css/editorial.css?v=20261112-2"')) {
     errors.push(file + ": editorial stylesheet link missing");
   }
 }
